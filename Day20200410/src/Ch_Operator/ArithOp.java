@@ -1,5 +1,5 @@
-package Ch_Operator;
-
+package Ch_Operator; //ASCII 문자에 포함되어 있는 소문자로 명명 - 차후 생성시 수정
+							 //ch_operator 
 public class ArithOp {
 
 	public static void main(String[] args) {
