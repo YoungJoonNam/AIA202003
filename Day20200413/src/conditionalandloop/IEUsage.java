@@ -9,6 +9,8 @@ public class IEUsage {
 			System.out.println("num은 0보다 크다");						
 		}
 		
+		
+		//test
 		if ((num%2)==0) {
 			System.out.println("num은 짝수");			
 		}
