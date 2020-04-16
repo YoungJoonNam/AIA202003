@@ -1,5 +1,7 @@
 package conditionalandloop;
 
+import java.lang.Math;
+
 public class Ex20200413_2 {
 
 	public static void main(String[] args) {
@@ -118,13 +120,29 @@ public class Ex20200413_2 {
 //
 //		 
 //
-//		[4] 1+(-2)+3+(-4)+... 과 같은 식으로 계속 더해나갔을 때, 몇까지 더해야 총합이 100이상이되는지 구하시오.
+//		[4] 1+(-2)+3+(-4)+... 과 같은 식으로 계속 더해나갔을 때, 
+//		몇까지 더해야 총합이 100이상이되는지 구하시오.
 //
-//		 
-//
-//		 
-//
-//		 
+		System.out.println("\n[문제[4]]-----------------\n");
+		int nSum4=0;
+		int nNum4=1;
+		while(true) {
+			
+			if(nNum4 % 2 == 0) { //짝수는 -
+				nSum4 -= nNum4;				
+			}
+			else { // 홀수는 +
+				nSum4 += nNum4;				
+			}
+			
+			if(nSum4 >= 100) {
+				System.out.println("총합 100이 넘은 경우, 총합 : "+nSum4+" nNum4의 값은 "+nNum4);
+				break;
+			}
+			nNum4++;
+					
+		}
+		
 //
 //		[5] 다음의 for문을 while문으로 변경하시오.
 //
@@ -148,21 +166,42 @@ public class Ex20200413_2 {
 //
 //		} // end ofclass
 //
+		System.out.println("\n[문제[5]]-----------------\n");
+		for(int i=0; i<=10; i++) {			
+			for(int j=0; j<=i; j++)			
+				System.out.print("*");	
+			System.out.println();			
+		}
+		System.out.println("--------------------------------");
+		int i5=0,j5=0;
+		while (i5<=10) {
+			while (j5<=i5) {
+				System.out.print("*");
+				j5++;
+			}
+			System.out.println();
+			i5++;
+			j5=0;
+		}
+		
 //		 
 //
+//		[6] 두 개의 주사위를 던졌을 때, 눈의 합이 6이 되는 모든 경우의 수를 
+//		출력하는 프로그램을작성하시오.
+
+		System.out.println("\n[문제[6]]-----------------\n");
+		for (int i = 1; i <= 6; i++) {
+			for (int j = 1; j <= 6; j++) {
+				if((i+j) == 6) {
+					System.out.println("두 개의 주사위의 눈의 합이 6이 되는 경우 "+i+" , "+j);
+				}
+			}
+		}
+		
 //		 
 //
-//		 
-//
-//		[6] 두 개의 주사위를 던졌을 때, 눈의 합이 6이 되는 모든 경우의 수를 출력하는 프로그램을작성하시오.
-//
-//		 
-//
-//		 
-//
-//		 
-//
-//		[7] Math.random()을 이용해서 1부터 6사이의 임의의 정수를 변수 value에 저장하는 코드를완성하라. (1)에 알맞은 코드를 넣으시오.
+//		[7] Math.random()을 이용해서 1부터 6사이의 임의의 정수를 
+//		변수 value에 저장하는 코드를완성하라. (1)에 알맞은 코드를 넣으시오.
 //
 //		[연습문제]/ch4/Exercise4_7.java
 //
@@ -177,32 +216,33 @@ public class Ex20200413_2 {
 //		}
 //
 //		}
+		
+		System.out.println("\n[문제[7]]-----------------\n");
+		int value = ( (int)(Math.random()*6)+1 );
+		System.out.println("value:"+value);
 //
-//		 
-//
-//		 
-//
-//		 
-//
-//		[8] 방정식 2x+4y=10의 모든 해를 구하시오. 단, x와 y는 정수이고 각각의 범위는 0<=x<=10,  0<=y<=10 이다.
-//
-//		 
+//		[8] 방정식 2x+4y=10의 모든 해를 구하시오. 단, x와 y는 정수이고 
+//		각각의 범위는 0<=x<=10,  0<=y<=10 이다.
 //
 //		[실행결과]
-//
 //		x=1, y=2
-//
 //		x=3, y=1
-//
 //		x=5, y=0
 //
-//		 
+		System.out.println("\n[문제[8]]-----------------\n");
+		for (int i = 0; i <= 10; i++) {
+			for (int j = 0; j <= 10; j++) {
+				if((2*i+4*j) == 10) {
+					System.out.println("x = "+i+", y = "+j);
+				}
+			}
+		}
+
+//		[9] 숫자로 이루어진 문자열 str이 있을 때, 
+//		각 자리의 합을 더한 결과를 출력하는 코드를완성하라.
 //
-//		 
-//
-//		[9] 숫자로 이루어진 문자열 str이 있을 때, 각 자리의 합을 더한 결과를 출력하는 코드를완성하라.
-//
-//		만일 문자열이"12345"라면, ‘1+2+3+4+5’의 결과인 15를 출력이 출력되어야 한다. (1)에 알맞은코드를 넣으시오.
+//		만일 문자열이"12345"라면, ‘1+2+3+4+5’의 결과인 
+//		15를 출력이 출력되어야 한다. (1)에 알맞은코드를 넣으시오.
 //
 //		[Hint] String클래스의 charAt(inti)을 사용
 //
@@ -213,17 +253,13 @@ public class Ex20200413_2 {
 //		public static void main(String[] args) {
 //
 //		String str = "12345";
-//
 //		int sum = 0;
-//
 //		for(int i=0; i < str.length(); i++) {
-//
 //		/*
 //
 //		(1) 알맞은 코드를 넣어 완성하시오.
 //
 //		*/
-//
 //		}
 //
 //		System.out.println("sum="+sum);
@@ -235,65 +271,76 @@ public class Ex20200413_2 {
 //		[실행결과]
 //
 //		15
-//
+		
+		System.out.println("\n[문제[9]]-----------------\n");
+		String str9 = "12345";
+		int sum = 0;
+		for(int i=0; i < str9.length(); i++) {
+		
+			sum += (str9.charAt(i)-'0');
+			//System.out.println("sum="+sum);
+		}
+		System.out.println("sum="+sum);
 //		 
 //
 //		 
 //
-//		 
-//
-//		[10] int타입의 변수 num 이 있을 때, 각 자리의 합을 더한 결과를 출력하는 코드를 완성하라. 만일 변수 num의 값이 12345라면, ‘1+2+3+4+5’의 결과인 15를 출력하라. (1)에 알맞은 코드를넣으시오.
-//
+//		[10] int타입의 변수 num 이 있을 때, 각 자리의 합을 더한 결과를 
+//		출력하는 코드를 완성하라. 만일 변수 num의 값이 12345라면, ‘1+2+3+4+5’의 결과인 15를 출력하라. (1)에 알맞은 코드를넣으시오.
 //		[주의] 문자열로 변환하지 말고 숫자로만 처리해야 한다.
 //
 //		[연습문제]/ch4/Exercise4_10.java
-//
 //		classExercise4_10 {
-//
 //		public static void main(String[] args) {
 //
 //		int num = 12345;
-//
 //		int sum = 0;
-//
 //		/*
-//
 //		(1) 알맞은 코드를 넣어 완성하시오.
-//
 //		*/
-//
 //		System.out.println("sum="+sum);
 //
 //		}
 //
 //		}
 //
-//		 
-//
 //		[실행결과]
 //
 //		15
+		System.out.println("\n[문제[10]]-----------------\n");
+		int num10 = 12345;
+		int sum10 = 0;
+		int nDiv=10;		
+		int nCount=1;
+				
+		while (true) {
+			sum10 += (num10%nDiv)/nCount;
+			//System.out.println("--sum10="+sum10+" "+nDiv+" "+num10%nDiv+" "+nCount);
+			nDiv *= 10;
+			nCount *= 10;
+			
+			if(num10%nDiv == num10) {
+				sum10 += (num10%nDiv)/nCount;
+				//System.out.println("--sum10="+sum10+" "+nDiv+" "+num10%nDiv+" "+nCount);
+				break;
+			}
+		}
+
+		System.out.println("sum10="+sum10);		 
 //
-//		 
-//
-//		 
-//
-//		 
-//
-//		[11] 피보나치(Fibonnaci) 수열(數列)은 앞을 두 수를 더해서 다음 수를 만들어 나가는수열이다. 예를 들어 앞의 두 수가 1과 1이라면 그 다음 수는 2가 되고 그 다음 수는 1과 2를더해서 3이 되어서 1,1,2,3,5,8,13,21,... 과 같은 식으로 진행된다. 1과 1부터 시작하는피보나치수열의 10번째 수는 무엇인지 계산하는 프로그램을 완성하시오.
+//		[11] 피보나치(Fibonnaci) 수열(數列)은 앞을 두 수를 더해서 다음 수를 만들어 \
+//		나가는수열이다. 예를 들어 앞의 두 수가 1과 1이라면 그 다음 수는 2가 되고 
+//		그 다음 수는 1과 2를더해서 3이 되어서 1,1,2,3,5,8,13,21,... 과 같은 식으로 진행된다. 
+//		1과 1부터 시작하는피보나치수열의 10번째 수는 무엇인지 계산하는 프로그램을 완성하시오.
 //
 //		[연습문제]/ch4/Exercise4_11.java
 //
 //		public classExercise4_11 {
-//
 //		public static void main(String[] args) {
-//
 //		// Fibonnaci 수열의 시작의 첫 두 숫자를 1, 1로 한다.
 //
 //		int num1 = 1;
-//
 //		int num2 = 1;
-//
 //		int num3 = 0; // 세번째 값
 //
 //		System.out.print(num1+","+num2);
@@ -311,37 +358,33 @@ public class Ex20200413_2 {
 //		} // end of main
 //
 //		} // end ofclass
-//
-//		 
-//
+
 //		[실행결과]
 //
 //		1,1,2,3,5,8,13,21,34,55
 //
-//		 
-//
-//		 
-//
-//		 
-//
-//
+		System.out.println("\n[문제[11]]-----------------\n");		
+		int num11a = 1;
+		int num11b = 1;
+		int num11c = 0; // 세번째 값
+
+		System.out.print(num11a+","+num11b);
+
+		for (int i = 0 ; i < 8 ; i++ ) {
+			num11c = num11a + num11b;			
+			System.out.print(","+num11c);
+			num11a = num11b;
+			num11b = num11c;		
+		}
 //
 //		12번 문제는 없습니다.
 //
-//
-//
-//		 
-//
-//		 
-//
-//		[13] 다음은 주어진 문자열(value)이 숫자인지를 판별하는 프로그램이다. (1)에 알맞은 코드를넣어서 프로그램을 완성하시오.
+//		[13] 다음은 주어진 문자열(value)이 숫자인지를 판별하는 프로그램이다. 
+//		(1)에 알맞은 코드를넣어서 프로그램을 완성하시오.
 //
 //		[연습문제]/ch4/Exercise4_13.java
-//
 //		classExercise4_13{
-//
 //		public static void main(String[] args){
-//
 //		String value = "12o34";
 //
 //		char ch = ' ';
@@ -376,7 +419,6 @@ public class Ex20200413_2 {
 //
 //		} // end ofclass
 //
-//		 
 //
 //		 
 //
@@ -386,11 +428,39 @@ public class Ex20200413_2 {
 //
 //		 
 //
+		System.out.println("\n[문제[13]]-----------------\n");		 
+//		 
+		String value13 = "12o34";
+		char ch13 = ' ';
+		boolean isNumber = true;
+
+		// 반복문과 charAt(inti)를 이용해서 문자열의 문자를
+		// 하나씩 읽어서 검사한다.
+		for(int i=0; i < value13.length() ;i++) {	
+			ch13 = value13.charAt(i);
+			if(ch13>=(int)'0' && ch13<=(int)'9') {
+				isNumber = true;
+			}
+			else {
+				isNumber = false;
+				break;
+			}
+			//System.out.println(value13+" "+ch13+" "+isNumber);
+		}
+
+		if (isNumber) {
+			System.out.println(value13+"는 숫자입니다.");
+		} else {
+			System.out.println(value13+"는 숫자가 아닙니다.");
+		}
 //		 
 //
-//		 
-//
-//		[14] 다음은 숫자 맞추기 게임을 작성한 것이다. 1과 100사이의 값을 반복적으로 입력해서컴퓨터가 생각한 값을 맞추면 게임이 끝난다. 사용자가 값을 입력하면, 컴퓨터는 자신이 생각한값과 비교해서 결과를 알려준다. 사용자가 컴퓨터가 생각한 숫자를 맞추면 게임이 끝나고 몇 번만에 숫자를 맞췄는지 알려준다. (1)~(2)에 알맞은 코드를 넣어 프로그램을 완성하시오.
+//		[14] 다음은 숫자 맞추기 게임을 작성한 것이다. 1과 100사이의 값을 반복적으로 
+//		입력해서컴퓨터가 생각한 값을 맞추면 게임이 끝난다. 
+//		사용자가 값을 입력하면, 컴퓨터는 자신이 생각한값과 비교해서 결과를 알려준다. 
+//		사용자가 컴퓨터가 생각한 숫자를 맞추면 게임이 끝나고 
+//		몇 번만에 숫자를 맞췄는지 알려준다. 
+//		(1)~(2)에 알맞은 코드를 넣어 프로그램을 완성하시오.
 //
 //		[연습문제]/ch4/Exercise4_14.java
 //
@@ -434,42 +504,59 @@ public class Ex20200413_2 {
 //
 //		[실행결과]
 //
-//		1과 100사이의 값을 입력하세요 :50
-//
+//		1과 100사이의 값을 입력하세요 :50		
 //		더 큰 수를 입력하세요.
-//
 //		1과 100사이의 값을 입력하세요 :75
-//
 //		더 큰 수를 입력하세요.
-//
 //		1과 100사이의 값을 입력하세요 :87
-//
 //		더 작은 수를 입력하세요.
-//
 //		1과 100사이의 값을 입력하세요 :80
-//
 //		더 작은 수를 입력하세요.
-//
 //		1과 100사이의 값을 입력하세요 :77
-//
 //		더 작은 수를 입력하세요.
-//
 //		1과 100사이의 값을 입력하세요 :76
-//
 //		맞췄습니다.
-//
 //		시도횟수는 6번입니다.
 //
 //		 
-//
+		System.out.println("\n[문제[14]]-----------------\n");
+		// 1~100사이의 임의의 값을 얻어서 answer에 저장한다.
+		int answer = ( (int)(Math.random()*100)+1 );
+				
+		int input = 0; // 사용자입력을 저장할 공간
+		int count = 0; // 시도횟수를 세기위한 변수
+
+		// 화면으로 부터 사용자입력을 받기 위해서 Scanner클래스 사용
+
+		java.util.Scanner s = new java.util.Scanner(System.in);
+
+		do {
+
+			count++;	
+			System.out.print("1과 100사이의 값을 입력하세요 : ");	
+			input = s.nextInt(); // 입력받은 값을 변수 input에 저장한다.
+	
+			if(answer == input) {
+				System.out.println("맞췄습니다.");
+				System.out.println("시도횟수는 "+count+"번입니다..");
+				break;
+			}
+			else if(answer > input) {
+				System.out.println("더 큰 수를 입력하세요.");
+			}
+			else {
+				System.out.println("더 작은 수를 입력하세요..");			
+			}
+
+		} while(true); // 무한반복문
 //		 
 //
-//		 
+//		[15] 다음은 회문수를 구하는 프로그램이다. 회문수(palindrome)란, 
+//		숫자를 거꾸로 읽어도앞으로 읽는 것과 같은 수를 말한다. 
+//		예를 들면 ‘12321’이나 ‘13531’같은 수를 말한다. (1)에알맞은 코드를 넣어서
+//		프로그램을 완성하시오.
 //
-//		[15] 다음은 회문수를 구하는 프로그램이다. 회문수(palindrome)란, 숫자를 거꾸로 읽어도앞으로 읽는 것과 같은 수를 말한다. 예를 들면 ‘12321’이나 ‘13531’같은 수를 말한다. (1)에알맞은 코드를 넣어서 프로그램을 완성하시오.
-//
-//		[Hint] 나머지 연산자를 이용하시오.
-//
+//		[Hint] 나머지 연산자를 이용하시오.//
 //		[연습문제]/ch4/Exercise4_15.java
 //
 //		classExercise4_15{
@@ -508,8 +595,26 @@ public class Ex20200413_2 {
 //
 //		12321는 회문수 입니다.
 //
-
+		System.out.println("\n[문제[15]]-----------------\n");
+		int number15 = 12321;		
+		//int number15 = 121;
+		int tmp = number15;
+		
+		int result =0; // 변수 number를 거꾸로 변환해서 담을 변수
+		
+		while(tmp !=0) {
+			result += tmp%10; 
+			tmp /= 10; 
+			result *= 10; 
+		}
+		result /= 10;
+		
+		if(number15 == result)
+			System.out.println( number15 + "는 회문수 입니다.");
+		else
+			System.out.println( number15 + "는 회문수가 아닙니다.");
 
 	}
 
 }
+
