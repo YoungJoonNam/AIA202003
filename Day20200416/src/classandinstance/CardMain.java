@@ -42,6 +42,12 @@ public class CardMain {
 		}
 		
 		int aa=0;
+		
+		System.out.println("============================");
+		
+		for(int i=0;i<52;i++) {
+			System.out.println((i+1)+"번째 카드는 "+cArrayCard[i].kind+cArrayCard[i].number );			
+		}
 
 	}
 
