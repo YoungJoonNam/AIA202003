@@ -152,7 +152,7 @@ public class Ex20200413_1 {
 		num5 = 22;
 		System.out.println("num5 = "+num5);
 		
-		if(num5 <= 0) {
+		if(num5 < 0) {
 			System.out.println("0 미만");
 		}
 		else {
@@ -324,12 +324,11 @@ public class Ex20200413_1 {
 //
 //		문제 13.
 //		구구단의 짝수 단(2,4,8)만 출력하는 프로그램 작성.
-//		단, 2단은 2x2까지, 4단은 4x4까지, 8단은 8x8 까지 출력
-//
+//		단, 2단은 2x2까지, 4단은 4x4까지, 8단은 8x8 까지 출력		
 //
 		System.out.println("\n[문제13]-----------------\n");
 		
-		for (int i = 2; i <= 9; i++) {			
+		for (int i = 2; i <= 8; i*=2) {			
 			for (int j = 1; j <= 9; j++) {				
 				if((i%2 == 0)&&(j<=i)) {					
 					System.out.println("구구단 "+ i + " x " + j + " = " + i*j);
