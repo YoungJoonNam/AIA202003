@@ -13,9 +13,13 @@ public class Number {
 	
 	public static void main(String[] args) {
 
+		System.out.println();
 		
 		Number n1 = new Number(12);
 		System.out.println(n1.num);
+		System.out.println();
+		
+		
 		
 	}
 
