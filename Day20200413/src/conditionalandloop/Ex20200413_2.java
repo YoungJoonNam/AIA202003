@@ -27,7 +27,7 @@ public class Ex20200413_2 {
 		char ch;
 		ch='A';
 		
-		if (ch!=' ' && ch!='\t') {
+		if (ch!=' ' || ch!='\t') {
 			System.out.println("ch는 공백이나 탭이 아닙니다. ch는 "+ch);
 		}
 //
