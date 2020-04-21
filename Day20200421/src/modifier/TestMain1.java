@@ -10,6 +10,8 @@ public class TestMain1 {
 		System.out.println(member.memberId);
 		
 	
+		Singleton s = Singleton.getInstance();
+		s.print();
 	
 	}
 }
