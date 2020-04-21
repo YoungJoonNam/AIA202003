@@ -1,13 +1,13 @@
 package array;
 
-public class member {
+public class Member {
 	
-	String memberId;
+	public String memberId;
 	String memberName;
 	String memberEmail;
 	
 	//생성자
-	member(){
+	public Member(){
 		
 	}
 
