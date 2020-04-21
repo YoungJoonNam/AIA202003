@@ -72,19 +72,19 @@ public class PhoneInfor {
 		
 	}
 	
-	boolean IsEmpty() {
-		
-		boolean bResult=true;
-		
-		if(strPname.isEmpty()) {
-			bResult=true;			
-		}
-		else {
-			bResult=false;			
-		}
-		return bResult;
-	}
-	
+//	boolean IsEmpty() {
+//		
+//		boolean bResult=true;
+//		
+//		if(strPname.isEmpty()) {
+//			bResult=true;			
+//		}
+//		else {
+//			bResult=false;			
+//		}
+//		return bResult;
+//	}
+//	
 	public static void main(String[] args) {
 
 		Scanner scInputUser=new Scanner(System.in);
