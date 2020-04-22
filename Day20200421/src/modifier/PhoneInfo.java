@@ -26,7 +26,9 @@ public class PhoneInfo {
 		strPname = name;
 		strPphoneNumber = number;		
 		strPbirthday = "[사용자미입력]";
+		//this(name,number,"[사용자미입력]"); 2020.04.22 수업
 	}
+	
 	
 	
 	void DoPrintPhoneInfo() {
