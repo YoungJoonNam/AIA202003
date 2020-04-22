@@ -37,13 +37,15 @@ import java.util.Scanner;
 
 public class PhoneBook {
 
-	int m_nSizeOfPB;
-	PhoneInfo[] m_pi;
-	Scanner m_scInputUser;
-	String m_strUserInput;
-	boolean m_bSearchSuccess;
-	int m_nIndex;
+	private int m_nSizeOfPB;	
+	private String m_strUserInput;
+	private boolean m_bSearchSuccess;
+	private int m_nIndex;
+	
+	private final PhoneInfo[] m_pi; //초기화가 한번되면 변경되지 않도록 final 처리
+	private Scanner m_scInputUser;
 
+	
 	{
 		m_nSizeOfPB = 100;
 		m_strUserInput=null;
@@ -65,21 +67,21 @@ public class PhoneBook {
 	void DoStart() {
 		
 		m_scInputUser=new Scanner(System.in);
-						
-		
-		
+			
 		
 		while(true) {
 						
-			System.out.println("--------------------------------------------------------------------");
-			System.out.println("[전화번호부]");
-			System.out.println("--------------------------------------------------------------------");
-			System.out.println("○메뉴");
-			System.out.println("         - 입력,저장 : I 혹은 i");
-			System.out.println("         - 검색 : F 혹은 f");
-			System.out.println("         - 삭제 : D 혹은 d");
-			System.out.println("         - 전체목록출력 : P 혹은 p");
-			System.out.println("         - 종료 : X 혹은 x");
+			Menu.DoPrintMenu();
+			
+//			System.out.println("--------------------------------------------------------------------");
+//			System.out.println("[전화번호부]");
+//			System.out.println("--------------------------------------------------------------------");
+//			System.out.println("○메뉴");
+//			System.out.println("         - 입력,저장 : I 혹은 i");
+//			System.out.println("         - 검색 : F 혹은 f");
+//			System.out.println("         - 삭제 : D 혹은 d");
+//			System.out.println("         - 전체목록출력 : P 혹은 p");
+//			System.out.println("         - 종료 : X 혹은 x");
 			//저장 : 이름, 전화번호, 생년월일 정보를 대상으로 하는 저장
 			//검색 : 이름을 기준으로 데이터를 찾아서 해당 데이터의 정보를 출력
 			//삭제 : 이름을 기준으로 데이터를 찾아서 해당 데이터를 삭제
@@ -167,7 +169,6 @@ public class PhoneBook {
 	}
 	//검색 : 이름을 기준으로 데이터를 찾아서 해당 데이터의 정보를 출력
 	int DoSearch() {
-		//검색 : 이름을 기준으로 데이터를 찾아서 해당 데이터의 정보를 출력
 		
 		System.out.print("이름을 입력해주세요 : ");
 		m_strUserInput=m_scInputUser.nextLine();				
