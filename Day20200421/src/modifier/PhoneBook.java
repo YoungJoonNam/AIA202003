@@ -18,7 +18,7 @@ import java.util.Scanner;
 //Project : ver 0.20
 //“프로그램 사용자로부터 데이터 입력”
 //프로그램 사용자로부터 데이터를 입력 받아 클래스의 인스턴스를 생성하는 것이
-//핵심.
+//핵심
 //단 반복문을 이용해서 프로그램의 흐름을 계속 유지하도록 한다.
 //프로그램 종료를 하지 않으면, 다음과 같은 과정이 반복적으로 이루어짐.
 //키보드로부터 데이터 입력 
@@ -78,6 +78,7 @@ public class PhoneBook {
 			System.out.println("         - 입력,저장 : I 혹은 i");
 			System.out.println("         - 검색 : F 혹은 f");
 			System.out.println("         - 삭제 : D 혹은 d");
+			System.out.println("         - 전체목록출력 : P 혹은 p");
 			System.out.println("         - 종료 : X 혹은 x");
 			//저장 : 이름, 전화번호, 생년월일 정보를 대상으로 하는 저장
 			//검색 : 이름을 기준으로 데이터를 찾아서 해당 데이터의 정보를 출력
@@ -96,6 +97,9 @@ public class PhoneBook {
 			}
 			else if(m_strUserInput.contentEquals("D")||m_strUserInput.contentEquals("d")) {
 				DoDelete();
+			}
+			else if(m_strUserInput.contentEquals("P")||m_strUserInput.contentEquals("p")) {
+				DoPrintAll();
 			}
 			else {
 				
@@ -123,7 +127,8 @@ public class PhoneBook {
 		strInputBirthday=m_scInputUser.nextLine();
 		
 		PhoneInfo pi;
-		if(strInputBirthday.isEmpty()) {
+		//2020.04.22 if(strInputBirthday.isEmpty()) {
+		if(strInputBirthday==null||strInputBirthday.trim().isEmpty()) {
 			pi = new PhoneInfo(strInputName,strInputNumber);
 			//System.out.println("----BirthDay Empty!!!");
 		}
@@ -215,7 +220,16 @@ public class PhoneBook {
 				}						
 			}
 					
-		}
+		}	
+	}
+	void DoPrintAll() {
+		for (int i = 0; i < m_pi.length-1; i++) {								
+			if(m_pi[i] == null) {
+				break;
+			}	
+			System.out.println("[ IndexNo : "+i+" ]");
+			m_pi[i].DoPrintPhoneInfo();
+		}			
 	}
 		
 	
