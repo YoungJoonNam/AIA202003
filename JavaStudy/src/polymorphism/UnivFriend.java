@@ -4,25 +4,29 @@ import java.util.Scanner;
 
 public class UnivFriend extends Friend {
 	String major; // 전공학과
+	int grade;//친구의 학년
 
 	public UnivFriend() {
 		//AddFriend();
 	}
 
-	public UnivFriend(String name, String phone, String addr, String major) {
+	public UnivFriend(String name, String phone, String addr, String major,int grade) {
 		super(name, phone, addr);
 		this.major = major;
+		this.grade = grade;
 	}
 
 	public void showData() {
 		super.showData();
 		System.out.println("전공 : " + major);
+		System.out.println("학년 : " + grade);
 	}
 
 	public void showBasicInfo() {
 		System.out.println("이름 : " + name);
 		System.out.println("전화 : " + phoneNum);
 		System.out.println("전공 : " + major);
+		
 	}
 
 	//테스트로 시도: 
@@ -39,6 +43,8 @@ public class UnivFriend extends Friend {
 		addr = sc.nextLine();
 		System.out.print("학과 : ");
 		major = sc.nextLine();
+		System.out.print("학년 : ");
+		grade = Integer.parseInt(sc.nextLine());
 		
 		sc=null;
 	}

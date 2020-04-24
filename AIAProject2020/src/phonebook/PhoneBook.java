@@ -88,8 +88,8 @@ public class PhoneBook {
 			//검색 : 이름을 기준으로 데이터를 찾아서 해당 데이터의 정보를 출력
 			//삭제 : 이름을 기준으로 데이터를 찾아서 해당 데이터를 삭제
 						
-			m_nUserInput=m_scInputUser.nextInt();
-			m_scInputUser.nextLine();
+			m_nUserInput=Integer.parseInt(m_scInputUser.nextLine().trim());
+			
 			if(m_nUserInput == 0) {
 				System.out.println("감사합니다. 전화번호부를 종료합니다~~");
 				break;				
@@ -116,61 +116,61 @@ public class PhoneBook {
 	}
 
 	//입력, 저장 : 이름, 전화번호, 생년월일 정보를 대상으로 하는 저장
-	void DoInput() {
-		
-		String strInputName=null;
-		String strInputNumber=null;
-		String strInputBirthday=null;
-		
-		
-		System.out.print("이름을 입력해주세요 : ");
-		strInputName=m_scInputUser.nextLine();
-		
-		System.out.print("전화번호를 입력해주세요 : ");
-		strInputNumber=m_scInputUser.nextLine();
-		
-		System.out.print("생년월일을 입력해주세요 : ");
-		strInputBirthday=m_scInputUser.nextLine();
-		
-		PhoneInfo pi;
-		//2020.04.22 if(strInputBirthday.isEmpty()) {
-		if(strInputBirthday==null||strInputBirthday.trim().isEmpty()) {
-			pi = new PhoneInfo(strInputName,strInputNumber);
-			//System.out.println("----BirthDay Empty!!!");
-		}
-		else {
-			pi = new PhoneInfo(strInputName,strInputNumber,strInputBirthday);					
-		}
-		
-		System.out.println("\n[사용자 입력정보]");
-		pi.DoPrintPhoneInfo();		
-		
-		System.out.println("저장하시겠습니까??? (Y or N)");		
-		if(DoCheckYesOrNo()) {
-			//앞에서부터 순차적으로 검색, 이름이 비어 있는 저장공간을 찾아서 저장
-			//추가 : 이름이 동일한 사람이 있는 경우 입력하지 않도록
-			m_bSearchSuccess = false;
-			for (m_nIndex = 0; m_nIndex < m_pi.length; m_nIndex++) {
-				if(m_pi[m_nIndex] == null) {
-					m_pi[m_nIndex] = pi;
-					m_bSearchSuccess = true;
-					break;
-				}						
-			}
-			
-			if(m_bSearchSuccess) {
-				System.out.println("[저장 완료] - Index : "+m_nIndex);						
-			}
-			else {
-				System.out.println("!! 저장 실패 - 빈공간이 없습니다.");
-			}
-		}
-		else {
-			System.out.println("[저장 취소]");
-			
-		}
-	}
-	//검색 : 이름을 기준으로 데이터를 찾아서 해당 데이터의 정보를 출력
+//	void DoInputSecondPlace() {
+//		
+//		String strInputName=null;
+//		String strInputNumber=null;
+//		String strInputBirthday=null;
+//		
+//		
+//		System.out.print("이름을 입력해주세요 : ");
+//		strInputName=m_scInputUser.nextLine();
+//		
+//		System.out.print("전화번호를 입력해주세요 : ");
+//		strInputNumber=m_scInputUser.nextLine();
+//		
+//		System.out.print("생년월일을 입력해주세요 : ");
+//		strInputBirthday=m_scInputUser.nextLine();
+//		
+//		PhoneInfo pi;
+//		//2020.04.22 if(strInputBirthday.isEmpty()) {
+//		if(strInputBirthday==null||strInputBirthday.trim().isEmpty()) {
+//			pi = new PhoneInfo(strInputName,strInputNumber);
+//			//System.out.println("----BirthDay Empty!!!");
+//		}
+//		else {
+//			pi = new PhoneInfo(strInputName,strInputNumber,strInputBirthday);					
+//		}
+//		
+//		System.out.println("\n[사용자 입력정보]");
+//		pi.DoPrintPhoneInfo();		
+//		
+//		System.out.println("저장하시겠습니까??? (Y or N)");		
+//		if(DoCheckYesOrNo()) {
+//			//앞에서부터 순차적으로 검색, 이름이 비어 있는 저장공간을 찾아서 저장
+//			//추가 : 이름이 동일한 사람이 있는 경우 입력하지 않도록
+//			m_bSearchSuccess = false;
+//			for (m_nIndex = 0; m_nIndex < m_pi.length; m_nIndex++) {
+//				if(m_pi[m_nIndex] == null) {
+//					m_pi[m_nIndex] = pi;
+//					m_bSearchSuccess = true;
+//					break;
+//				}						
+//			}
+//			
+//			if(m_bSearchSuccess) {
+//				System.out.println("[저장 완료] - Index : "+m_nIndex);						
+//			}
+//			else {
+//				System.out.println("!! 저장 실패 - 빈공간이 없습니다.");
+//			}
+//		}
+//		else {
+//			System.out.println("[저장 취소]");
+//			
+//		}
+//	}
+//	//검색 : 이름을 기준으로 데이터를 찾아서 해당 데이터의 정보를 출력
 	int DoSearch() {
 		
 		System.out.print("이름을 입력해주세요 : ");
@@ -178,7 +178,7 @@ public class PhoneBook {
 		m_bSearchSuccess = false;
 		for (m_nIndex = 0; m_nIndex < m_pi.length; m_nIndex++) {
 			if(m_pi[m_nIndex] != null) {
-				if(m_strUserInput.contentEquals(m_pi[m_nIndex].strPname)) {
+				if(m_strUserInput.contentEquals(m_pi[m_nIndex].name)) {
 					System.out.println("찾았습니다!! Index : " + m_nIndex);
 					m_pi[m_nIndex].DoPrintPhoneInfo();		
 					m_bSearchSuccess = true;
@@ -248,8 +248,113 @@ public class PhoneBook {
 		return bResult;
 	}
 	
+	void DoInput() {
+						
+		String name=null;
+		String phoneNumber=null;
+		String email=null;
+		String address=null;
+		String major=null;
+		String year=null;
+		String company=null;
+		String club=null;
+		String location=null;
+		
+		
+		
+//		System.out.println("--------------------------------------------------------------------");
+//		System.out.println("○입력상세메뉴");
+//		System.out.println("         - 1. 일반");
+//		System.out.println("         - 2. 대학");
+//		System.out.println("         - 3. 회사");
+//		System.out.println("         - 4. 동호회");		
+//		System.out.println("--------------------------------------------------------------------");
+		
+		while (true) {
+			Menu.DoPrintInputMenu();
+
+			m_nUserInput=Integer.parseInt(m_scInputUser.nextLine().trim());
+			
+			if ((m_nUserInput == 1) || (m_nUserInput == 2) || (m_nUserInput == 3) || (m_nUserInput == 4)) {
+				System.out.print("이름을 입력해주세요 : ");
+				name = m_scInputUser.nextLine();
+
+				System.out.print("전화번호를 입력해주세요 : ");
+				phoneNumber = m_scInputUser.nextLine();
+
+				System.out.print("이메일을 입력해주세요 : ");
+				email = m_scInputUser.nextLine();
+
+				if (m_nUserInput == 1) {
+					addInfo(new PhoneInfo(name, phoneNumber, email));
+					break;
+				} else if (m_nUserInput == 2) {
+					System.out.print("주소를 입력해주세요 : ");
+					address = m_scInputUser.nextLine();
+
+					System.out.print("전공을 입력해주세요 : ");
+					major = m_scInputUser.nextLine();
+
+					System.out.print("학년을 입력해주세요 : ");
+					year = m_scInputUser.nextLine();
+					addInfo(new PhoneInfoUnivInfo(name, phoneNumber, email, address, major, year));
+					break;
+				} else if (m_nUserInput == 3) {
+					System.out.print("회사명을 입력해주세요 : ");
+					company = m_scInputUser.nextLine();
+					addInfo(new PhoneInfoCompanyInfo(name, phoneNumber, email, company));
+					break;
+				} else if (m_nUserInput == 4) {
+					System.out.print("클럽명을 입력해주세요 : ");
+					club = m_scInputUser.nextLine();
+					System.out.print("위치를 입력해주세요 : ");
+					location = m_scInputUser.nextLine();
+					addInfo(new PhoneInfoClub(name, phoneNumber, email, club,location));
+					break;
+				} else {
+					System.out.println("값을 잘못 입력하셨어요");
+				}
+			}
+			else {
+				System.out.println("값을 잘못 입력하셨어요");				
+			}
+			
+			
+		}
+	}
 	
+
+	private void addInfo(PhoneInfo pInfo) {
 	
+		
+		System.out.println("\n[사용자 입력정보]");
+		pInfo.DoPrintPhoneInfo();		
+		System.out.println("저장하시겠습니까??? (Y or N)");		
+		if(DoCheckYesOrNo()) {
+			//앞에서부터 순차적으로 검색, 이름이 비어 있는 저장공간을 찾아서 저장
+			//추가 : 이름이 동일한 사람이 있는 경우 입력하지 않도록
+			m_bSearchSuccess = false;
+			for (m_nIndex = 0; m_nIndex < m_pi.length; m_nIndex++) {
+				if(m_pi[m_nIndex] == null) {					
+					m_pi[m_nIndex] = pInfo;
+					m_bSearchSuccess = true;
+					break;
+				}						
+			}
+			
+			if(m_bSearchSuccess) {
+				System.out.println("[저장 완료] - Index : "+m_nIndex);						
+			}
+			else {
+				System.out.println("!! 저장 실패 - 빈공간이 없습니다.");
+			}
+		}
+		else {
+			System.out.println("[저장 취소]");
+			
+		}
+		
+	}
 	
 	public static void main(String[] args) {
 		

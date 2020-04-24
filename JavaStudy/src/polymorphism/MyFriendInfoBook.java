@@ -22,6 +22,7 @@ public class MyFriendInfoBook {
 			case 2:
 				handler.addFriend(choice);
 				break;
+				
 			case 3:
 				handler.showAllData();
 				break;

@@ -5,10 +5,12 @@ import java.util.Scanner;
 public class FriendInfoHandler {
 	private Friend[] myFriends;
 	private int numOfFriends;
-
+	Scanner sc;
+	
 	public FriendInfoHandler(int num) {
 		myFriends = new Friend[num];
 		numOfFriends = 0;
+		Scanner sc = new Scanner(System.in);
 	}
 
 	private void addFriendInfo(Friend fren) {
@@ -22,7 +24,7 @@ public class FriendInfoHandler {
 
 	public void addFriend(int choice) {
 //		String name, phoneNum, addr, job, major;
-//		Scanner sc = new Scanner(System.in);
+
 //		System.out.print("이름 : ");
 //		name = sc.nextLine();
 //		System.out.print("전화 : ");
@@ -40,6 +42,7 @@ public class FriendInfoHandler {
 //			major = sc.nextLine();
 //			addFriendInfo(new UnivFriend(name, phoneNum, addr, major));
 //		}
+		//Integer.parseInt(s); --> 자주 쓰임	
 		
 		//테스트로 시도: 
 		//결론: 비효율적. 차라리 입력 클래스를 따로 두는게 

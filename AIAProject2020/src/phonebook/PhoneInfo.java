@@ -2,38 +2,29 @@ package phonebook;
 
 public class PhoneInfo {
 
-	protected String strPname;
-	protected String strPphoneNumber;
-	private String strPbirthday;
-
+	protected String name;
+	protected String phoneNumber;
+	protected String email;
+	
 	{
-		strPname = "";
-		strPphoneNumber = "";
-		strPbirthday = "";
+		name = "";
+		phoneNumber = "";		
+		email="";
 	}
 	
 	PhoneInfo(){
 		
 	}
 	
-	PhoneInfo(String name, String number, String birthday){
-		strPname = name;
-		strPphoneNumber = number;
-		strPbirthday = birthday;
+	PhoneInfo(String name, String phoneNumber, String email){
+		this.name = name;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
 	}
-	
-	PhoneInfo(String name, String number){
-		strPname = name;
-		strPphoneNumber = number;		
-		strPbirthday = "[사용자미입력]";
-		//this(name,number,"[사용자미입력]"); 2020.04.22 수업
-	}
-	
-	
-	
+		
 	void DoPrintPhoneInfo() {
 				
-		System.out.println("이름 - "+strPname+" 전화번호 - "+strPphoneNumber+" 생년월일 - "+strPbirthday);
+		System.out.println("이름 - "+name+" 전화번호 - "+phoneNumber+" 이메일 - "+email);
 				
 	}		
 }
