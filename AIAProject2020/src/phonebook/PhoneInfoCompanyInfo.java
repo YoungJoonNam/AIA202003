@@ -1,6 +1,6 @@
 package phonebook;
 
-public class PhoneCompanyInfo extends PhoneInfoAdv {
+public class PhoneInfoCompanyInfo extends PhoneInfoAdv {
 
 	String company;
 	
@@ -9,7 +9,7 @@ public class PhoneCompanyInfo extends PhoneInfoAdv {
 		company=null;		
 	}
 	
-	public PhoneCompanyInfo(String name,String PhoneNumber,String address, String email, String company) {
+	public PhoneInfoCompanyInfo(String name,String PhoneNumber,String address, String email, String company) {
 		super(name,PhoneNumber,address,email);
 		this.company=company;
 	}
