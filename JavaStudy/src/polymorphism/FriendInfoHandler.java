@@ -13,6 +13,9 @@ public class FriendInfoHandler {
 
 	private void addFriendInfo(Friend fren) {
 		//myFriends[numOfFriends++] = fren;
+		//테스트로 시도: 
+		//결론: 비효율적. 차라리 입력 클래스를 따로 두는게 
+		//좋지 않을 것 같다는 결론
 		myFriends[numOfFriends] = fren;
 		myFriends[numOfFriends++].AddFriend();		
 	}
@@ -38,6 +41,9 @@ public class FriendInfoHandler {
 //			addFriendInfo(new UnivFriend(name, phoneNum, addr, major));
 //		}
 		
+		//테스트로 시도: 
+		//결론: 비효율적. 차라리 입력 클래스를 따로 두는게 
+		//좋지 않을 것 같다는 결론
 		if (choice == 1) {			
 			addFriendInfo(new HighFriend());
 		} else // if(choice==2)
