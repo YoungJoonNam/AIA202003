@@ -12,8 +12,8 @@ public class PhoneInfoUnivInfo extends PhoneInfo {
 		year=null;
 	}
 	
-	public PhoneInfoUnivInfo(String name,String phoneNumber,String email, String address, String major, String year) {
-		super(name,phoneNumber,email);
+	public PhoneInfoUnivInfo(String name,String PhoneNumber,String email, String address, String major, String year) {
+		super(name,PhoneNumber,email);
 		this.address=address;
 		this.major=major;
 		this.year=year;				
@@ -25,6 +25,12 @@ public class PhoneInfoUnivInfo extends PhoneInfo {
 		System.out.println("주소 - "+this.address+"전공 - "+this.major+" 학년 - "+this.year);	
 	}	
 	
+	void SetInfo(String name,String PhoneNumber,String email, String address, String major, String year) {
+		super.SetInfo(name,PhoneNumber,email);
+		this.address=address;
+		this.major=major;
+		this.year=year;				
+	}
 	
 	
 	

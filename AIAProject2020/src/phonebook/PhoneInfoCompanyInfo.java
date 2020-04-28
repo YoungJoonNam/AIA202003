@@ -19,4 +19,9 @@ public class PhoneInfoCompanyInfo extends PhoneInfo {
 		System.out.println("회사 - "+this.company);	
 	}	
 	
+	void SetInfo(String name,String PhoneNumber, String email,String company) {
+		super.SetInfo(name,PhoneNumber,email);
+		this.company=company;
+	}
+	
 }

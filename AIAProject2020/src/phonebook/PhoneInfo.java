@@ -27,4 +27,11 @@ public class PhoneInfo {
 		System.out.println("이름 - "+name+" 전화번호 - "+phoneNumber+" 이메일 - "+email);
 				
 	}		
+	
+	void SetInfo(String name, String phoneNumber, String email){
+		this.name = name;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+	}
+	
 }

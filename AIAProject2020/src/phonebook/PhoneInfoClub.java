@@ -21,5 +21,10 @@ public class PhoneInfoClub extends PhoneInfo {
 		super.DoPrintPhoneInfo();
 		System.out.println("클럽 - "+this.club+" 위치 - "+this.location);
 	}	
-	
+		
+	void SetInfo(String name,String PhoneNumber, String email,String club,String location) {
+		super.SetInfo(name, PhoneNumber, email);
+		this.club=club;
+		this.location=location;		
+	}
 }
