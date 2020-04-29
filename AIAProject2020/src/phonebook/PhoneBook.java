@@ -1,5 +1,6 @@
 package phonebook;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -64,10 +65,10 @@ import java.util.Scanner;
 // 관계 구조로 변경
 //
 //○  향후 개선해야할 것 및 문제점
-//- 숫자 입력 메뉴에서 문자 입력시 오류 발생(Exception 배우면 수정 가능?)
-//- Key 값인 동일 이름 입력시 입력 안됨 추가 필요
-//- 입력 종료시 메인 메뉴가 아닌 더 입력할 건지 물어보는 메뉴 추가
-//- 입력과 수정메서드 중복부분을 메서드로 추출해보기
+//완료- 숫자 입력 메뉴에서 문자 입력시 오류 발생(Exception 배우면 수정 가능?)
+//완료- Key 값인 동일 이름 입력시 입력 안됨 추가 필요
+//완료- 입력 종료시 메인 메뉴가 아닌 더 입력할 건지 물어보는 메뉴 추가
+//완료- 입력과 수정메서드 중복부분을 메서드로 추출해보기
 
 
 
@@ -138,13 +139,33 @@ public class PhoneBook extends PhoneBookAB implements MenuInterface {
 			//삭제 : 이름을 기준으로 데이터를 찾아서 해당 데이터를 삭제
 						
 			try {
-				m_nUserInput=Integer.parseInt(m_scInputUser.nextLine().trim());	
+				m_nUserInput=Integer.parseInt(m_scInputUser.nextLine().trim());
+				//범위는 0~4 까지임  
+				
+				if(!(m_nUserInput >=EXIT && m_nUserInput<=PRINT_ALL)) {
+					MismatchExceoption excpt=new MismatchExceoption();
+					throw excpt; //예외상황을 알리는 문장!!!					
+					//강제적인 예외 발생
+				}
 			}
 			catch(NumberFormatException e) {
-				System.out.println("입력값이 잘못되었네요, 다시 입력부탁드립니다~");
+				System.out.println("입력값이 잘못되었네요, 다시 입력부탁드립니다~"+e.getMessage());				
 				continue;
 			}
-			
+			catch(InputMismatchException e) {
+				System.out.println(e.getMessage());
+				continue;
+			}
+			catch (MismatchExceoption e) {
+				System.out.println(e.getMessage());
+				continue;
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+				continue;
+			}
+			finally {
+				
+			}
 			
 //20200428			
 //			int INSER_SAVE = 1;
@@ -205,6 +226,27 @@ public class PhoneBook extends PhoneBookAB implements MenuInterface {
 		return m_nIndex;
 		
 	}
+	
+	public int DoSearch(String name) {
+					
+		m_bSearchSuccess = false;
+		for (m_nIndex = 0; m_nIndex < m_pi.length; m_nIndex++) {
+			if(m_pi[m_nIndex] != null) {
+				if(name.contentEquals(m_pi[m_nIndex].name)) {					
+					m_pi[m_nIndex].DoPrintPhoneInfo();		
+					m_bSearchSuccess = true;
+					break;
+				}					
+			}												
+		}				
+		
+		if(!m_bSearchSuccess) {			
+			m_nIndex = -1;
+		}		
+			
+		return m_nIndex;
+		
+	}
 	//삭제 : 이름을 기준으로 데이터를 찾아서 해당 데이터를 삭제
 	public void DoDelete() {
 		//삭제 : 이름을 기준으로 데이터를 찾아서 해당 데이터를 삭제
@@ -216,7 +258,7 @@ public class PhoneBook extends PhoneBookAB implements MenuInterface {
 		nIndex = DoSearch();
 
 		if (nIndex >= 0) {
-			System.out.println("정말 삭제하시겠습니까?? (Y/N)");
+			System.out.println("정말 삭제하시겠습니까?? (Y,y,0/N)");
 			if (DoCheckYesOrNo()) {
 				m_pi[nIndex] = null;
 				System.out.println("[삭제 완료] - Index : " + m_nIndex);
@@ -248,7 +290,7 @@ public class PhoneBook extends PhoneBookAB implements MenuInterface {
 		boolean bResult=false;
 		
 		m_strUserInput=m_scInputUser.nextLine();					
-		if(m_strUserInput.contentEquals("Y")||m_strUserInput.contentEquals("y")) {
+		if(m_strUserInput.contentEquals("Y")||m_strUserInput.contentEquals("y")||m_strUserInput.contentEquals("0")) {
 			bResult=true;
 		}
 		else {
@@ -257,6 +299,63 @@ public class PhoneBook extends PhoneBookAB implements MenuInterface {
 		return bResult;
 	}
 	
+	public void DoInput()  {
+
+		PhoneInfo pi=null;
+		
+		while (true) {
+			Menu.DoPrintInputMenu();
+
+			
+			try {
+				m_nUserInput=Integer.parseInt(m_scInputUser.nextLine().trim());
+				//범위는 1~4 까지임 
+				
+				if(!(m_nUserInput >=GENERAL && m_nUserInput<=CLUB)) {
+					MismatchExceoption excpt=new MismatchExceoption();
+					throw excpt; //예외상황을 알리는 문장!!!					
+					//강제적인 예외 발생
+				}
+			}
+			catch(NumberFormatException e) {
+				System.out.println("입력값이 잘못되었네요, 다시 입력부탁드립니다~"+e.getMessage());				
+				continue;
+			}
+			catch(InputMismatchException e) {
+				System.out.println(e.getMessage());
+				continue;
+			}
+			catch (MismatchExceoption e) {
+				System.out.println(e.getMessage());
+				continue;
+			} 
+			catch (Exception e) {
+				System.out.println(e.getMessage());
+				continue;
+			}
+			finally {
+				
+			}
+	
+			pi = UserDataInput(m_nUserInput);
+			if(pi != null) {
+				addInfo(pi);
+				System.out.println("입력을 더 하시겠습니까?? (Y,y,0 or N)");
+				if (DoCheckYesOrNo()) {
+					continue;
+				}
+				else {
+					break;					
+				}
+				
+			}
+			else {
+				System.out.println("입력 데이터 객체 생성실패");
+			}			
+		}
+	}
+	
+/*  UserDataInput 적용전 백업 20200429
 	public void DoInput()  {
 						
 		String name=null;
@@ -282,15 +381,39 @@ public class PhoneBook extends PhoneBookAB implements MenuInterface {
 		while (true) {
 			Menu.DoPrintInputMenu();
 
+			
 			try {
-				m_nUserInput=Integer.parseInt(m_scInputUser.nextLine().trim());	
+				m_nUserInput=Integer.parseInt(m_scInputUser.nextLine().trim());
+				//범위는 1~4 까지임 
+				
+				if(!(m_nUserInput >=GENERAL && m_nUserInput<=CLUB)) {
+					MismatchExceoption excpt=new MismatchExceoption();
+					throw excpt; //예외상황을 알리는 문장!!!					
+					//강제적인 예외 발생
+				}
 			}
 			catch(NumberFormatException e) {
-				System.out.println("입력값이 잘못되었네요, 다시 입력부탁드립니다~");
+				System.out.println("입력값이 잘못되었네요, 다시 입력부탁드립니다~"+e.getMessage());				
 				continue;
 			}
-			
-			if ((m_nUserInput == 1) || (m_nUserInput == 2) || (m_nUserInput == 3) || (m_nUserInput == 4)) {
+			catch(InputMismatchException e) {
+				System.out.println(e.getMessage());
+				continue;
+			}
+			catch (MismatchExceoption e) {
+				System.out.println(e.getMessage());
+				continue;
+			} 
+			catch (Exception e) {
+				System.out.println(e.getMessage());
+				continue;
+			}
+			finally {
+				
+			}
+	
+// 위에서 예외처리			
+//			if ((m_nUserInput == 1) || (m_nUserInput == 2) || (m_nUserInput == 3) || (m_nUserInput == 4)) {
 				try {
 					System.out.print("이름을 입력해주세요 : ");
 					name = m_scInputUser.nextLine();				
@@ -346,22 +469,22 @@ public class PhoneBook extends PhoneBookAB implements MenuInterface {
 					System.out.println(e.getMessage());
 					continue;
 				}
-			}
-			else {
-				System.out.println("값을 잘못 입력하셨어요");				
-			}
+//			}
+//			else {
+//				System.out.println("---값을 잘못 입력하셨어요");				
+//			}
 			
 			
 		}
-	}
-	
-
+	} 
+ 
+ */
 	public void addInfo(PhoneInfo pInfo) {
 	
 		
 		System.out.println("\n[사용자 입력정보]");
 		pInfo.DoPrintPhoneInfo();		
-		System.out.println("저장하시겠습니까??? (Y or N)");		
+		System.out.println("저장하시겠습니까??? (Y,y,0 or N)");		
 		if(DoCheckYesOrNo()) {
 			//앞에서부터 순차적으로 검색, 이름이 비어 있는 저장공간을 찾아서 저장
 			//추가 : 이름이 동일한 사람이 있는 경우 입력하지 않도록
@@ -388,7 +511,44 @@ public class PhoneBook extends PhoneBookAB implements MenuInterface {
 		
 	}
 
-	void DoModify(){
+	void DoModify() {
+		int nIndex;
+
+		PhoneInfo pi = null;
+
+		nIndex = DoSearch();
+
+		if (nIndex >= 0) {
+			System.out.println("수정하시겠습니까?? (Y,y,0/N)");
+			if (DoCheckYesOrNo()) {
+				// 수정 코드 - 개선사항 : 향후, 입력란과 중복된 부분 추출하여 메서드로 뽑기
+
+				if (m_pi[nIndex] instanceof PhoneInfoUnivInfo) {
+					m_nUserInput = UNIVERSITY;
+				} else if (m_pi[nIndex] instanceof PhoneInfoCompanyInfo) {
+					m_nUserInput = COMPANY;
+				} else if (m_pi[nIndex] instanceof PhoneInfoClub) {
+					m_nUserInput = CLUB;
+				} else if (m_pi[nIndex] instanceof PhoneInfo) {
+					m_nUserInput = GENERAL;
+				} else {
+
+				}
+				pi = UserDataInput(m_nUserInput);
+				if (pi != null) {
+					m_pi[nIndex] = pi;
+				} else {
+					System.out.println("수정 데이터 객체 생성실패");
+				}
+
+				System.out.println("[수정 완료] - Index : " + m_nIndex);
+			}
+
+		}
+	}
+	
+	/* 20200430 UserDataInput 적용전코드백업
+void DoModify(){
 		int nIndex;
 
 		String name=null;
@@ -404,9 +564,12 @@ public class PhoneBook extends PhoneBookAB implements MenuInterface {
 		nIndex = DoSearch();
 
 		if (nIndex >= 0) {
-			System.out.println("수정하시겠습니까?? (Y/N)");
+			System.out.println("수정하시겠습니까?? (Y,y,0/N)");
 			if (DoCheckYesOrNo()) {
 				//수정 코드 - 개선사항 : 향후, 입력란과 중복된 부분 추출하여 메서드로 뽑기
+				
+				
+				
 				System.out.print("이름을 입력해주세요 : ");
 				name = m_scInputUser.nextLine();
 
@@ -466,16 +629,114 @@ public class PhoneBook extends PhoneBookAB implements MenuInterface {
  
 		}		
 	}
-	
+	 */
 	public static boolean checkBeEmpty(String str) throws EmptyException {
 		boolean bResult;
 		bResult = false;
-		if(str.equals("")) {
+		if(str.trim().isEmpty()) {
+//		if(str.equals("")) {
 			bResult = true;
 			EmptyException excpt=new EmptyException();
 			throw excpt; //예외상황을 알리는 문장!!!			
 		}
 		return bResult;
+	}
+	
+//	PhoneInfo UserDataInput(int nTypeofClass, int nTypeOfInputOrModify){
+	PhoneInfo UserDataInput(int nTypeofClass){		
+		String name=null;
+		String phoneNumber=null;
+		String email=null;
+		String address=null;
+		String major=null;
+		String year=null;
+		String company=null;
+		String club=null;
+		String location=null;
+		
+		PhoneInfo pi=null;
+		
+		while(true) {
+			try {
+				System.out.print("이름을 입력해주세요 : ");
+				name = m_scInputUser.nextLine();				
+				checkBeEmpty(name);
+							
+				if(DoCheckSameName(name)) { //중복이름있음
+					System.out.println("중복된 이름이 있습니다. 다시 입력해주세요");
+					continue;
+				}
+				
+				System.out.print("전화번호를 입력해주세요 : ");
+				phoneNumber = m_scInputUser.nextLine();
+				checkBeEmpty(phoneNumber);
+
+				System.out.print("이메일을 입력해주세요 : ");
+				email = m_scInputUser.nextLine();
+				checkBeEmpty(email);
+				
+
+				if (nTypeofClass == GENERAL) {
+					pi = new PhoneInfo(name, phoneNumber, email);
+					break;
+				} else if (nTypeofClass == UNIVERSITY) {
+					System.out.print("주소를 입력해주세요 : ");
+					address = m_scInputUser.nextLine();
+					checkBeEmpty(address);
+
+					System.out.print("전공을 입력해주세요 : ");
+					major = m_scInputUser.nextLine();
+					checkBeEmpty(major);
+
+					System.out.print("학년을 입력해주세요 : ");
+					year = m_scInputUser.nextLine();
+					checkBeEmpty(year);					
+					
+					pi= new PhoneInfoUnivInfo(name, phoneNumber, email, address, major, year);
+					break;
+				} else if (nTypeofClass == COMPANY) {
+					System.out.print("회사명을 입력해주세요 : ");
+					company = m_scInputUser.nextLine();
+					checkBeEmpty(company);
+					
+					pi = new PhoneInfoCompanyInfo(name, phoneNumber, email, company);
+					break;
+				} else if (nTypeofClass == CLUB) {
+					System.out.print("클럽명을 입력해주세요 : ");
+					club = m_scInputUser.nextLine();
+					checkBeEmpty(club);
+					
+					System.out.print("위치를 입력해주세요 : ");
+					location = m_scInputUser.nextLine();
+					checkBeEmpty(location);
+					
+					pi = new PhoneInfoClub(name, phoneNumber, email, club,location);
+					break;
+				} else {
+					System.out.println("값을 잘못 입력하셨어요");
+				}
+			
+			} catch (EmptyException e) {
+				System.out.println(e.getMessage());
+				continue;
+			}					
+		}
+				
+		return pi;
+		
+	}
+	
+	boolean DoCheckSameName(String name) {
+		
+		boolean bSameName=false;
+		
+		if(DoSearch(name) == -1) {
+			bSameName=false;			
+		} else {
+			bSameName =true;
+		}
+		return bSameName;
+		
 	}
 	
 	public static void main(String[] args)  {
@@ -489,8 +750,16 @@ public class PhoneBook extends PhoneBookAB implements MenuInterface {
 
 }
 
+
+// 수정부분에도 적용해야함
 class EmptyException extends Exception {
 	public EmptyException() {
 		super(">>>>>>>공백이 입력되었습니당~ 다시 입력해주세요");
+	}
+}
+
+class MismatchExceoption extends Exception {
+	public MismatchExceoption() {
+		super(">>>>>>>잘못된 범위가 입력되었습니당~ 다시 입력해주세요");
 	}
 }
