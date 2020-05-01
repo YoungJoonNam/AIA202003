@@ -1,5 +1,6 @@
 package phonebook;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -70,7 +71,8 @@ import java.util.Scanner;
 //완료- 입력 종료시 메인 메뉴가 아닌 더 입력할 건지 물어보는 메뉴 추가
 //완료- 입력과 수정메서드 중복부분을 메서드로 추출해보기
 
-
+//전화번호 관리 프로그램 Version 0.6
+//배열을 이용해서 저장하는 방식을 ArrayList<T> 컬랙션을 이용해서 구현해 보자
 
 public class PhoneBook extends PhoneBookAB implements MenuInterface {
 
@@ -80,7 +82,9 @@ public class PhoneBook extends PhoneBookAB implements MenuInterface {
 	private boolean m_bSearchSuccess;
 	private int m_nIndex;
 	
-	private final PhoneInfo[] m_pi; //초기화가 한번되면 변경되지 않도록 final 처리
+	//20200501 private final PhoneInfo[] m_pi; //초기화가 한번되면 변경되지 않도록 final 처리
+	ArrayList<PhoneInfo> m_pi=new ArrayList<PhoneInfo>();
+	
 	private Scanner m_scInputUser;
 
 	
@@ -105,7 +109,9 @@ public class PhoneBook extends PhoneBookAB implements MenuInterface {
 	}
 	
 	private PhoneBook(){		
-		m_pi = new PhoneInfo[m_nSizeOfPB];
+		
+		////20200501 m_pi = new PhoneInfo[m_nSizeOfPB];
+		
 	}
 	
 	//20200428
@@ -207,11 +213,11 @@ public class PhoneBook extends PhoneBookAB implements MenuInterface {
 		System.out.print("이름을 입력해주세요 : ");
 		m_strUserInput=m_scInputUser.nextLine();				
 		m_bSearchSuccess = false;
-		for (m_nIndex = 0; m_nIndex < m_pi.length; m_nIndex++) {
-			if(m_pi[m_nIndex] != null) {
-				if(m_strUserInput.contentEquals(m_pi[m_nIndex].name)) {
+		for (m_nIndex = 0; m_nIndex < m_pi.size(); m_nIndex++) {
+			if(m_pi.get(m_nIndex) != null) {
+				if(m_strUserInput.contentEquals(m_pi.get(m_nIndex).name)) {
 					System.out.println("찾았습니다!! Index : " + m_nIndex);
-					m_pi[m_nIndex].DoPrintPhoneInfo();		
+					m_pi.get(m_nIndex).DoPrintPhoneInfo();		
 					m_bSearchSuccess = true;
 					break;
 				}					
@@ -230,15 +236,25 @@ public class PhoneBook extends PhoneBookAB implements MenuInterface {
 	public int DoSearch(String name) {
 					
 		m_bSearchSuccess = false;
-		for (m_nIndex = 0; m_nIndex < m_pi.length; m_nIndex++) {
-			if(m_pi[m_nIndex] != null) {
-				if(name.contentEquals(m_pi[m_nIndex].name)) {					
-					m_pi[m_nIndex].DoPrintPhoneInfo();		
-					m_bSearchSuccess = true;
-					break;
-				}					
-			}												
-		}				
+//		for (m_nIndex = 0; m_nIndex < m_pi.length; m_nIndex++) {
+//			if(m_pi[m_nIndex] != null) {
+//				if(name.contentEquals(m_pi[m_nIndex].name)) {					
+//					m_pi[m_nIndex].DoPrintPhoneInfo();		
+//					m_bSearchSuccess = true;
+//					break;
+//				}					
+//			}												
+//		}			
+		for (m_nIndex = 0; m_nIndex < m_pi.size(); m_nIndex++) {
+			if(name.contentEquals(m_pi.get(m_nIndex).name)) {					
+				m_pi.get(m_nIndex).DoPrintPhoneInfo();		
+				m_bSearchSuccess = true;
+				break;
+			}					
+														
+	}	
+		
+		
 		
 		if(!m_bSearchSuccess) {			
 			m_nIndex = -1;
@@ -260,29 +276,29 @@ public class PhoneBook extends PhoneBookAB implements MenuInterface {
 		if (nIndex >= 0) {
 			System.out.println("정말 삭제하시겠습니까?? (Y,y,0/N)");
 			if (DoCheckYesOrNo()) {
-				m_pi[nIndex] = null;
+				m_pi.remove(nIndex);				
 				System.out.println("[삭제 완료] - Index : " + m_nIndex);
 			}
 			// 삭제된 값 뒤의 값들을 한칸씩 당김
 			// 맨끝에 있는 값을 삭제할경우엔 당기지 않음
 			// index 98, 99 삭제시 생각해보기
-			if (nIndex >= (m_pi.length - 1)) {
-
-			} else {
-				for (int i = nIndex; i < m_pi.length - 1; i++) {
-					m_pi[i] = m_pi[i + 1];
-				}
-			}
+//			if (nIndex >= (m_pi.size() - 1)) {
+//
+//			} else {
+//				for (int i = nIndex; i < m_pi.size() - 1; i++) {
+//					m_pi[i] = m_pi[i + 1];
+//				}
+//			}
 
 		}
 	}
 	public void DoPrintAll() {
-		for (int i = 0; i < m_pi.length-1; i++) {								
-			if(m_pi[i] == null) {
-				break;
-			}	
+		for (int i = 0; i < m_pi.size(); i++) {								
+//			if(m_pi[i] == null) {
+//				break;
+//			}	
 			System.out.println("[ IndexNo : "+i+" ]");
-			m_pi[i].DoPrintPhoneInfo();
+			m_pi.get(i).DoPrintPhoneInfo();
 		}			
 	}
 		
@@ -489,19 +505,14 @@ public class PhoneBook extends PhoneBookAB implements MenuInterface {
 			//앞에서부터 순차적으로 검색, 이름이 비어 있는 저장공간을 찾아서 저장
 			//추가 : 이름이 동일한 사람이 있는 경우 입력하지 않도록
 			m_bSearchSuccess = false;
-			for (m_nIndex = 0; m_nIndex < m_pi.length; m_nIndex++) {
-				if(m_pi[m_nIndex] == null) {					
-					m_pi[m_nIndex] = pInfo;
-					m_bSearchSuccess = true;
-					break;
-				}						
-			}
-			
+			if(m_pi.add(pInfo))
+				m_bSearchSuccess = true;
+							
 			if(m_bSearchSuccess) {
 				System.out.println("[저장 완료] - Index : "+m_nIndex);						
 			}
 			else {
-				System.out.println("!! 저장 실패 - 빈공간이 없습니다.");
+				System.out.println("!! 저장 실패");
 			}
 		}
 		else {
@@ -523,25 +534,28 @@ public class PhoneBook extends PhoneBookAB implements MenuInterface {
 			if (DoCheckYesOrNo()) {
 				// 수정 코드 - 개선사항 : 향후, 입력란과 중복된 부분 추출하여 메서드로 뽑기
 
-				if (m_pi[nIndex] instanceof PhoneInfoUnivInfo) {
+				if (m_pi.get(nIndex) instanceof PhoneInfoUnivInfo) {
 					m_nUserInput = UNIVERSITY;
-				} else if (m_pi[nIndex] instanceof PhoneInfoCompanyInfo) {
+				} else if (m_pi.get(nIndex) instanceof PhoneInfoCompanyInfo) {
 					m_nUserInput = COMPANY;
-				} else if (m_pi[nIndex] instanceof PhoneInfoClub) {
+				} else if (m_pi.get(nIndex) instanceof PhoneInfoClub) {
 					m_nUserInput = CLUB;
-				} else if (m_pi[nIndex] instanceof PhoneInfo) {
+				} else if (m_pi.get(nIndex) instanceof PhoneInfo) {
 					m_nUserInput = GENERAL;
 				} else {
 
 				}
 				pi = UserDataInput(m_nUserInput);
-				if (pi != null) {
-					m_pi[nIndex] = pi;
+				if (pi != null) {					
+					m_pi.remove(nIndex);
+					m_pi.add(pi);
+					//참고 코드 	m_pi.add(nIndex, pi);
 				} else {
 					System.out.println("수정 데이터 객체 생성실패");
 				}
 
-				System.out.println("[수정 완료] - Index : " + m_nIndex);
+				//System.out.println("[수정 완료] - Index : " + m_nIndex);
+				System.out.println("[수정 완료]");
 			}
 
 		}
