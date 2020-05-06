@@ -509,7 +509,7 @@ public class PhoneBook extends PhoneBookAB implements MenuInterface {
 				m_bSearchSuccess = true;
 							
 			if(m_bSearchSuccess) {
-				System.out.println("[저장 완료] - Index : "+m_nIndex);						
+				System.out.println("[저장 완료]");						
 			}
 			else {
 				System.out.println("!! 저장 실패");
