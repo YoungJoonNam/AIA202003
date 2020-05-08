@@ -1,0 +1,19 @@
+asfkasfl;kas;lfkas;lfk;alskf;lasfd
+MeokoView() {
+		scInputUser = new Scanner(System.in);			
+		vm = new ViewMenuKor();
+	}
+
+	// 언어 선택 메서드
+	void SelectLanguage() {
+
+	
+	hkhfgd
+	hgf
+	fg
+	hf
+	gh
+	fg
+	hf
+	h
+	f
