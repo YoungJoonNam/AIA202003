@@ -143,3 +143,12 @@ from emp
 --where ename like '__A%'
 where ename like '%L__'
 ;
+
+
+
+select * from tab;
+
+desc book;
+
+
+select * from book;
