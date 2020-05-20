@@ -314,7 +314,45 @@ select job, count(*) as "직급별 인원",
                 max(sal) as "직급별 최고 급여 금액"
 from emp
 group by job
+--having count(*)>1 --직급의 인원이 2명 이상인 직급
+having avg(sal)>=2000  and count(*)>1
+;
+
+select deptno, job,count(*),sum(sal),avg(sal)
+from emp
+group by deptno, job
 ;
 
 
+select count(publisher)
+from (
+select publisher
+from book
+group by publisher
+)
+;
 
+select count(DISTINCT publisher)
+from book;
+
+
+select * from book
+order by publisher
+;
+
+
+select *
+from book
+;
+
+
+select count(DISTINCT publisher)
+from book;
+
+select count(publisher)
+from (
+select publisher
+from book
+group by publisher
+)
+;

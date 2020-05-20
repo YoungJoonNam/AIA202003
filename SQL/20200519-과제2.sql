@@ -56,10 +56,9 @@ group by publisher
 )
 ;
 
+select count(DISTINCT publisher)
+from book;
 
-select count(publisher)
-from book
-group by publisher
 
 --(3) 모든고객의이름, 주소
 
