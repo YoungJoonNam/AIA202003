@@ -54,8 +54,31 @@ select rownum, j,avg_sal
 from (select job j,avg(sal) avg_sal from emp group by job order by avg_sal)
 where rownum <=1
 ;
+
+--  group by 를 이용해서 해보기
+
+select job,avg(sal)
+from emp 
+group by job
+having avg(sal) 
+    = (select min(avg(sal)) from emp
+          group by job)
+;    
 --------------------------------
 
+select * from emp;
+
+
+select min(avg(sal)) from emp
+group by job
+;
+
+
+select min(avg_sal)
+from (select min(avg_sal)
+from (select job j,avg(sal) avg_sal from emp group by job);
+)
+;
 
 select job
 from emp

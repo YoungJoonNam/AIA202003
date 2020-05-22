@@ -144,11 +144,37 @@ from orders o
 order by "차이" desc
 ;
 
+
+
+select *
+from 
+    (select o.orderid, b.price-o.saleprice as 차이
+    from book b, orders o 
+    where b.bookid = o.bookid
+    order by 차이 desc
+    ) 
+where rownum=1
+;
+ 
 --------------------------------
+ 
 
+select orderid,( as "차이"
+from orders o
+order by "차이" desc
+;
 
+select *
+from orders
+where orderid = 
+    (select orderid,max(차이) from
+        (select orderid,(select price from book b where b.bookid=o.bookid)-saleprice as "차이"
+        from orders o))
+;
 
-
+(select max(차이) from
+        (select orderid,(select price from book b where b.bookid=o.bookid)-saleprice as "차이"
+        from orders o));
 
 select rownum, j
 from (select job j,avg(sal) avg_sal from emp group by job order by avg_sal)
