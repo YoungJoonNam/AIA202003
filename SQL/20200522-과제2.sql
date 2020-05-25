@@ -255,6 +255,31 @@ where custid in
                     (select custid from customer where name = '박지성')))))
 ;
 
+select *
+from customer
+where (custid in
+    (select distinct(custid) from orders
+    where bookid in
+        (select bookid 
+        from book
+        where publisher in
+            (select publisher
+            from book 
+            where bookid in
+                (select bookid from orders 
+                where custid =
+                    (select custid from customer where name = '박지성')))))
+) and name != '박지성';
+;
+
+
+
+select name from orders o, customer c, book b where o.custid=c.custid and o.bookid = b.bookid
+and publisher in (
+    select publisher 
+    from orders o natural join book b 
+    where custid = (select custid from customer where name='박지성'))
+and name != '박지성';
 --------------------------------
 
 select * from book;
