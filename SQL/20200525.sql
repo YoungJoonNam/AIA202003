@@ -280,3 +280,17 @@ INSERT INTO EMP07 (EMPNO, ENAME, DEPTNO, GENDER, SAL)
            VALUES (1113, 'TEST', 10, 'F', 1600);
 
 SELECT * FROM EMP07;
+
+
+
+
+desc user_constraints;
+
+select * from user_constraints;
+
+
+
+
+
+
+
