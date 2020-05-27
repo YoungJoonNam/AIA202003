@@ -47,6 +47,24 @@ select * from phoneInfo_basic;
 select * from phoneInfo_univ;
 select * from phoneInfo_com;
 
+-- 전체 친구 리스트
+select *   
+from phoneInfo_basic b, phoneInfo_univ u, phoneInfo_com c
+where b.idx = c.fr_ref(+) and b.idx = u.fr_ref(+)
+order by b.idx
+;
+
+-- 회사 친구 리스트
+select * 
+from phoneInfo_basic b, phoneInfo_com c
+where b.idx = c.fr_ref
+;
+
+-- 학교 친구 리스트
+select * 
+from phoneInfo_basic b, phoneInfo_univ u
+where b.idx = u.fr_ref
+;
 
 -- 학교 친구 정보 입력
 
@@ -127,9 +145,3 @@ insert into phoneInfo_com
 values
  ('3','ECE','6')
 ;
-
-
-
-
-
-
