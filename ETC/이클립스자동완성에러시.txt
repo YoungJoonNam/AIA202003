@@ -1,0 +1,13 @@
+﻿이클립스 자동완성(context assist) 에러시
+2009. 4. 1. 14:38 | Posted by LightBringer
+
+windows -> preferences 에서
+java -> editor -> content assist -> advanced 혹은
+박스안의 type text filter를 advanced로 바꾼후 클릭하여
+위칸의 default proposal kinds에
+JPA, Other Java, Template, Type Proposals를 check하면
+sysout ctrl+space 혹은
+클래스. (자동확장 메소드) 등의 자동완성이 제대로 동작하게 된다.
+
+
+출처: https://nsdev7.tistory.com/entry/이클립스-자동완성context-assist-에러시 [영혼의 휴식]
