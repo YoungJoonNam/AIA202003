@@ -150,6 +150,40 @@ public class JdbcManager implements DefineIF {
 		
 	}
 	
+	
+	int modifyEmp(int empno,String ename,int sal,int deptno) {
+		
+		int resultCnt=0;
+		
+		try {	
+			//3. SQL 처리
+			String sql = "update emp set ename=?,sal=?,deptno=? where empno=?";
+						
+			pstmt = conn.prepareStatement(sql);
+			// 변수 데이터 설정			
+			pstmt.setString(1, ename);
+			pstmt.setInt(2, sal);			
+			pstmt.setInt(3, deptno);
+			pstmt.setInt(4, empno);
+						
+			resultCnt = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {	
+			if(pstmt != null) {
+				try {
+					pstmt.close();					
+				} catch  (SQLException e) {
+					e.printStackTrace();					
+				}				
+			}		
+		}
+		
+		return resultCnt;
+		
+	}
+	
 	int delEmp(int empno) {
 		
 		int resultCnt=0;

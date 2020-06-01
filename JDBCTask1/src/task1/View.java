@@ -204,31 +204,60 @@ public class View implements DefineIF {
 		menuEmp();
 	}
 	
+//	void modifyEmp() {
+//		System.out.println(LINE1);
+//		System.out.println("사원 - 수정");
+//		System.out.println(LINE1);
+//		
+//		//System.out.println("수정할 사원 번호를 입력해주세요");
+//		
+//		System.out.print("empno : ");
+//		int empno = Integer.parseInt(userInputData("int"));
+//		System.out.print("ename : ");
+//		String ename = userInputData("none");
+//		System.out.print("job : ");
+//		String job = userInputData("none");
+//		System.out.print("mgr : ");
+//		int mgr = Integer.parseInt(userInputData("int"));
+//		System.out.print("hiredate : (2020-11-5) 형식으로 입력해주세요");
+//		String hiredate = userInputData("date");
+//		System.out.print("sal : ");
+//		int sal = Integer.parseInt(userInputData("int"));
+//		System.out.print("comm : ");
+//		int comm = Integer.parseInt(userInputData("int"));
+//		System.out.print("deptno : ");
+//		int deptno = Integer.parseInt(userInputData("int"));
+//			
+//		int result = jm.modifyEmp(empno,ename,job,mgr,hiredate,sal,comm,deptno);
+//		
+//		System.out.println(LINE2);
+//		if(result > 0) {
+//			System.out.println("정상적으로 수정되었습니다. 수정된 행의 수 : "+result);
+//		} else {
+//			System.out.println("수정 되지 않았습니다. 확인 후 재시도 해주세요. : "+result);
+//		}			
+//		System.out.println(LINE2);		
+//		
+//		menuEmp();
+//	}
+	
 	void modifyEmp() {
 		System.out.println(LINE1);
 		System.out.println("사원 - 수정");
 		System.out.println(LINE1);
-		
-		//System.out.println("수정할 사원 번호를 입력해주세요");
-		
+		System.out.println("이름, 부서, 급여 정보를 변경할 수 있습니다.");
+		System.out.println("수정할 사원 번호를 입력해주세요");		
 		System.out.print("empno : ");
 		int empno = Integer.parseInt(userInputData("int"));
+		
 		System.out.print("ename : ");
-		String ename = userInputData("none");
-		System.out.print("job : ");
-		String job = userInputData("none");
-		System.out.print("mgr : ");
-		int mgr = Integer.parseInt(userInputData("int"));
-		System.out.print("hiredate : (2020-11-5) 형식으로 입력해주세요");
-		String hiredate = userInputData("date");
+		String ename = userInputData("none");		
 		System.out.print("sal : ");
-		int sal = Integer.parseInt(userInputData("int"));
-		System.out.print("comm : ");
-		int comm = Integer.parseInt(userInputData("int"));
+		int sal = Integer.parseInt(userInputData("int"));		
 		System.out.print("deptno : ");
 		int deptno = Integer.parseInt(userInputData("int"));
 			
-		int result = jm.modifyEmp(empno,ename,job,mgr,hiredate,sal,comm,deptno);
+		int result = jm.modifyEmp(empno,ename,sal,deptno);
 		
 		System.out.println(LINE2);
 		if(result > 0) {
@@ -240,7 +269,6 @@ public class View implements DefineIF {
 		
 		menuEmp();
 	}
-	
 	void delEmp() {
 		
 		System.out.println(LINE1);
