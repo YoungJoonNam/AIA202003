@@ -37,9 +37,7 @@ public class JDBCTest2 {
 			// rs = stmt.executeQuery(sql);
 			rs = stmt.executeQuery(sql1);
 			
-			// ResultSet : next() -> 행의 존재 유무 확인
-			
-			
+			// ResultSet : next() -> 행의 존재 유무 확인					
 			
 			
 			while(rs.next()) {
