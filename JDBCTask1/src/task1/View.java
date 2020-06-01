@@ -491,6 +491,7 @@ void menuDept() {
 		System.out.println("종료되었습니다.");
 		System.out.println(LINE1);
 		
+		ie.ScannerClose();
 		jm.end();
 	}
 
