@@ -1,5 +1,6 @@
 package task1;
 
+import java.sql.Date;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -38,6 +39,10 @@ public class InputException {
 			else if(map.containsKey("none")) {
 				check = true;
 			}
+			else if(map.containsKey("date")) {				
+				Date d = Date.valueOf(str);
+				check = true;
+			}	
 			else {	// 객관식 문항 : 입력값이 정수로 들어와야하는 경우
 				for(int i=1; i<=size; i++) {
 					//if(map.containsKey("k"+i))
@@ -61,6 +66,8 @@ public class InputException {
 		} catch(NumberFormatException e) {
 			str = null;
 //			e.printStackTrace();
+		} catch(Exception e) {
+			str = null;
 		}
 		
 		return str;

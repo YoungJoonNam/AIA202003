@@ -64,6 +64,10 @@ public class View implements DefineIF {
 				map.put("none","none");
 				break;				
 			}
+			else if(str.equals("date")) {
+				map.put("date","date");
+				break;				
+			}
 			else {
 				key = "k"+count;
 				map.put(key, str);
@@ -178,8 +182,8 @@ public class View implements DefineIF {
 		String job = userInputData("none");
 		System.out.print("mgr : ");
 		int mgr = Integer.parseInt(userInputData("int"));
-		System.out.print("hiredate : ");
-		String hiredate = userInputData("none");
+		System.out.print("hiredate : (2020-11-5) 형식으로 입력해주세요");
+		String hiredate = userInputData("date");
 		System.out.print("sal : ");
 		int sal = Integer.parseInt(userInputData("int"));
 		System.out.print("comm : ");
@@ -215,8 +219,8 @@ public class View implements DefineIF {
 		String job = userInputData("none");
 		System.out.print("mgr : ");
 		int mgr = Integer.parseInt(userInputData("int"));
-		System.out.print("hiredate : ");
-		String hiredate = userInputData("none");
+		System.out.print("hiredate : (2020-11-5) 형식으로 입력해주세요");
+		String hiredate = userInputData("date");
 		System.out.print("sal : ");
 		int sal = Integer.parseInt(userInputData("int"));
 		System.out.print("comm : ");
