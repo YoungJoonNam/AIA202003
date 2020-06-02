@@ -225,14 +225,14 @@ public class PhoneBDAO {
 		
 	}
 	
-	ResultSet search(PhoneBook pb) {
+	ResultSet search(String searchname) {
 		try {
-			String sql = "select empno, ename, job, mgr, hiredate, sal, comm, deptno from emp where ename like ?";
+			String sql = "select pidx,name,phoneNumber,address,email,type,major,grade,company,dept,rank,cafename,nickname from CONTACT where name like ?";
 
 			pstmt = conn.prepareStatement(sql);
 			// 변수 데이터 설정
-			String enmaelike="%"+ename+"%";
-			pstmt.setString(1, enmaelike);
+			String search="%"+searchname+"%";
+			pstmt.setString(1, search);
 
 			rs = pstmt.executeQuery();
 
