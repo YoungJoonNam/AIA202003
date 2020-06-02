@@ -4,7 +4,8 @@ package phonebook202006;
 public class PhoneBView implements NamedIF {
 	
 	final InputException	ie;		
-	
+	PhoneBook				pb;
+	PhoneBCtrl				pctrl;
 	
 	public PhoneBView() {
 		ie = InputException.getInstance();	
@@ -59,6 +60,62 @@ public class PhoneBView implements NamedIF {
 
 	void input() {
 		
+		pb = new PhoneBook();
+		
+		System.out.println(LINE1);
+		System.out.println("입력");
+		System.out.println(LINE1);
+		System.out.print("이름 : ");
+		pb.setName(ie.userInputData("none"));
+		System.out.print("전화번호 : ");
+		pb.setPhoneNumber(ie.userInputData("none"));		
+		System.out.print("주소 : ");
+		pb.setAddress(ie.userInputData("none"));
+		System.out.print("이메일 : ");
+		pb.setEmail(ie.userInputData("none"));
+		System.out.print("분류 : 1.대학, 2.회사, 3.까페");
+		switch (ie.userInputData("1","2","3")) {
+		case "1":
+			pb.setType("univ");			
+			break;
+		case "2":
+			pb.setType("com");			
+			break;			
+		case "3": 
+			pb.setType("cafe");			
+			break;							
+		default:			
+			break;				
+		}		
+		System.out.print("전공 : ");
+		pb.setMajor(ie.userInputData("none"));
+		System.out.print("학년 : ");
+		pb.setGrade(Integer.parseInt(ie.userInputData("int")));
+		pb.setName(ie.userInputData("none"));
+		System.out.print("회사 : ");
+		pb.setCompany(ie.userInputData("none"));
+		System.out.print("부서 : ");
+		pb.setDept(ie.userInputData("none"));
+		System.out.print("직급 : ");
+		pb.setRank(ie.userInputData("none"));
+		System.out.print("까페이름 : ");
+		pb.setCafename(ie.userInputData("none"));
+		System.out.print("닉네임 : ");
+		pb.setNickname(ie.userInputData("none"));
+				
+			
+		int result = pctrl.input(pb);
+		
+		System.out.println(LINE2);
+		if(result > 0) {
+			System.out.println("정상적으로 입력되었습니다. 입력된 행의 수 : "+result);
+		} else {
+			System.out.println("입력이 되지 않았습니다. 확인 후 재시도 해주세요. : "+result);
+		}			
+		System.out.println(LINE2);		
+			
+		
+		menu();		
 	}
 	
 	void modify() {
@@ -79,37 +136,7 @@ public class PhoneBView implements NamedIF {
 /*	
 	void input() {
 				
-		System.out.println(LINE1);
-		System.out.println("사원 - 입력");
-		System.out.println(LINE1);
-		System.out.print("empno : ");
-		int empno = Integer.parseInt(ie.userInputData("int"));
-		System.out.print("ename : ");
-		String ename = ie.userInputData("none");
-		System.out.print("job : ");
-		String job = ie.userInputData("none");
-		System.out.print("mgr : ");
-		int mgr = Integer.parseInt(ie.userInputData("int"));
-		System.out.print("hiredate : (2020-11-5) 형식으로 입력해주세요");
-		String hiredate = ie.userInputData("date");
-		System.out.print("sal : ");
-		int sal = Integer.parseInt(ie.userInputData("int"));
-		System.out.print("comm : ");
-		int comm = Integer.parseInt(ie.userInputData("int"));
-		System.out.print("deptno : ");
-		int deptno = Integer.parseInt(ie.userInputData("int"));
-			
-		int result = jm.inputEmp(empno,ename,job,mgr,hiredate,sal,comm,deptno);
-		
-		System.out.println(LINE2);
-		if(result > 0) {
-			System.out.println("정상적으로 입력되었습니다. 입력된 행의 수 : "+result);
-		} else {
-			System.out.println("입력이 되지 않았습니다. 확인 후 재시도 해주세요. : "+result);
-		}			
-		System.out.println(LINE2);		
-		
-		menu();
+
 	}
 	
 

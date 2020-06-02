@@ -17,6 +17,10 @@ public class PhoneBook {
 	private String nickname;       
 	 
 
+	public PhoneBook() {
+ 
+	}
+
 	 
 	 public PhoneBook(String pid, String name, String phoneNumber, String address, String email, String type,
 			String major, int grade, String company, String dept, String rank, String cafename, String nickname) {
@@ -36,6 +40,7 @@ public class PhoneBook {
 		this.nickname = nickname;
 	}
 	 
+
 	public String getPid() {
 		return pid;
 	}

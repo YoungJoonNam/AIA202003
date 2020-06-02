@@ -1,25 +1,35 @@
 package phonebook202006;
 
 public class PhoneBCtrl {
-	
-	void input() {
-		
+
+	int input(PhoneBook pb) {
+		int r = 0;
+
+		return r;
 	}
-	
-	void modify() {
-		
+
+	int modify(PhoneBook pb) {
+		int r = 0;
+
+		return r;
 	}
-	
-	void del() {
-		
+
+	int del() {
+		int r = 0;
+
+		return r;
 	}
-	
-	void list() {
-		
+
+	int list() {
+		int r = 0;
+
+		return r;
 	}
-	
-	void search() {
-		
+
+	int search(String sname) {
+		int r = 0;
+
+		return r;
 	}
 
 }
