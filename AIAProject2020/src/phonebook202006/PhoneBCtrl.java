@@ -11,10 +11,11 @@ public class PhoneBCtrl {
 	int modify(PhoneBook pb) {
 		int r = 0;
 
+		System.out.println(pb.getName()+"  "+pb.getPhoneNumber());
 		return r;
 	}
 
-	int del() {
+	int del(PhoneBook pb) {
 		int r = 0;
 
 		return r;

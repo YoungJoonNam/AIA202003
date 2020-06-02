@@ -1,6 +1,7 @@
 package phonebook202006;
 
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -11,6 +12,7 @@ public class InputException {
 	
 	private InputException(){
 		sc = new Scanner(System.in);
+		map = new HashMap<>();
 	}
 	
 	private static InputException manager = new InputException();
