@@ -64,6 +64,44 @@ public class PhoneBDAO {
 		}
 		
 	}
+	
+	String getSeq() {
+		
+		String r=null;
+		
+		try {
+			stmt = conn.createStatement();			
+			String sql = "select contact_pidx_seq.nextval from dual";	
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				r=rs.getString(1);						
+			}
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {	
+			if(rs != null) {
+				try {
+					rs.close();					
+				} catch  (SQLException e) {
+					e.printStackTrace();					
+				}				
+			}
+			if(stmt != null) {
+				try {
+					stmt.close();					
+				} catch  (SQLException e) {
+					e.printStackTrace();					
+				}				
+			}
+		}
+
+	
+		return r;
+	}
+	
+	
 	int input(PhoneBook pb) {
 		
 		int resultCnt=0;
@@ -76,7 +114,7 @@ public class PhoneBDAO {
 			pstmt = conn.prepareStatement(sql);
 			
 			//시퀀스번호를 가져와서 넣는다.
-			//--pstmt.setInt(1, );			
+			pstmt.setString(1, getSeq());			
 			pstmt.setString(2, pb.getName());
 			pstmt.setString(3, pb.getPhoneNumber());
 			pstmt.setString(4, pb.getAddress());
