@@ -1,55 +1,52 @@
 ﻿[2020.06.03]
-
-	MVC
+	
+	메인메서드 : PhoneBView.java
 	
 	
 	<Model>
-			DAO
-			DTO, VO
-	
+	--------------------------------------------------
+		PhoneBDAO.java
+		PhoneBDTO.java
+		PhoneBook.java
+	--------------------------------------------------			
 	
 	<View>
-	
-		- 메뉴 목록
-				
-	
-	
-	
+	--------------------------------------------------	
+		PhoneBView.java
+		NamedIF.java
+	--------------------------------------------------
+					
 	<Controller>
-		-Con
+	--------------------------------------------------
+		PhoneBCtrl.java
+	--------------------------------------------------
 	
-	
-	
-	
-	
-	
-
-	
-	
-	
-	[TABLE]	
-	
-		CREATE TABLE CONTACT (
-			 PIDX                      VARCHAR2(10),
-			 NAME                    VARCHAR2(50) CONSTRAINT CONTACT_NAME_NN NOT NULL, 
-			 PHONENUMBER        VARCHAR2(15) CONSTRAINT CONTACT_PN_NN NOT NULL, 
-			 ADDRESS                VARCHAR2(100) DEFAULT 'Nothing',
-			 EMAIL                    VARCHAR2(30) DEFAULT 'Nothing',
-			 TYPE                      VARCHAR2(4),
-			 MAJOR                   VARCHAR2(20),
-			 GRADE                   NUMBER(2),
-			 COMPANY               VARCHAR2(20),
-			 DEPT                      VARCHAR2(20),
-			 RANK                      VARCHAR2(20),
-			 CAFENAME               VARCHAR2(20),
-			 NICKNAME               VARCHAR2(20),
-			 CONSTRAINT CONTACT_PIDX_PK PRIMARY KEY(PIDX),
-			 CONSTRAINT CONTACT_TYPE_CK CHECK (TYPE IN('univ', 'com', 'cafe'))
-		);
 		
-		create sequence contact_pidx_seq
-		increment by 1
-		start with 1;
+	<TABLE>	
+	
+		- Table
+			CREATE TABLE CONTACT (
+				 PIDX                      VARCHAR2(10),
+				 NAME                    VARCHAR2(50) CONSTRAINT CONTACT_NAME_NN NOT NULL, 
+				 PHONENUMBER        VARCHAR2(15) CONSTRAINT CONTACT_PN_NN NOT NULL, 
+				 ADDRESS                VARCHAR2(100) DEFAULT 'Nothing',
+				 EMAIL                    VARCHAR2(30) DEFAULT 'Nothing',
+				 TYPE                      VARCHAR2(4),
+				 MAJOR                   VARCHAR2(20),
+				 GRADE                   NUMBER(2),
+				 COMPANY               VARCHAR2(20),
+				 DEPT                      VARCHAR2(20),
+				 RANK                      VARCHAR2(20),
+				 CAFENAME               VARCHAR2(20),
+				 NICKNAME               VARCHAR2(20),
+				 CONSTRAINT CONTACT_PIDX_PK PRIMARY KEY(PIDX),
+				 CONSTRAINT CONTACT_TYPE_CK CHECK (TYPE IN('univ', 'com', 'cafe'))
+			);
+		
+		- PIDX 입력시 아래의 시퀀스 사용
+			create sequence contact_pidx_seq
+			increment by 1
+			start with 1;
 			
 			
 			
