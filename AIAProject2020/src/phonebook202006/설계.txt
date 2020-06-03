@@ -6,7 +6,7 @@
 	<Model>
 	--------------------------------------------------
 		PhoneBDAO.java
-		PhoneBDTO.java
+		PhoneBDTO.java -> ArrayList사용으로 불필요 
 		PhoneBook.java
 	--------------------------------------------------			
 	

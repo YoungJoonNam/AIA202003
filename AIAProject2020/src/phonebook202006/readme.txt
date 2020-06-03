@@ -18,7 +18,7 @@ Project ( 전화번호 관리 프로그램 ) ver 0.7
 	<Model>
 	--------------------------------------------------
 		PhoneBDAO.java	DAO
-		PhoneBDTO.java		DTO    
+		ArrayList사용			DTO (PhoneBDTO.java 미사용)    
 		PhoneBook.java		PhoneBook 데이터
 	--------------------------------------------------			
 	
