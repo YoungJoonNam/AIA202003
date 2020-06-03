@@ -1,11 +1,13 @@
 package phonebook202006;
 
+import java.util.ArrayList;
 
 public class PhoneBView implements NamedIF {
 	
 	final InputException	ie;		
 	PhoneBook				pb;
 	final PhoneBCtrl			pctrl;
+	ArrayList<PhoneBook> arr;
 	
 	public PhoneBView() {
 		ie = InputException.getInstance();
@@ -29,6 +31,7 @@ public class PhoneBView implements NamedIF {
 		System.out.println("4. 목록");
 		System.out.println("5. 검색");		
 		System.out.println("6. 종료");
+		
 		
 		System.out.println(LINE1);
 		inputStr = ie.userInputData("1","2","3","4","5","6");
@@ -92,8 +95,7 @@ public class PhoneBView implements NamedIF {
 		System.out.print("전공 : ");
 		pb.setMajor(ie.userInputData("none"));
 		System.out.print("학년 : ");
-		pb.setGrade(Integer.parseInt(ie.userInputData("int")));
-		pb.setName(ie.userInputData("none"));
+		pb.setGrade(Integer.parseInt(ie.userInputData("int")));		
 		System.out.print("회사 : ");
 		pb.setCompany(ie.userInputData("none"));
 		System.out.print("부서 : ");
@@ -180,11 +182,40 @@ public class PhoneBView implements NamedIF {
 		System.out.println(LINE1);
 		System.out.println("리스트");
 		System.out.println(LINE1);		
-		System.out.println(LINELIST);
-		System.out.println("empno\t\t ename\t\t job\t\t\t mgr\t hiredate\t\t\t\t sal\t\t comm\t deptno");		
+		System.out.println(LINELIST);		
+		System.out.printf("%4s \t","NO");
+		System.out.printf("%10s \t","NAME");
+		System.out.printf("%10s \t","P.NUMBER");
+		System.out.printf("%10s \t","ADDRESS");
+		System.out.printf("%10s \t","EMAIL");
+		System.out.printf("%7s \t","TYPE");
+		System.out.printf("%10s \t","MAJOR");
+		System.out.printf("%4s \t","GRADE");
+		System.out.printf("%10s \t","COMPANY");
+		System.out.printf("%10s \t","DEPT");
+		System.out.printf("%10s \t","RANK");
+		System.out.printf("%10s \t","CAFENAME");
+		System.out.printf("%10s \n","NICKNAME");
 		System.out.println(LINELIST);
 		
-		pctrl.list();
+		arr = pctrl.list();
+		
+		for(int i=0; i<arr.size(); i++) {
+			System.out.printf("%4s \t",arr.get(i).getPid());
+			System.out.printf("%10s \t",arr.get(i).getName());
+			System.out.printf("%10s \t",arr.get(i).getPhoneNumber());
+			System.out.printf("%10s \t",arr.get(i).getAddress());
+			System.out.printf("%10s \t",arr.get(i).getEmail());
+			System.out.printf("%7s \t",arr.get(i).getType());
+			System.out.printf("%10s \t",arr.get(i).getMajor());
+			System.out.printf("%4d \t",arr.get(i).getGrade());
+			System.out.printf("%10s \t",arr.get(i).getCompany());
+			System.out.printf("%10s \t",arr.get(i).getDept());
+			System.out.printf("%10s \t",arr.get(i).getRank());
+			System.out.printf("%10s \t",arr.get(i).getCafename());
+			System.out.printf("%10s \n",arr.get(i).getNickname());
+		}
+		
 				
 		menu();
 		
@@ -193,24 +224,62 @@ public class PhoneBView implements NamedIF {
 	
 	void search() {
 		
+		pb = new PhoneBook();
+		
 		System.out.println(LINE1);
 		System.out.println("검색");
 		System.out.println(LINE1);
 		
 		System.out.print("검색 이름 입력해주세요 name : ");
-		String ename = ie.userInputData("none");
-		System.out.println(LINELIST);
-		System.out.println("empno\t\t ename\t\t job\t\t\t mgr\t hiredate\t\t\t\t sal\t\t comm\t deptno");		
+				
+		pb.setName(ie.userInputData("none"));
+		
+		arr = pctrl.search(pb);
+		
+		System.out.printf("%4s \t","NO");
+		System.out.printf("%10s \t","NAME");
+		System.out.printf("%10s \t","P.NUMBER");
+		System.out.printf("%10s \t","ADDRESS");
+		System.out.printf("%10s \t","EMAIL");
+		System.out.printf("%7s \t","TYPE");
+		System.out.printf("%10s \t","MAJOR");
+		System.out.printf("%4s \t","GRADE");
+		System.out.printf("%10s \t","COMPANY");
+		System.out.printf("%10s \t","DEPT");
+		System.out.printf("%10s \t","RANK");
+		System.out.printf("%10s \t","CAFENAME");
+		System.out.printf("%10s \n","NICKNAME");
 		System.out.println(LINELIST);
 		
-		pctrl.search(ename);
+		
+		
+		for(int i=0; i<arr.size(); i++) {
+			System.out.printf("%4s \t",arr.get(i).getPid());
+			System.out.printf("%10s \t",arr.get(i).getName());
+			System.out.printf("%10s \t",arr.get(i).getPhoneNumber());
+			System.out.printf("%10s \t",arr.get(i).getAddress());
+			System.out.printf("%10s \t",arr.get(i).getEmail());
+			System.out.printf("%7s \t",arr.get(i).getType());
+			System.out.printf("%10s \t",arr.get(i).getMajor());
+			System.out.printf("%4d \t",arr.get(i).getGrade());
+			System.out.printf("%10s \t",arr.get(i).getCompany());
+			System.out.printf("%10s \t",arr.get(i).getDept());
+			System.out.printf("%10s \t",arr.get(i).getRank());
+			System.out.printf("%10s \t",arr.get(i).getCafename());
+			System.out.printf("%10s \n",arr.get(i).getNickname());
+		}
+		
+		
 		
 		menu();
 		
 	}
 	
 	void end() {
-		
+		System.out.println(LINE1);
+		System.out.println("종료되었습니다");
+		System.out.println(LINE1);	
+		pctrl.end();
 	}
 	public static void main(String[] args) {
 		PhoneBView view = new PhoneBView();

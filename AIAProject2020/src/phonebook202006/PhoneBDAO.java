@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class PhoneBDAO {
 
@@ -14,9 +15,12 @@ public class PhoneBDAO {
 	Statement stmt = null;
 	ResultSet rs = null;
 	
+	final ArrayList<PhoneBook> arr;
+	
 	PhoneBook	pb;
 	
 	PhoneBDAO() {		
+		arr = new ArrayList<PhoneBook>();
 		
 	}
 	
@@ -151,24 +155,31 @@ public class PhoneBDAO {
 		
 		try {	
 			//3. SQL 처리
-			String sql = "update CONTACT set name=?,phoneNumber=?,address=?,email=?,type=?,major=?,grade=?,company=?,dept=?,rank=?,cafename=?,nickname=? where pidx=?";
-						
+//			String sql = "update CONTACT set name=?,phoneNumber=?,address=?,email=?,type=?,major=?,grade=?,company=?,dept=?,rank=?,cafename=?,nickname=? where pidx=?";
+//						
+//			pstmt = conn.prepareStatement(sql);
+//						
+//			pstmt.setString(1, pb.getName());
+//			pstmt.setString(2, pb.getPhoneNumber());
+//			pstmt.setString(3, pb.getAddress());
+//			pstmt.setString(4, pb.getEmail());
+//			pstmt.setString(5, pb.getType());
+//			pstmt.setString(6, pb.getMajor());
+//			pstmt.setInt(7, pb.getGrade());
+//			pstmt.setString(8, pb.getCompany());
+//			pstmt.setString(9, pb.getDept());
+//			pstmt.setString(10, pb.getRank());
+//			pstmt.setString(11, pb.getCafename());
+//			pstmt.setString(12, pb.getNickname());
+//			pstmt.setString(13, pb.getPid() );
+
+			String sql = "update CONTACT set name=?,phoneNumber=?where pidx=?";
+			
 			pstmt = conn.prepareStatement(sql);
 						
 			pstmt.setString(1, pb.getName());
-			pstmt.setString(2, pb.getPhoneNumber());
-			pstmt.setString(3, pb.getAddress());
-			pstmt.setString(4, pb.getEmail());
-			pstmt.setString(5, pb.getType());
-			pstmt.setString(6, pb.getMajor());
-			pstmt.setInt(7, pb.getGrade());
-			pstmt.setString(8, pb.getCompany());
-			pstmt.setString(9, pb.getDept());
-			pstmt.setString(10, pb.getRank());
-			pstmt.setString(11, pb.getCafename());
-			pstmt.setString(12, pb.getNickname());
-			pstmt.setString(13, pb.getPid() );
-						
+			pstmt.setString(2, pb.getPhoneNumber());			
+			pstmt.setString(3, pb.getPid() );
 			resultCnt = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -214,7 +225,7 @@ public class PhoneBDAO {
 		return resultCnt;		
 	}
 	
-	ResultSet list() {
+	ArrayList<PhoneBook> list() {
 		try {
 			stmt = conn.createStatement();
 			
@@ -222,6 +233,29 @@ public class PhoneBDAO {
 					+ " from CONTACT order by pidx";
 	
 			rs = stmt.executeQuery(sql);
+			
+			arr.clear();
+			
+			while (rs.next()) {
+				
+				pb = new PhoneBook();
+	
+				pb.setPid(	rs.getString(1));
+				pb.setName(rs.getString(2));
+				pb.setPhoneNumber(rs.getString(3));
+				pb.setAddress(rs.getString(4));
+				pb.setEmail(rs.getString(5));
+				pb.setType(rs.getString(6));
+				pb.setMajor(rs.getString(7));
+				pb.setGrade(rs.getInt(8));
+				pb.setCompany(rs.getString(9));
+				pb.setDept(rs.getString(10));
+				pb.setRank(rs.getString(11));
+				pb.setCafename(rs.getString(12));
+				pb.setNickname(rs.getString(13));
+								
+				arr.add(pb);
+			}
 			
 //		
 //			
@@ -260,27 +294,43 @@ public class PhoneBDAO {
 			}
 		}
 		
-		return rs;
+		return arr;
 		
 	}
 	
-	ResultSet search(String searchname) {
+	ArrayList<PhoneBook> search(PhoneBook pb) {
 		try {
-			String sql = "select pidx,name,phoneNumber,address,email,type,major,grade,company,dept,rank,cafename,nickname from CONTACT where name like ?";
+			String sql = "select pidx,name,phoneNumber,address,email,type,major,grade,company,dept,rank,cafename,nickname from CONTACT where name like ? order by pidx";
 
 			pstmt = conn.prepareStatement(sql);
 			// 변수 데이터 설정
-			String search="%"+searchname+"%";
+			String search="%"+pb.getName()+"%";
 			pstmt.setString(1, search);
 
 			rs = pstmt.executeQuery();
 
-//			while (rs.next()) {
-//
-//				System.out.printf("%-6d \t %12s \t %15s \t %10d \t %-10s \t\t %-10d \t %-10d \t %-4d %n", rs.getInt(1),
-//						rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getInt(6), rs.getInt(7),
-//						rs.getInt(8));
-//			}
+			arr.clear();
+			
+			while (rs.next()) {
+				
+				pb = new PhoneBook();
+	
+				pb.setPid(	rs.getString(1));
+				pb.setName(rs.getString(2));
+				pb.setPhoneNumber(rs.getString(3));
+				pb.setAddress(rs.getString(4));
+				pb.setEmail(rs.getString(5));
+				pb.setType(rs.getString(6));
+				pb.setMajor(rs.getString(7));
+				pb.setGrade(rs.getInt(8));
+				pb.setCompany(rs.getString(9));
+				pb.setDept(rs.getString(10));
+				pb.setRank(rs.getString(11));
+				pb.setCafename(rs.getString(12));
+				pb.setNickname(rs.getString(13));
+								
+				arr.add(pb);
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -301,7 +351,7 @@ public class PhoneBDAO {
 			}
 		}
 		
-		return rs;
+		return arr;
 		
 	}
 	

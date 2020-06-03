@@ -1,13 +1,18 @@
 package phonebook202006;
 
+import java.util.ArrayList;
+
 public class PhoneBCtrl {
 
 	final PhoneBDAO	pd;
 	
+	PhoneBook			pb;
+	ArrayList<PhoneBook> arr;
 	
 	PhoneBCtrl() {
 		pd = new PhoneBDAO();
 		pd.Init();
+		
 		
 	}
 		
@@ -23,8 +28,7 @@ public class PhoneBCtrl {
 		int r = 0;
 
 		r = pd.modify(pb);
-		
-		//System.out.println(pb.getName()+"  "+pb.getPhoneNumber());
+
 		return r;
 	}
 
@@ -36,19 +40,19 @@ public class PhoneBCtrl {
 		return r;
 	}
 
-	int list() {
-		int r = 0;
-
-		// Array 로 ResultSet 값을 받아서 View에 반환하기
-		return r;
+	ArrayList<PhoneBook> list() {
+				
+		return pd.list();
+				
 	}
 
-	int search(String sname) {
-		int r = 0;
-
-		// Array 로 ResultSet 값을 받아서 View에 반환하기
+	ArrayList<PhoneBook> search(PhoneBook pb) {
 		
-		return r;
+		return pd.search(pb);
+	}
+	
+	void end() {
+		pd.end();
 	}
 
 }
