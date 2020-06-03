@@ -21,7 +21,7 @@ public class PhoneBook {
  
 	}
 
-	 
+	  
 	 public PhoneBook(String pid, String name, String phoneNumber, String address, String email, String type,
 			String major, int grade, String company, String dept, String rank, String cafename, String nickname) {
 		

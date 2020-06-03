@@ -14,7 +14,7 @@ public class InputException {
 		sc = new Scanner(System.in);
 		map = new HashMap<>();
 	}
-	
+	 
 	private static InputException manager = new InputException();
 	
 	public static InputException getInstance() {
