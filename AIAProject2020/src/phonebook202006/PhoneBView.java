@@ -200,6 +200,11 @@ public class PhoneBView implements NamedIF {
 		
 		arr = pctrl.list();
 		
+		if(arr.size() == 0) {
+			System.out.println("결과가 없습니다.");
+		}
+		
+		
 		for(int i=0; i<arr.size(); i++) {
 			System.out.printf("%4s \t",arr.get(i).getPid());
 			System.out.printf("%10s \t",arr.get(i).getName());
@@ -251,8 +256,10 @@ public class PhoneBView implements NamedIF {
 		System.out.printf("%10s \n","NICKNAME");
 		System.out.println(LINELIST);
 		
-		
-		
+		if(arr.size() == 0) {
+			System.out.println("검색된 결과가 없습니다.");
+		}
+				
 		for(int i=0; i<arr.size(); i++) {
 			System.out.printf("%4s \t",arr.get(i).getPid());
 			System.out.printf("%10s \t",arr.get(i).getName());
