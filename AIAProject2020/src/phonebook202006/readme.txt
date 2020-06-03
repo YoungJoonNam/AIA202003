@@ -18,14 +18,14 @@ Project ( 전화번호 관리 프로그램 ) ver 0.7
 	<Model>
 	----------------------------------------------------------------------
 		PhoneBDAO.java____DAO
-		ArrayList사용________DTO (PhoneBDTO.java 미사용)    
+		ArrayList사용_____DTO (PhoneBDTO.java 미사용)    
 		PhoneBook.java_____PhoneBook 데이터
 	----------------------------------------------------------------------			
 	
 	<View>
 	----------------------------------------------------------------------	
 		PhoneBView.java____VIEW
-		NamedIF.java________VIEW 참조Named
+		NamedIF.java_______VIEW 참조Named
 	----------------------------------------------------------------------
 					
 	<Controller>
