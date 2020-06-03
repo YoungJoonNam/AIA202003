@@ -36,6 +36,21 @@ CREATE TABLE CONTACT (
  CONSTRAINT CONTACT_TYPE_CK CHECK (TYPE IN('univ', 'com', 'cafe'))
 )
 ;
+
+select * from contact;
+desc contact;
+
+create sequence contact_pidx_seq
+increment by 1
+start with 1;
+
+select contact_pidx_seq.currval
+from dual;
+
+select contact_pidx_seq.nextval
+from dual;
+
+
 --
 --2. DEPT 테이블에 데이터를 삽입하는 SQL을 작성하시오. 입력 데이터는 임의로 작성하시오.
 
