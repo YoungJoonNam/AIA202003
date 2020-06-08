@@ -1,0 +1,119 @@
+<!DOCTYPE-Html>
+    <html>
+
+
+
+    <head>
+        <title>CSS 선택지 Selector</title>
+        <meta charset="utf-8">
+        <style>
+            h1 {
+                color: #eb3737;
+
+            }
+
+            p {
+                font-size: 24px;                
+            }
+
+            h1,
+            p {
+                border: 3px solid #3ff4ae;
+                margin: 0;
+                padding: 10;
+            }
+
+            #NO2 {
+                color: chocolate;
+            }
+
+            #header {
+                width: 500px;
+                background-color: red;
+                margin: 0 auto;
+
+            }
+
+            #aside {
+                width: 200px;
+                height: 30px;                
+                background-color: blue;
+                margin: 10 auto;
+            }
+
+            #content {
+                width: 300px;
+                background-color: green;
+                margin : 0 auto;
+
+            }
+            
+            li{
+                color:darkorchid
+            }
+            
+            .font_color{
+                color : red;
+            }
+            
+            .font_bold {
+                font-weight: bold;
+            }
+            
+            .font_size {
+                font-size : 200%;
+            }
+            
+            li.font_size {
+                font-weight :800;
+            }
+            
+            div.font_size {
+                font-weight :inherit;
+            }
+            
+            #NO2.font_size {
+                font-weight :900;
+                font-style: italic;
+            }
+            
+        </style>
+
+
+
+    </head>
+
+    <body>
+        
+        <ul>
+            <li class="font_color">사과</li>
+            <li>바나나</li>
+            <li class="font_size">오렌지</li>
+            <li class="font_color font_bold">키위</li>
+        
+        </ul>
+        
+        <hr>
+        
+
+        <div id=header>#header 태그</div>
+        <div id=aside class="font_size">#aside 태그</div>
+        <div id=content>#content 태그</div>
+        <br><br>
+        <h1>그룹 레드벨벳(Red Velvet)의 예리와 아이린이 시크한 공항 패션을 선보였다.</h1>
+
+        <br>
+        <p>10일 오전 레드벨벳 멤버들은 인천국제공항을 통해 일본 후쿠오카로 출국했다.
+            이날 예리와 아이린은 팔짱을 끼고 함께 등장했다. 예리는 짙은 감색 코트에 아이보리 니트와 블랙 스키니진을 입었다.</p><br>
+        <p id=NO2 class="font_size">여기에 예리는 가죽 롱부츠와 새들백을 들고 스타일리시한 공항 룩을 완성했다.
+            특히 예리는 헤어밴드와 레드 립 메이크업으로 상큼한 매력을 물씬 풍겼다.
+        </p>
+        <br>
+        <p id=NO2>여기에 예리는 가죽 롱부츠와 새들백을 들고 스타일리시한 공항 룩을 완성했다.
+            특히 예리는 헤어밴드와 레드 립 메이크업으로 상큼한 매력을 물씬 풍겼다.
+        </p>
+
+    </body>
+
+
+    </html>
