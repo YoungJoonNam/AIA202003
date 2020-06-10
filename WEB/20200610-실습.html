@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>레이아웃 만들기 실습</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: '맑은 고딕';
+        }
+
+        #header {
+            padding: 40px 40px
+        }
+
+        .menu_left {
+            float: left;
+        }
+
+        .menu_right {
+            float: right;
+        }
+
+        li {
+            list-style: none
+        }
+
+        body {
+            width: 960px;
+            margin: 0 auto;
+        }
+
+        #border {
+            background: white;
+            margin: 40px 0;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 0px 10px rgba(80, 80, 80, 0.5);
+        }
+
+        #nav {
+            border-top: 3px solid #C8C8C8;
+            border-bottom: 3px solid #C8C8C8;
+            margin-bottom: 20px;
+            height: 40px;
+        }
+
+        #content {
+            overflow: hidden;
+        }
+
+        #main {
+            float: left;
+            width: 710px;
+        }
+
+        #aside {
+            float: left;
+            width: 200px;
+        }
+
+        #footer {
+            font-size: 12px;
+            color: blue;
+            padding-bottom: 10px;
+        }
+
+        .top_menu {
+            float: left;
+        }
+
+        .top_menu_detail {
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            padding: 5px 20px;
+        }
+
+
+        .search {
+            height: 26px;
+            padding: 7px;
+        }
+
+        .search_detail {
+            display: block;
+            float: left;
+
+            background-color: #FFFFFF;
+            border: 1px solid #CCCCCC;
+            border-radius: 15px 0 0 15px;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+
+            width: 120px;
+            height: 24px;
+            padding: 0 0 0 10px;
+            font-size: 12px;
+            color: #555555;
+        }
+
+        .search_button {
+            width: 70px;
+            height: 26px;
+            border-radius: 0 15px 15px 0;
+            border: 1px solid #CCCCCC;
+            margin-left: -1px;
+            display: inline-block;
+        }
+
+
+
+
+        article {
+            padding: 0px 10px 30px 10px;
+            border-bottom: 1px solid #C8C8C8;
+        }
+
+        .article_header {
+            padding: 20px 0px
+        }
+
+        .article_title {
+            font-size: 25px;
+            font-weight: 500;
+            padding-bottom: 10px;
+        }
+
+        .article_date {
+            font-size: 12px;
+        }
+
+        .article_body {
+            font-size: 14px
+        }
+
+        .aside_list {
+            padding: 10px 0 30px 0;
+        }
+
+        .aside_list>h3 {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .aside_list li {
+            margin-left: 8px;
+            font-size: 13px;
+            color: #6C6C6C;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="border">
+        <header id="header">
+            <h1>HTML5 Example Preview</h1>
+            <h4>한빛아카데미</h4>
+        </header>
+
+        <nav id="nav">
+            <div class="menu_left">
+                <ul>
+                    <li class="top_menu">
+                        <span class="top_menu_detail">HTML5</span>
+                    </li>
+                    <li class="top_menu">
+                        <span class="top_menu_detail">CSS3</span>
+                    </li>
+                    <li class="top_menu">
+                        <span class="top_menu_detail">JavaScript</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="menu_right">
+                <div class="search">
+                    <form>
+                        <input type="text" class="search_detail">
+                        <input type="submit" class="search_button" value="검색">
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <div id="content">
+            <section id="main">
+                <article>
+                    <div class="article_header">
+                        <h1 class="article_title">HTML5의 개요와 활용</h1>
+                        <p class="article_date">2013년 02월 14일</p>
+                    </div>
+                    <div class="article_body">
+                        <img src="../images/irene2.jpg" width=430 height=280>
+                        <br>
+                        <br>
+                        <p>
+                            낯가림이 심한 편으로, 모르는 사람들 앞에서는 잘 웃지도 않는 성격이라고 한다.[23] 그래서 조이는 맨 처음 아이린을 만났을 때 예쁘다고 느낌과 동시에 무서웠다고 한다. 하지만 멤버들과 가까워진 이후엔 오히려 유치한 장난을 많이 하는 개구쟁이라고 한다. 짱구 같은 성격 때문에 예리는 아이린을 줌마초딩으로 저장했다고 한다.
+                        </p><br>
+                        <p>
+                            겁이 많은 편이다. 예리가 레드벨벳에 합류하기 전에 혼자 방을 쓸 때 불을 켜놓고 잤을 정도.
+                        </p>
+                    </div>
+                </article>
+                <article>
+                    <div class="article_header">
+                        <h1 class="article_title">HTML5의 응용과 실습</h1>
+                        <p class="article_date">2013년 02월 17일</p>
+                    </div>
+                    <div class="article_body">
+                        <img src="../images/irene3.png" width=430 height=280>
+                        <br>
+                        <p>아이린은 레드벨벳의 연장자이자 리더이다. 팀에서 아이린보다 어린 멤버들과는 나이 차이가 많은데, 슬기와 웬디와는 3살 차, 조이와는 5살 차, 예리와는 8살 차이다. 참고로 소녀시대의 서현과 동갑이다.
+                        </p><br>
+                        <p>
+
+                            리더라고 멤버들에게 위계질서를 강요하기보단 동생들과도 거의 친구처럼 지내는 편이며 리더답게 팀의 분위기를 이끌고 있다. 웬디는 힘들 때 아이린이 아무 말 없이 와서 등을 쓰다듬어주는데 그게 남다르다고 한다. 또한 말수가 많지 않아서 방송에 출연해도 다른 멤버들의 얘기를 경청하는 경우가 많다.
+                        </p>
+                    </div>
+                </article>
+            </section>
+            <!-- 본문 우측 영역 -->
+            <aside id="aside">
+                <div class="aside_list">
+                    <h3>카테고리</h3>
+                    <ul>
+                        <li>데이터</li>
+                        <li>데이터</li>
+                        <li>데이터</li>
+                        <li>데이터</li>
+                        <li>데이터</li>
+                    </ul>
+                </div>
+                <div class="aside_list">
+                    <h3>최근 글</h3>
+                    <ul>
+                        <li>데이터</li>
+                        <li>데이터</li>
+                        <li>데이터</li>
+                        <li>데이터</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+        <footer id="footer">
+            Created by Team-HeXagon
+        </footer>
+    </div>
+</body>
+
+</html>
