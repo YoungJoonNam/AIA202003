@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>숫자 맞추기 게임(High, Low)</title>
+
+  </head>
+
+  <body>
+    <h1>숫자 맞추기 게임(High, Low)</h1>
+
+    <p>1~100 사이의 랜덤한 숫자를 , 10번 횟수 안에 맞춰보세요</p>
+
+    <label for="guessField">숫자 입력: </label>
+    <input type="text" id="guessField" class="guessField">
+    <input type="submit" id="guessSubmit" class="guessSubmit">
+    <p class="result">결과 표시: </p>      
+    
+    <script>
+
+ 
+    window.onload = function() {
+
+        
+
+        
+        const guessField = document.querySelector('.guessField');
+        const result = document.querySelector('.result');
+
+
+        var rNum = parseInt((Math.random() * 100) + 1);
+        var guessCount = 1;
+        
+
+        document.getElementById("guessSubmit").onclick = function() {
+
+            // var userInput = Number(guessField.value);
+            aler("11");
+            result.textContent = '높아요-HIGH';
+
+        }
+
+
+
+
+        
+        
+
+
+
+    }
+
+        
+    //   
+    //   altert(rNum);
+    //   const result = document.querySelector('.result');      
+    //   const guessSubmit = document.querySelector('.guessSubmit');
+    //   
+
+    //   var guessCount = 1;
+    //   var resetButton;
+
+    //   function checkGuess() {
+
+        
+    //     
+      
+    
+    //     if (userInput === rNum) {
+    //         result.textContent = '맞췄습니다.';
+    //         setGameOver();
+    //     } else if (guessCount === 10) {
+    //         result.textContent = '10번동안 못 맞췄으므로, 게임을 끝냅니다.';          
+    //         setGameOver();
+    //     } else {
+    //         result.textContent = '틀렸습니다.';          
+    //       if(userInput < rNum) {
+    //         result.textContent = '낮아요-LOW ;
+    //       } else if(userInput > rNum) {
+    //         result.textContent = '높아요-HIGH';
+    //       }
+    //     }
+
+    //     guessCount++;
+    //     guessField.value = '';
+    //     guessField.focus();
+    //   }
+
+    //   guessSubmit.addEventListener('click', checkGuess);
+
+
+
+      
+      
+    </script>
+  </body>
+</html>
