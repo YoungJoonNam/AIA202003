@@ -1,98 +1,66 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
 
-    <title>숫자 맞추기 게임(High, Low)</title>
+<head>
+  <meta charset="utf-8">
 
-  </head>
+  <title>숫자 맞추기 게임(High, Low)</title>
 
-  <body>
-    <h1>숫자 맞추기 게임(High, Low)</h1>
+</head>
 
-    <p>1~100 사이의 랜덤한 숫자를 , 10번 횟수 안에 맞춰보세요</p>
+<body>
+  <h1>숫자 맞추기 게임(High, Low)</h1>
 
-    <label for="guessField">숫자 입력: </label>
-    <input type="text" id="guessField" class="guessField">
-    <input type="submit" id="guessSubmit" class="guessSubmit">
-    <p class="result">결과 표시: </p>      
-    
-    <script>
+  <p>1~100 사이의 랜덤한 숫자를 , 10번 횟수 안에 맞춰보세요</p>
 
- 
-    window.onload = function() {
+  <label for="guessField">숫자 입력: </label>
+  <input type="text" id="guessField" class="guessField">
+  <input type="submit" id="guessSubmit" class="guessSubmit">
 
-        
-
-        
-        const guessField = document.querySelector('.guessField');
-        const result = document.querySelector('.result');
+  <script type="text/javascript">
 
 
-        var rNum = parseInt((Math.random() * 100) + 1);
-        var guessCount = 1;
-        
 
-        document.getElementById("guessSubmit").onclick = function() {
+    var rNum = parseInt((Math.random() * 100) + 1);
+    var guessCount = 1;
 
-            // var userInput = Number(guessField.value);
-            aler("11");
-            result.textContent = '높아요-HIGH';
+
+    document.getElementById("guessSubmit").onclick = function () {
+
+
+      var yourInput = document.getElementById("guessField").value;
+
+      if (guessCount == 10) {
+        alert("10번 횟수가 초과되었어요, 게임을 종료합니다.");
+        rNum = parseInt((Math.random() * 100) + 1);
+        guessCount = 1;
+
+      }
+      else {
+        if (yourInput == rNum) {
+          alert("맞췄습니다~" + yourInput + " 게임을 종료합니다. 시도횟수 :" + guessCount);
+          rNum = parseInt((Math.random() * 100) + 1);
+          guessCount = 1;
 
         }
+        else if (yourInput > rNum) {
+          alert("틀렸어요," + yourInput + "은 맞출 숫자보다 큽니다. 시도횟수 :" + guessCount);
+          guessCount++;
+        }
+        else {
+          alert("틀렸어요," + yourInput + "은 맞출 숫자보다 작아요. 시도횟수 :" + guessCount);
+          guessCount++;
+        }
 
-
-
-
-        
-        
-
+      }
 
 
     }
 
-        
-    //   
-    //   altert(rNum);
-    //   const result = document.querySelector('.result');      
-    //   const guessSubmit = document.querySelector('.guessSubmit');
-    //   
-
-    //   var guessCount = 1;
-    //   var resetButton;
-
-    //   function checkGuess() {
-
-        
-    //     
-      
-    
-    //     if (userInput === rNum) {
-    //         result.textContent = '맞췄습니다.';
-    //         setGameOver();
-    //     } else if (guessCount === 10) {
-    //         result.textContent = '10번동안 못 맞췄으므로, 게임을 끝냅니다.';          
-    //         setGameOver();
-    //     } else {
-    //         result.textContent = '틀렸습니다.';          
-    //       if(userInput < rNum) {
-    //         result.textContent = '낮아요-LOW ;
-    //       } else if(userInput > rNum) {
-    //         result.textContent = '높아요-HIGH';
-    //       }
-    //     }
-
-    //     guessCount++;
-    //     guessField.value = '';
-    //     guessField.focus();
-    //   }
-
-    //   guessSubmit.addEventListener('click', checkGuess);
 
 
+  </script>
 
-      
-      
-    </script>
-  </body>
+</body>
+
 </html>
