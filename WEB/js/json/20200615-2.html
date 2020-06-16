@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>자바스크립트 기본 문법</title>
+    <script>
+        window.onload = function () {
+            var book = {
+                name: "JAVA",
+                price: 1000,
+                publisher: "Orange Media"
+            }; // 자바스크립트 객체
+            var data = JSON.stringify(book); // 자바스크립트 객체를 문자열로 변환함.
+            document.getElementById("json").innerHTML = data;
+        };
+        var newdata = '{"name":"JAVA","price":1000,"publisher":"Orange Media"}';
+        var newBook = JSON.parse(newdata); // JSON 형식의 문자열을 자바스크립트 객체로 변환함.
+        alert(newBook.name + ' : ' + newBook.price + ' : ' + newBook.publisher);
+    </script>
+</head>
+
+<body>
+    <h1 id="json">안녕하세요</h1>
+</body>
+
+</html>
