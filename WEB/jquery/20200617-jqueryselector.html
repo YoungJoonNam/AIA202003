@@ -78,7 +78,48 @@
             //end() 는 바로 앞에 추가한 filter() 메서드 제거 -> 영역제거
             //$('h3').css('background-color','orange').filter(':even').css('color','red');
             //$('h3').css('background-color','orange').filter(':even').css('color','red').end();
-            $('h3').css('background-color','orange').filter(':even').css('color','red').end().css('font-weight','100').filter(':odd').css('color','blue');
+             $('h3').css('background-color','orange').filter(':even').css('color','red').end().css('font-weight','100').filter(':odd').css('color','blue');
+
+
+            var site = '';
+
+            site += '<sites>';
+            site += '   <site>';
+            site += '       <name>NAVER</name>';
+            site += '       <url>http://www.naver.com</url>';
+            site += '   </site>';
+            site += '   <site>';
+            site += '       <name>DAUM</name>';
+            site += '       <url>http://www.daum.net</url>';
+            site += '   </site>';
+            site += '   <site>';
+            site += '       <name>KAKAO</name>';
+            site += '       <url>http://www.kakao.com</url>';
+            site += '   </site>';
+            site += '</sites>';
+
+            var xmlDoc = $.parseXML(site);
+
+            var siteHtml = '';
+
+            $(xmlDoc).find('site').each(function(index){
+
+                var name = $(this).find('name').text();
+                var url = $(this).find('url').text();
+
+                siteHtml += '<div class="site">';
+                siteHtml += '   <h1>'+name+'</h1>';
+                siteHtml += '   <p>'+url+'</p>';
+                siteHtml += '</div>';
+
+            });
+
+
+            $('#sites').html(siteHtml);
+
+
+
+
 
 
         });
@@ -95,11 +136,31 @@
         .title {
             font-style: italic;
         }
+
+        #site {
+            overflow:hidden;
+        }
+
+
+        #sites>div.site{
+            width:300px;
+            padding:20px;
+
+            border: 1px solid #DDD;
+            border-radius: 5px;
+
+            float:left;
+
+        }
     </style>
 
 </head>
 
 <body>
+
+    <div id="sites">
+        resreved
+    </div>
 
     <h3>heading3 - 0</h3>
     <h3>heading3 - 1</h3>
