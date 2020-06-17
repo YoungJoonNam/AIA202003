@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Basic</title>
+    <style></style>
+
+    <!-- jQuery 라이브러리를 로드 : CDN 방식 -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"
+  integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+  crossorigin="anonymous"></script> -->
+
+
+
+    <script>
+        // $() -> window 객체
+        // $ -> jquery
+
+        $(document).ready(function () {
+
+            alert('');
+
+            $('h1').click(function (){
+                alert('h1 tag');
+            });
+
+            $('.title').click(function (){
+                alert('h1 tag!!');
+            });
+
+
+            $('#til').click(function (){
+                alert('h1 tag!!!');
+            });
+
+
+            $('div>h2').click(function (){
+                alert('h2 tag!!!');
+            });
+
+
+        })
+
+
+
+    </script>
+</head>
+
+<body>
+    <h1 class="title" id="til">야옹!~</h1>
+
+    <div>
+        <h2>미야옹!~</h2>
+    </div>
+
+</body>
+
+</html>
