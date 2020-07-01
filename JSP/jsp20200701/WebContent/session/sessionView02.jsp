@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<%
+	String userName = (String) session.getAttribute("username");
+
+%>    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	Session의 속성으로 지정한 데이터 <br>
+	username : <%= userName %> <br>	
+	<h2><a href="../index.jsp">Home</a></h2>
+	<h2><a href="logout.jsp">LogOut</a></h2>
+</body>
+</html>
