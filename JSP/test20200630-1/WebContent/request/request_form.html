@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<style></style>
+<script></script>
+</head>
+<body>
+
+	<h1>request Form Test</h1>
+	<hr>
+
+	<form action="requestResult.jsp" method="get">
+
+		<label>이름</label><input type="text" name="username" required><br>
+		<br> <label>직업</label> <select name="job">
+			<option value="시스템엔지니어">시스템엔지니어</option>
+			<option value="프로그래머">프로그래머</option>
+			<option value="디자이너">디자이너</option>
+		</select><br>
+		<br> <label>관심사항</label> JAVA <input type="checkbox" name="like"
+			value="JAVA"> HTML <input type="checkbox" name="like"
+			value="HTML"> CSS3 <input type="checkbox" name="like"
+			value="CSS3"> JSP <input type="checkbox" name="like"
+			value="JSP"> <br> <input type="submit" value="보내기"><input
+			type="reset" value="초기화">
+
+	</form>
+
+</body>
+</html>
