@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <link href="../css/.css" rel="stylesheet">
+    <style>
+
+
+table, tr, th, td{
+     border: 1px solid #000;
+}
+
+
+
+    </style>
+    <script>
+
+$("#table1").find("thead").each(function(){
+	$table1Head=$(this).find("th");
+	$("#table2 thead").append("<th>"+$table1Head.eq(1).text()+ " </th>");
+     $("#table2 thead").append("<th>"+$table1Head.eq(2).text()+ " </th>");
+     $("#table2 thead").append("<th>"+$table1Head.eq(4).text()+ " </th>");
+     $("#table2 thead").append("<th>"+$table1Head.eq(5).text()+ " </th>");
+});
+
+$("#table1 tbody").find("tr").each(function(){
+	$table2data=$(this).find("td");
+	$("#table2 tbody").append("<tr>"+
+     	"<td>" + $table2data.eq(1).text() + "</td>" +
+       "<td>" + $table2data.eq(2).text() + "</td>" +
+       "<td>" + $table2data.eq(4).text() + "</td>" +
+       "<td>" + $table2data.eq(5).text() + "</td>" +
+     "</tr>");
+});
+
+
+
+    </script>
+
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<body>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<p>
+table 1
+</p>
+<table id="table1">
+     <thead>
+       <th>A</th>
+       <th>B</th>
+       <th>C</th>
+       <th>D</th>
+       <th>E</th>
+       <th>F</th>
+     </thead>
+     <tbody>
+       <tr>
+         <td>1</td>
+         <td>2</td>
+         <td>3</td>
+         <td>4</td>
+         <td>5</td>
+         <td>6</td>
+       </tr>
+     </tbody>
+</table>
+
+<p>
+table 2
+</p>
+<table id="table2">
+<thead>
+     
+</thead>
+<tbody>
+     
+</tbody>
+</table>
+    
+    <br/>
+    
+    Col Number<input type="text" id="cNum" />
+    <input type="submit" value="Submit" />
+    <br/>
+    <table id="tableY">
+         <thead></thead>
+         <tbody>
+           
+         </tbody>
+    </table>
+</body>
+
+</html>
