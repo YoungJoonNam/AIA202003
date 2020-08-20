@@ -80,8 +80,7 @@
 }
 
 .fontBuyList {
-    font-size : 10pt;
-
+    font-size : 9pt;
 }
 
 .Box {
@@ -122,8 +121,10 @@
 
 .btnStyle {            
     border-radius: 5px;    
-    /* color:black; */
-    /* font-weight : 900; */
+    background-color :rgb(84, 51, 88);
+    color : white;
+    font-weight : 900;
+    /* color:black; */    
     /* margin-left: 5px; */
     /* margin-right: -2px; */
     width: 75px;
@@ -131,6 +132,8 @@
     text-align: center;    
     font-size :12px;
     line-height: 10px;
+
+    
 }
 
 .btnStyle:hover {
@@ -140,7 +143,10 @@
 }
 
 
-.btnStyle1ch {            
+.btnStyle1ch {        
+    background-color :rgb(84, 51, 88);
+    color : white;
+    font-weight : 900;
     border-radius: 5px;        
     margin-right: 4px;
     width: 40px;
@@ -159,8 +165,11 @@
 
 
 
-.btnStyle2ch {            
-    border-radius: 5px;        
+.btnStyle2ch {     
+    border-radius: 5px;       
+    background-color :rgb(84, 51, 88);
+    color : white;
+    font-weight : 900;
     margin-right: 4px;
     width: 50px;
     height: 20px;
@@ -177,8 +186,11 @@
 
 
 
-.btnStyle3ch {            
-    border-radius: 5px;        
+.btnStyle3ch {           
+    border-radius: 5px;    
+    background-color :rgb(84, 51, 88);
+    color : white;
+    font-weight : 900;
     margin-right: 4px;
     width: 60px;
     height: 20px;

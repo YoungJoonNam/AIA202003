@@ -3,21 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Slide</title>
+<link href="./css/main.css" rel="stylesheet">
 <style>
   *{
     
     
     margin:0;padding:0;
 
-    font-size : 11pt;
+    font-size : 10pt;
   
     
   
   }
 
-  /* .testslide {
-    display: inline-block;
-  } */
 
   #toggler1 span{
      
@@ -66,7 +64,8 @@
     background-color:rgba(230, 230, 250, 0.0);
     
     /* background-color:red; */
-    width:220px;
+    
+    width:320px;  /* +100 */
     height:600px;
     left:0px;
     display:flex;
@@ -77,7 +76,7 @@
 
   #asideMain {
     
-    width:200px;
+    width:300px;
     background-color:rgb(140, 83, 148);
     /* background-color: rgb(140, 83, 148); */
     
@@ -89,7 +88,25 @@
 
   }
 
-  
+  #buyList {
+    display :block;
+  }
+
+  #selList {
+    display :none;
+
+  }
+
+
+  #buyListHeader {
+    display :block;
+  }
+
+  #selListHeader {
+    display :none;
+
+  }
+
 
 </style>
 
@@ -99,21 +116,186 @@
 
 <div id="aside" class="testslide">
     <span id="asideMain" style="text-align:center;">
-      <div style="display: inline-block;">
-        Home / LogOut <br>
+      <div style="width:95%;display: inline-block; color: lavender; font-weight: 900;">
+        Home / LogOut
+      </div>
+      <div style="width:95%;display: inline-block; background-color: lavender; border-radius: 10px;">
+        
         홍*동
         <br>구매자 평점 ★★★★☆ (13점/3명)
         <br>판매자 평점 ★★★★☆ (13점/3명)
       
 
       </div>
+      <br><br>
 
-      <div>
+      <div id="buyListHeader">        
         <span style="color:white;font-weight: 900;"">구매현황</span>/
         <span style="color:rgb(84, 51, 88);font-weight: 900;">판매현황</span>
       </div>
+      <div id="selListHeader">
+        <span style="color:rgb(84, 51, 88);font-weight: 900;">구매현황</span>/        
+        <span style="color:white;font-weight: 900;"">판매현황</span>
+      </div>
 
-      <div style="width:95%;height:60%;display: inline-block; background-color: lavender; border-radius: 10px;">
+      <div style="width:95%;height:80%;display: inline-block; background-color: lavender; border-radius: 10px;">
+
+        <div id="buyList" class="fontBuyList">
+        <!-- <div id="buyList" class="fontBuyList" include-html="./itemlist/buyList.html"></div> -->
+          
+
+
+        <table width=100% border=0 cellspacing="0">
+          <tr>
+              <td><span style="background-color: #e0dd02a8;border-radius: 5px;">참여진행중</span></td>
+              <td><span  onclick="doGobyAjax('itemView.html')">소고기나눔 / 박혜미</span></td>
+              <td><span style="float: right;"><button class="btnStyle">참여취소</button></span></td>
+          </tr>
+          <tr>
+              <td><span style="background-color: #025be0a8;border-radius: 5px;">구매자선정</span></td>
+              <td>오이나눔 / 정신우</td>
+              <td><span style="float: right;"><button class="btnStyle">QR</button></span></td>
+          </tr>
+          <tr>
+              <td><span style="background-color: #fc1d00a8;border-radius: 5px;">다음기회에...</span></td>
+              <td><span>사과나눔 / 김승연</span></td>
+              <td><span style="float: right;"><button class="btnStyle">확인</button></span></td>
+          </tr>
+          <tr>
+              <td><span style="background-color: #00fc00a8;border-radius: 5px;">공구완료</span></td>
+              <td>바나나나눔 / 남영준</td>
+              <td><span style="float: right;"><button class="btnStyle">평점</button></span></td>
+          </tr>                    
+      </table>  
+
+
+
+
+
+
+
+
+
+        </div>
+
+        <div id="selList" class="fontBuyList">
+        <!-- <div id="selList" class="fontBuyList Box" include-html="./itemlist/sellList.html"></div> -->
+            
+          
+          <div>
+            <div>
+                <span style="background-color: #e0dd02a8;border-radius: 5px;">모집중</span> 
+                선풍기팔아요                 
+                <div>
+                    <span>참여인원/모집인원(2/1)</span>
+                    <span  style="float: right;">                            
+                        <button class="btnStyle3ch">글삭제</button>
+                        <button class="btnStyle1ch" onclick="doShowHide('sellList01Detail');">▼</button>
+                    </span>
+                </div>
+            </div>
+            <div id="sellList01Detail">                
+                <div> 참여자1 ★★★★☆ <input type="checkbox"></div>
+                <div> 참여자2 ★☆☆☆☆ <input type="checkbox"></div>            
+                <div class="alignRight"><button class="btnStyle2ch">확정</button><button class="btnStyle2ch">거절</button></div>
+            </div>
+          </div>
+        <hr width="95%">
+        <div>
+            <div>
+                <span style="background-color: #e0dd02a8;border-radius: 5px;">모집중</span>
+                딸기나눔
+                <div>
+                    <span>참여인원/모집인원(0/1)</span>
+                    <span  style="float: right;">
+                        <button class="btnStyle3ch">글삭제</button>
+                        <button class="btnStyle1ch" onclick="doShowHide('sellList02Detail');">▼</button>                            
+                    </span>
+                </div>
+            </div>
+            <div id="sellList02Detail">
+                <div>신청자가 없습니다.</div>
+            </div>
+        </div>
+        <hr width="95%">
+        <div>
+            <div>
+                <span style="background-color: #025be0a8;border-radius: 5px;">모집완료</span>
+                사과나눔
+                <div>
+                    <span>참여인원/모집인원(2/2)</span>
+                    <span  style="float: right;">
+                    <button class="btnStyle1ch" onclick="doShowHide('sellList03Detail');">▼</button>
+                    </span>
+                </div>
+            </div>
+            <div id="sellList03Detail">
+                <div> 참여자4 ★★★★☆</div>
+                <div> 참여자7 ★★★★★</div>                
+            </div>
+        </div>
+        <hr width="95%">
+        <div>
+            <div>
+                <span style="background-color: #00fc00a8;border-radius: 5px;">판매완료</span>
+                과자나눔 
+                <div>
+                    <span>참여인원/모집인원(3/3)</span>
+                    <span  style="float: right;">                            
+                        <button class="btnStyle3ch">글삭제</button>
+                        <button class="btnStyle1ch" onclick="doShowHide('sellList04Detail');">▼</button>
+                    </span>
+                </div>                  
+            </div>                
+            <div id="sellList04Detail">
+                <div> 참여자11 4.5/<select class="start" name="search">                
+                        <option value="5">★★★★★</option>
+                        <option value="4">★★★★☆</option>
+                        <option value="3">★★★☆☆</option>
+                        <option value="2">★★☆☆☆</option>
+                        <option value="1">★☆☆☆☆</option>
+                    </select>  
+                    <button class="btnStyle2ch">평점</button></div>
+                <div> 참여자13 ★★★☆☆<button class="btnStyle2ch">평점</button></div>
+                <div> 참여자17 ★★★★☆<button class="btnStyle2ch">평점</button></div>
+            </div>                
+        </div>
+        <hr width="95%">
+        <div>
+            <div>
+                <span style="background-color: #fc1d00a8;border-radius: 5px;">판매실패</span>
+                옷장팔아요 
+                <div>
+                    <span>참여인원/마감인원(0/1)</span>
+                    <span  style="float: right;">                            
+                        <button class="btnStyle3ch">글삭제</button>
+                        <button class="btnStyle1ch" onclick="doShowHide('sellList05Detail');">▼</button> 
+                    </span>
+                </div>                    
+            </div>
+            <div id="sellList05Detail">
+                <div>신청자가 없습니다.</div>
+            </div> 
+                
+        </div>        
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+
+        </div>
+
       </div>
       
     </span>
@@ -121,12 +303,12 @@
     <span style="float: right;">
       <div style="color:rgb(84, 51, 88);font-weight: 900;">
         <br><br><br><br><br><br>
-        <div id="toggler1" onclick="doSlideSell()">          
-          <span class="toggle1Span">SEL</span>          
-        </div>
         <div id="toggler2" onclick="doSlideBuy()">          
           <span class="toggle2Span">BUY</span>          
         </div>
+        <div id="toggler1" onclick="doSlideSell()">          
+          <span class="toggle1Span">SEL</span>          
+        </div>        
       </div>
     </span>
     
@@ -137,7 +319,7 @@
 <div id="main-text">
        
 
-
+VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 <br>배경글입니다 배경글 배경 배경 야옹야옹
 <br>배경글입니다 배경글 배경 배경 야옹야옹
 aa<br>
@@ -204,44 +386,90 @@ aa<br>
 aa
 
 </div>
-
+<script src="./js/main.js"></script>
 <script>
 
 
+includeHTML();
+
+    function includeHTML(callback) {
+        var z, i, elmnt, file, xhr;
+        /*loop through a collection of all HTML elements:*/
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+            elmnt = z[i];
+            /*search for elements with a certain atrribute:*/
+            file = elmnt.getAttribute("include-html");
+            //console.log(file);
+            if (file) {
+                /*make an HTTP request using the attribute value as the file name:*/
+                xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (this.readyState == 4) {
+                        if (this.status == 200) {
+                            elmnt.innerHTML = this.responseText;
+                        }
+
+                        if (this.status == 404) {
+                            elmnt.innerHTML = "Page not found.";
+                        }
+                        /*remove the attribute, and call this function once more:*/
+                        elmnt.removeAttribute("include-html");
+                        includeHTML(callback);
+                    }
+                }
+                xhr.open("GET", file, true);
+                xhr.send();
+                /*exit the function:*/
+                return;
+            }
+        }
+        // setTimeout(function() {callback();}, 0);
+    }
 
     var objectSlide;
-    var state;
+    var stateBuy;
+    var stateSel;
     
     objectSlide = document.querySelector('.testslide');
     // document.querySelector('.testslide').style.cssText  = 'position: fixed;background-color:green; width:20px; height:300px;display:flex;transition:1s all cubic-bezier(0.19, 1, 0.22, 1);';
-    state=0;
+    stateBuy=1;
+    stateSel=0;
 
-    function setSlide() {
+    // function setSlide() {
     
         
-        objectSlide.style.cssText  = ' position: fixed;background-color:red; width:250px; height:300px;display:flex;transition:1s;';
+    //     objectSlide.style.cssText  = ' position: fixed;background-color:red; width:250px; height:300px;display:flex;transition:1s;';
     
-    }
+    // }
     
     function doSlideSell() {
     
-        if(state==1){
+        if(stateSel==0){
 
           // objectSlide.style.cssText  = ' position: fixed;background-color:green; left:0px;width:250px; height:300px;display:flex;transition:1s;';
           objectSlide.style.cssText  = ' left:0px;transition:1s ease-in-out;';
-           state=0;
+          stateSel=1;
+          stateBuy=0;
+          
         }
         else {
             
             // objectSlide.style.cssText  = ' position: fixed;background-color:green; left:-200px;width:250px; height:300px;display:flex;transition:1s;';
             
-            objectSlide.style.cssText  = ' left:-180px;transition:1s ease-in-out;';
-            state=1;
+            objectSlide.style.cssText  = ' left:-280px;transition:1s ease-in-out;';
+            stateSel=0;
+            
 
         }
 
         document.querySelector('.toggle2Span').style.cssText = 'background-color:yellow;';
         document.querySelector('.toggle1Span').style.cssText = 'background-color:rgb(140, 83, 148);';
+
+        document.getElementById('buyList').style.display = 'none';
+        document.getElementById('buyListHeader').style.display = 'none';
+        document.getElementById('selList').style.display = 'block';        
+        document.getElementById('selListHeader').style.display = 'block';
     
         // document.querySelector('.testslide').style.cssText  = 'background-color:red; width:20px; height:300px;display:flex;transition:1s;';
     
@@ -250,19 +478,36 @@ aa
 
     function doSlideBuy() {
     
-      if(state==1){
+      if(stateBuy==0){
         objectSlide.style.cssText  = ' left:0px;transition:1s ease-in-out;';
-        state=0;
+        stateBuy=1;
+        stateSel=0;
+        
       }
       else {
-          objectSlide.style.cssText  = ' left:-180px;transition:1s ease-in-out;';
-          state=1;
+          objectSlide.style.cssText  = ' left:-280px;transition:1s ease-in-out;';
+          stateBuy=0;
+          
       }
 
       // document.getElementsByName(toggler1).style.cssText = ""
 
       document.querySelector('.toggle2Span').style.cssText = 'background-color:rgb(140, 83, 148);';
       document.querySelector('.toggle1Span').style.cssText = 'background-color:yellow;';
+
+
+      document.getElementById('buyList').style.cssText = 'display:block;transition:2s ease-in-out;';
+      document.getElementById('buyListHeader').style.cssText = 'display:block;transition:2s ease-in-out;';
+      document.getElementById('selList').style.cssText = 'display:none;transition:2s ease-in-out;';
+      document.getElementById('selListHeader').style.cssText = 'display:none;transition:2s ease-in-out;';
+
+
+      // document.getElementById('buyList').style.display = 'block';
+      // document.getElementById('buyListHeader').style.display = 'block';
+      // document.getElementById('selList').style.display = 'none';
+      // document.getElementById('selListHeader').style.display = 'none';
+      
+      
       
 
  
