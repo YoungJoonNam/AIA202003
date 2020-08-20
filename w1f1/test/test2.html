@@ -1,0 +1,78 @@
+
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <link href="../css/.css" rel="stylesheet">
+    <style>
+
+@keyframes shake {
+	0%{
+		transform: translate(1px, 1px) rotate(0deg);
+	}
+	/* 10%{
+		transform: translate(-1px, -1px) rotate(1deg);
+	}
+	20%{
+		transform: translate(-2px, 1px) rotate(-1deg);
+	} */
+	30%{
+		transform: translate(1px, 2px) rotate(0deg);
+	}
+	/* 40%{
+		transform: translate(-1px, 1px) rotate(1deg);
+	}
+	50%{
+		transform: translate(1px, -1px) rotate(-2deg);
+	} */
+	60%{
+		transform: translate(2px, 1px) rotate(1deg);
+	}
+	/* 70%{
+		transform: translate(-1px, 2px) rotate(2deg);
+	}
+	80%{
+		transform: translate(2px, -1px) rotate(1deg);
+	} */
+	90%{
+		transform: translate(-1px, 2px) rotate(0deg);
+	}
+	100%{
+		transform: translate(2px, 1px) rotate(-1deg);
+	}
+}
+
+img:hover {
+	box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+	animation: shake 0.5s infinite;
+}
+
+div {
+/* matrix(scaleX, skewX, skewY, scaleY, translateX, translateY) */
+	transform: matrix(1, -0.3, 0, 1, 0, 0);
+	-ms-transform: transform: matrix(1, -0.3, 0, 1, 0, 0);
+	-webkit-transform: transform: matrix(1, -0.3, 0, 1, 0, 0);
+}
+
+    </style>
+    <script></script>
+
+</head>
+ 
+<body>
+
+    <img width=400px src="mel.jpg">
+
+    <br>
+
+    <div>test</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Slide</title>
+<style>
+  *{
+    
+    
+    margin:0;padding:0;
+
+    font-size : 11pt;
+  
+    
+  
+  }
+
+  /* .testslide {
+    display: inline-block;
+  } */
+
+  #toggler1 span{
+     
+     width: 35px;
+     height: 40px;
+     display: block;
+     margin-bottom: 5px; 
+     margin-left: 0px;
+     opacity: 50%;
+     
+  }
+  #toggler2 span{
+     
+     width: 35px;
+     height: 40px;
+     display: block;
+     margin-bottom: 5px; 
+     margin-left: 0px;
+     opacity: 50%;
+     
+  }
+
+  .toggle1Span{
+    background-color:rgb(140, 83, 148);
+  }
+
+  .toggle2Span{
+    background-color: yellow;
+  }
+
+  #toggler{
+    margin-top: 18px;
+  }
+
+  #toggler span{
+    /* background-color: #000000; */
+    width: 35px;
+    height: 4px;
+    display: block;
+    margin-bottom: 5px; 
+    margin-left: 10px;
+  }
+
+  .testslide {
+    position: fixed;
+    background-color:rgba(230, 230, 250, 0.0);
+    
+    /* background-color:red; */
+    width:220px;
+    height:600px;
+    left:0px;
+    display:flex;
+    transition:1s all cubic-bezier(0.19, 1, 0.22, 1);    
+    
+    
+  }
+
+  #asideMain {
+    
+    width:200px;
+    background-color:rgb(140, 83, 148);
+    /* background-color: rgb(140, 83, 148); */
+    
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    opacity: 95%;
+   
+
+
+  }
+
+  
+
+</style>
+
+</head>
+<body style="background-color: ghostwhite;"">
+
+
+<div id="aside" class="testslide">
+    <span id="asideMain" style="text-align:center;">
+      <div style="display: inline-block;">
+        Home / LogOut <br>
+        홍*동
+        <br>구매자 평점 ★★★★☆ (13점/3명)
+        <br>판매자 평점 ★★★★☆ (13점/3명)
+      
+
+      </div>
+
+      <div>
+        <span style="color:white;font-weight: 900;"">구매현황</span>/
+        <span style="color:rgb(84, 51, 88);font-weight: 900;">판매현황</span>
+      </div>
+
+      <div style="width:95%;height:60%;display: inline-block; background-color: lavender; border-radius: 10px;">
+      </div>
+      
+    </span>
+
+    <span style="float: right;">
+      <div style="color:rgb(84, 51, 88);font-weight: 900;">
+        <br><br><br><br><br><br>
+        <div id="toggler1" onclick="doSlideSell()">          
+          <span class="toggle1Span">SEL</span>          
+        </div>
+        <div id="toggler2" onclick="doSlideBuy()">          
+          <span class="toggle2Span">BUY</span>          
+        </div>
+      </div>
+    </span>
+    
+  
+</div>
+
+
+<div id="main-text">
+       
+
+
+<br>배경글입니다 배경글 배경 배경 야옹야옹
+<br>배경글입니다 배경글 배경 배경 야옹야옹
+aa<br>
+<br>배경글입니다 배경글 배경 배경 야옹야옹
+aa<br>
+<br>배경글입니다 배경글 배경 배경 야옹야옹
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+<br>배경글입니다 배경글 배경 배경 야옹야옹
+<br>배경글입니다 배경글 배경 배경 야옹야옹
+<br>배경글입니다 배경글 배경 배경 야옹야옹
+<br>배경글입니다 배경글 배경 배경 야옹야옹
+<br>배경글입니다 배경글 배경 배경 야옹야옹
+<br>배경글입니다 배경글 배경 배경 야옹야옹<br>배경글입니다 배경글 배경 배경 야옹야옹
+<br>배경글입니다 배경글 배경 배경 야옹야옹
+<br>배경글입니다 배경글 배경 배경 야옹야옹
+<br>배경글입니다 배경글 배경 배경 야옹야옹
+ㅍ
+<br>배경글입니다 배경글 배경 배경 야옹야옹
+<br>배경글입니다 배경글 배경 배경 야옹야옹<br>배경글입니다 배경글 배경 배경 야옹야옹
+<br>배경글입니다 배경글 배경 배경 야옹야옹
+<br>배경글입니다 배경글 배경 배경 야옹야옹
+<br>배경글입니다 배경글 배경 배경 야옹야옹
+<br>배경글입니다 배경글 배경 배경 야옹야옹
+<br>배경글입니다 배경글 배경 배경 야옹야옹
+<br>배경글입니다 배경글 배경 배경 야옹야옹
+
+<br>배경글입니다 배경글 배경 배경 야옹야옹ㅍ
+
+ㅍ
+<br>배경글입니다 배경글 배경 배경 야옹야옹<br>배경글입니다 배경글 배경 배경 야옹야옹
+
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa<br>
+aa
+
+</div>
+
+<script>
+
+
+
+    var objectSlide;
+    var state;
+    
+    objectSlide = document.querySelector('.testslide');
+    // document.querySelector('.testslide').style.cssText  = 'position: fixed;background-color:green; width:20px; height:300px;display:flex;transition:1s all cubic-bezier(0.19, 1, 0.22, 1);';
+    state=0;
+
+    function setSlide() {
+    
+        
+        objectSlide.style.cssText  = ' position: fixed;background-color:red; width:250px; height:300px;display:flex;transition:1s;';
+    
+    }
+    
+    function doSlideSell() {
+    
+        if(state==1){
+
+          // objectSlide.style.cssText  = ' position: fixed;background-color:green; left:0px;width:250px; height:300px;display:flex;transition:1s;';
+          objectSlide.style.cssText  = ' left:0px;transition:1s ease-in-out;';
+           state=0;
+        }
+        else {
+            
+            // objectSlide.style.cssText  = ' position: fixed;background-color:green; left:-200px;width:250px; height:300px;display:flex;transition:1s;';
+            
+            objectSlide.style.cssText  = ' left:-180px;transition:1s ease-in-out;';
+            state=1;
+
+        }
+
+        document.querySelector('.toggle2Span').style.cssText = 'background-color:yellow;';
+        document.querySelector('.toggle1Span').style.cssText = 'background-color:rgb(140, 83, 148);';
+    
+        // document.querySelector('.testslide').style.cssText  = 'background-color:red; width:20px; height:300px;display:flex;transition:1s;';
+    
+    }
+
+
+    function doSlideBuy() {
+    
+      if(state==1){
+        objectSlide.style.cssText  = ' left:0px;transition:1s ease-in-out;';
+        state=0;
+      }
+      else {
+          objectSlide.style.cssText  = ' left:-180px;transition:1s ease-in-out;';
+          state=1;
+      }
+
+      // document.getElementsByName(toggler1).style.cssText = ""
+
+      document.querySelector('.toggle2Span').style.cssText = 'background-color:rgb(140, 83, 148);';
+      document.querySelector('.toggle1Span').style.cssText = 'background-color:yellow;';
+      
+
+ 
+    }
+
+    
+    window.onload = function () {
+    //   slide()
+    }
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <link href="./css/main.css" rel="stylesheet">
+    <style></style>
+
+    
+    
+
+</head>
+
+
+
+
+ 
+<body>
+
+
+<div id="container">
+
+    <div id="header" class="alignRight"  include-html="header.html">
+            
+    </div>
+
+    <div id=rightMenu>
+        <div id="buyListHeader" class="BSListHeader">
+           [ 나의 참여 목록 ]
+           <span style="float: right;">            
+            <button class="btnStyle1ch" onclick="doShowHide('buyList');">▼</button> 
+            </span>
+        </div>
+        <div id="buyList" class="fontBuyList Box" include-html="./itemlist/buyList.html">
+                     
+        </div>
+        <br>
+        <div id="sellListHeader" class="BSListHeader">
+            [ 나의 판매 목록 ]
+            <span style="float: right;">
+                <button style="margin-right : 4px" class="btnStyle">QR Check</button>
+                <button class="btnStyle1ch" onclick="doShowHide('sellList');">▼</button> 
+            </span>
+        </div>
+        <div id="sellList" class="fontBuyList Box" include-html="./itemlist/sellList.html">
+            
+        </div>
+        
+    </div>
+
+    <div id=contents>
+        같이;가치
+        <div class="fontBuyList Box">            
+            <table width=100%>         
+                <tr>
+                    <td colspan="2" >
+                        <span style="float: right;"><button>전체</button> <button>과채류</button> <button>정육/수산</button> <button>생필품</button></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><button onclick="doGobyAjax('itemRegForm.html')">글쓰기</button></td>
+                    <td style="float: right;">
+                    <select name="search">
+                        <option value="제목">제목</option>
+                        <option value="작성자">작성자</option>                        
+                    </select>                    
+                    <input class="input" type="text">
+                    <button>찾기</button>
+                </td></tr>
+            </table>
+            
+        </div>
+        <div id="recommendList" class="Box" include-html="./itemlist/recommendList.html">
+        </div>
+        
+
+        <div id="itemList"class="Box" include-html="./itemlist/itemList.html">
+        </div>
+
+    </div>
+
+
+
+    <div id=footer>
+        footer-고양이가 야옹야옹
+    </div>
+
+</div>
+
+
+
+<script src="./js/main.js"></script>
+<script>
+
+    includeHTML();
+
+    function includeHTML(callback) {
+        var z, i, elmnt, file, xhr;
+        /*loop through a collection of all HTML elements:*/
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+            elmnt = z[i];
+            /*search for elements with a certain atrribute:*/
+            file = elmnt.getAttribute("include-html");
+            //console.log(file);
+            if (file) {
+                /*make an HTTP request using the attribute value as the file name:*/
+                xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (this.readyState == 4) {
+                        if (this.status == 200) {
+                            elmnt.innerHTML = this.responseText;
+                        }
+
+                        if (this.status == 404) {
+                            elmnt.innerHTML = "Page not found.";
+                        }
+                        /*remove the attribute, and call this function once more:*/
+                        elmnt.removeAttribute("include-html");
+                        includeHTML(callback);
+                    }
+                }
+                xhr.open("GET", file, true);
+                xhr.send();
+                /*exit the function:*/
+                return;
+            }
+        }
+        // setTimeout(function() {callback();}, 0);
+    }
+
+
+
+
+
+
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <link href="./css/main.css" rel="stylesheet">
+    <style></style>
+
+
+</head>
+
+
+
+
+ 
+<body>
+
+
+<div id="container">
+
+    <div id="header">
+         Header - 고양이가 야옹야옹
+    </div>
+
+    <div id=leftMenu>
+        leftMenu-고양이가 야옹야옹
+    </div>
+
+    <div id=contents>
+        Contents-고양이가 야옹야옹
+    </div>
+
+
+
+    <div id=footer>
+        footer-고양이가 야옹야옹
+    </div>
+
+</div>
+
+
+<script>
+
+    function ajaxTest(){
+          $.ajax({
+            type : "GET",
+            url : "./test.html",
+            dataType : "text",
+            error : function() {
+              alert('통신실패!!');
+            },
+            success : function(data) {
+              $('#contents').html(data);
+            }
+     
+          });
+        }
+     
+        ajaxTest();
+    
+        </script>
+
+</body>
+
+</html>

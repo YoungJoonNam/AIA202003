@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <link href="../css/.css" rel="stylesheet">
+    <style>
+
+* {
+     box-sizing: border-box;
+     margin: 0;
+     padding: 0;
+     font-size: 100%;
+     font-family: 'Lora', serif;     
+     }    
+
+#side-bar{
+
+     
+
+     width: 200px;
+     height: 100vh;
+     background-color: lavender;
+     display: inline-block;
+     /* margin-left: -210px; */
+     transition: all 1s ease-in-out;   /* ease ease-in-out */
+     
+     vertical-align: top;
+}
+
+#side-bar.active {
+     margin-left: -210px;;
+}
+
+#side-bar ul {
+     list-style: none;
+}
+
+#side-bar ul li {
+     margin-top: 15px;
+     margin-left: 20px;
+     float: left;
+}
+
+#side-bar ul a {
+     text-decoration: none;
+     color: white;
+}
+
+#side-bar ul li:hover {
+    border-bottom: solid 1px #ffffff;
+}
+
+#Right-Page {
+     display: inline-block;
+     vertical-align: top;
+     width: 100%;
+     height: 100vh;
+     background-color: ghostwhite;
+     position: absolute;
+}
+
+#Right-Page.active{
+     position: absolute;
+     
+}
+
+#toggler1{
+     margin-top: 8px;
+}
+
+#toggler1 span{
+     background-color: #000000;
+     width: 35px;
+     height: 4px;
+     display: block;
+     margin-bottom: 5px; 
+     margin-left: 10px;
+}
+
+
+#toggler2{
+     margin-top: 28px;
+}
+
+#toggler2 span{
+     background-color: blue;
+     width: 35px;
+     height: 4px;
+     display: block;
+     margin-bottom: 5px; 
+     margin-left: 10px;
+}
+
+</style>
+
+</head>
+ 
+<body>
+
+     <div id="main-container">
+          <div id="side-bar">
+               <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contacts</a></li>
+               </ul>
+          </div>
+          <div id="Right-Page">
+               <div id="toggler1">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+               </div>
+               <div id="toggler2">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+               </div>
+               <div id="main-text">
+                    
+               </div>
+          </div>
+     </div>
+
+    <script>
+
+     document.getElementById('toggler1').onclick = function(){
+          document.getElementById('side-bar').classList.toggle('active');
+          document.getElementById('Right-Page').classList.toggle('active');
+	}
+</script>
+
+</body>
+
+</html>

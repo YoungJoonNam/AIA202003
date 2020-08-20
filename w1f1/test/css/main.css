@@ -1,0 +1,201 @@
+
+#container {
+    margin: 10px auto;
+    padding: 10px;
+    border: 1px solid #999999;
+}
+#header {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid blue;
+}
+#headerLeft {
+    padding: 1px;
+    margin-bottom: 10px;
+    border: 1px solid red;
+}
+#headerRight {
+    padding: 1px;
+    margin-bottom: 10px;
+    border: 1px solid blue;
+}
+#rightMenu {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #999999;
+}
+#contents {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid green;
+}
+#contentsAll {
+    clear: both;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #999999;
+}
+#footer {
+    padding: 10px;
+    border: 1px solid #999999;
+}
+
+
+
+@media ( min-width: 700px ) {
+    #container {
+    width: 800px;
+    }
+
+    #headerLeft {
+    width: 500px;
+    float: left;
+    }
+    #headerRight {    
+    float: right;
+    }    
+    #contents {
+    width: 440px;
+    float: left;
+    }
+    #rightMenu {
+    width: 300px;
+    float: right;
+    }
+    #footer {
+    clear: both;
+    }
+}
+
+
+
+.alignLeft {
+    text-align : left;
+}
+
+
+.alignRight {
+    text-align : right;
+}
+
+.fontBuyList {
+    font-size : 10pt;
+
+}
+
+.Box {
+    margin: 1px auto;    
+    border: 1px solid #999999;
+}
+
+
+.BSListDiv {
+
+    margin: 2px auto;    
+    /* padding: 1px; */
+
+}
+
+.sellstate {
+    border-radius: 2px;    
+    background-color: #025be0a8;
+}
+
+.BSListHeader {
+    font-size : 11pt;
+    font-weight : 900;
+}
+
+
+.input {
+    border: 1px solid;
+    /* height : 25px; */
+    /* width : 190px; */
+    border-color: rgb(188, 188, 188);
+    outline-style : none;
+    /* margin-top: 2.6px; */
+    /* margin-left : -3px; */
+
+}
+
+
+.btnStyle {            
+    border-radius: 5px;    
+    /* color:black; */
+    /* font-weight : 900; */
+    /* margin-left: 5px; */
+    /* margin-right: -2px; */
+    width: 75px;
+    height: 20px;
+    text-align: center;    
+    font-size :12px;
+    line-height: 10px;
+}
+
+.btnStyle:hover {
+    color: black;
+    background-color: white;
+    border-color:  gray; 
+}
+
+
+.btnStyle1ch {            
+    border-radius: 5px;        
+    margin-right: 4px;
+    width: 40px;
+    height: 20px;
+    text-align: center;    
+    font-size :12px;
+    line-height: 10px;
+}
+
+.btnStyle1ch:hover {
+    color: black;
+    background-color: white;
+    border-color:  gray; 
+}
+
+
+
+
+.btnStyle2ch {            
+    border-radius: 5px;        
+    margin-right: 4px;
+    width: 50px;
+    height: 20px;
+    text-align: center;    
+    font-size :12px;
+    line-height: 10px;
+}
+
+.btnStyle2ch:hover {
+    color: black;
+    background-color: white;
+    border-color:  gray; 
+}
+
+
+
+.btnStyle3ch {            
+    border-radius: 5px;        
+    margin-right: 4px;
+    width: 60px;
+    height: 20px;
+    text-align: center;    
+    font-size :12px;
+    line-height: 10px;
+}
+
+.btnStyle3ch:hover {
+    color: black;
+    background-color: white;
+    border-color:  gray; 
+}
+
+
+
+
+table td {
+    font-size : 12px;
+    border-bottom: 1px solid rgb(228, 228, 228);
+}
