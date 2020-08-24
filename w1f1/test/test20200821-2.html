@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <link href="../css/.css" rel="stylesheet">
+    <style>
+
+div {
+  border: 1px solid #eee;
+}
+div > ul {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 12s linear;
+}
+div:hover > ul {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s, opacity 12s linear;
+}
+
+
+
+div {
+    border: 5px solid;
+    padding: 10px;
+}
+
+div:hover {
+    border-color: red;
+}
+ 
+.parent .child {
+  display: none;
+}
+ 
+.parent:hover .child {
+  display: block;
+  animation: fade-in 1s;
+}
+
+.parent:not(:hover) .child.did-fade-in {
+  display: block;
+  animation: fade-out 1s;
+} 
+
+@keyframes fade-in {
+  from { 
+    opacity: 0; 
+  }
+  to { 
+    opacity: 1; 
+  }
+}
+
+@keyframes fade-out {
+  from { 
+    opacity: 1; 
+  }
+  to { 
+    opacity: 0;
+  }
+}
+    </style>
+    <script></script>
+
+</head>
+ 
+<body>
+    <div>
+        <ul>
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+        </ul>
+    </div>
+
+
+
+    <div class="parent">
+        Parent
+        <div class="child">
+            Child
+        </div>
+    </div>
+
+
+
+
+<script>
+
+// We need to keep track of faded in elements so we can apply fade out later in CSS
+document.addEventListener('animationstart', function (e) {
+  if (e.animationName === 'fade-in') {
+      e.target.classList.add('did-fade-in');   
+  }
+});
+
+document.addEventListener('animationend', function (e) {
+  if (e.animationName === 'fade-out') {
+      e.target.classList.remove('did-fade-in');
+   }
+});
+
+
+</script>    
+</body>
+
+</html>
+
+
+<!-- https://www.it-swarm.dev/ko/css/%EB%94%94%EC%8A%A4%ED%94%8C%EB%A0%88%EC%9D%B4%EC%9D%98-%EC%A0%84%ED%99%98-%EC%86%8D%EC%84%B1/969553813/ -->

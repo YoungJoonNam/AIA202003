@@ -7,7 +7,7 @@
 #header {
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid blue;
+    border: 0px solid blue;
 }
 #headerLeft {
     padding: 1px;
@@ -24,11 +24,11 @@
     margin-bottom: 10px;
     border: 1px solid #999999;
 }
-#contents {
+/* #contents {
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid green;
-}
+} */
 #contentsAll {
     clear: both;
     padding: 10px;
@@ -55,10 +55,10 @@
     #headerRight {    
     float: right;
     }    
-    #contents {    
+    /* #contents {    
     width: 530px;
     float: left;
-    }
+    } */
     #rightMenu {   
     width: 280px;
     float: right;
@@ -143,6 +143,32 @@
 }
 
 
+.btnStyleWrite {            
+    border-radius: 5px;    
+    background-color :red;
+    color : white;
+    font-weight : 900;
+    /* color:black; */    
+    /* margin-left: 5px; */
+    /* margin-right: -2px; */
+    width: 75px;
+    height: 20px;
+    text-align: center;    
+    font-size :12px;
+    line-height: 10px;
+
+    
+}
+
+.btnStyleWrite:hover {
+    color: black;
+    background-color: white;
+    border-color:  gray; 
+}
+
+
+
+
 .btnStyle1ch {        
     background-color :rgb(84, 51, 88);
     color : white;
@@ -205,9 +231,10 @@
     border-color:  gray; 
 }
 
-.start {
-    font-size :10px;
-    width : 70px;
+.stars {
+    font-size :12px;
+    width : 100px;
+    /* height : 30px; */
 }
 
 
@@ -219,13 +246,38 @@ table td {
 
 
 div.card {
-    width: 100px;
+    width: 180px;
     height : 180px;
     float: left;
     font-size: 12px;
     
-    margin : 1px;
+    margin : 5px;
     border : 1px solid #DDD;
+    border-radius :10px;
+    padding : 5px;
+    text-align: center;
     
+}
+
+
+
+div.cardSmall {
+    width: 120px;
+    height : 120px;
+    float: left;
+    font-size: 10px;
+    
+    margin : 3px;
+    border : 1px solid #DDD;
+    border-radius :10px;
+    text-align: center;
+    
+ }
+
+
+ div.cardSmall img {
+
+    width : 80px;
+    height : 50px;
  }
  

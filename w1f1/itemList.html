@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Slide</title>
 <link href="./css/main.css" rel="stylesheet">
 <style>
@@ -24,7 +25,7 @@
      display: block;
      margin-bottom: 5px; 
      margin-left: 0px;
-     opacity: 50%;
+     /* opacity: 50%; */
      
   }
   #toggler2 span{
@@ -34,16 +35,19 @@
      display: block;
      margin-bottom: 5px; 
      margin-left: 0px;
-     opacity: 50%;
+     /* opacity: 50%; */
      
   }
 
   .toggle1Span{
-    background-color:rgb(140, 83, 148);
+    background-color: rgba(255, 255, 0, 0.5);
+    
   }
 
   .toggle2Span{
-    background-color: yellow;
+    background-color:rgba(140, 83, 148, 0.5);
+    color:yellow;
+    
   }
 
   #toggler{
@@ -67,10 +71,11 @@
     
     width:320px;  /* +100 */
     height:600px;
+    top:30px;
     left:0px;
     display:flex;
     transition:1s all cubic-bezier(0.19, 1, 0.22, 1);    
-    
+    z-index: 8;
     
   }
 
@@ -80,14 +85,40 @@
     background-color:rgb(140, 83, 148);
     /* background-color: rgb(140, 83, 148); */
     
-    border-top-right-radius: 20px;
+    /* border-top-right-radius: 20px; */
     border-bottom-right-radius: 20px;
     opacity: 95%;
+
    
 
 
   }
 
+  #title {
+    
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    background-color: rgba(140, 83, 148, 0.596);
+    
+    color : white;
+    font-weight: 900;
+    font-size:20px;
+    width:100%;
+    height:30px;
+    text-align : right;
+
+    /* border-radius: 10px; */
+
+    /* border-top-right-radius: 20px; */
+    border-bottom-right-radius: 10px;
+    
+  }
+
+  #contents {
+    margin-top:35px;
+    margin-left:5px;
+  }
   #buyList {
     display :block;
   }
@@ -99,13 +130,155 @@
 
 
   #buyListHeader {
+    margin-left:15px;text-align:left;
     display :block;
   }
 
   #selListHeader {
+    margin-left:15px;text-align:left;
     display :none;
 
   }
+
+/*------------------------ fade out  start */
+
+.hiddenBuy {
+  display: none;
+  opacity: 0;
+}
+
+.hiddenSel {
+  display: none;
+  opacity: 0;
+}
+
+.appear {
+  animation: fade-in 3s;
+  animation-fill-mode: forwards;
+  display: flex;
+}
+
+.disappear {
+  animation: fade-out 3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+
+  }
+  to {
+    opacity: 0;
+  }
+}
+/*------------------------ fade out  end */
+
+/*------------------------ shake start */
+@keyframes shake {
+	0%{
+		transform: translate(1px, 1px) rotate(0deg);
+	}
+	/* 10%{
+		transform: translate(-1px, -1px) rotate(1deg);
+	}
+	20%{
+		transform: translate(-2px, 1px) rotate(-1deg);
+	} */
+	30%{
+		transform: translate(1px, 2px) rotate(0deg);
+	}
+	/* 40%{
+		transform: translate(-1px, 1px) rotate(1deg);
+	}
+	50%{
+		transform: translate(1px, -1px) rotate(-2deg);
+	} */
+	60%{
+		transform: translate(2px, 1px) rotate(1deg);
+	}
+	/* 70%{
+		transform: translate(-1px, 2px) rotate(2deg);
+	}
+	80%{
+		transform: translate(2px, -1px) rotate(1deg);
+	} */
+	90%{
+		transform: translate(-1px, 2px) rotate(0deg);
+	}
+	100%{
+		transform: translate(2px, 1px) rotate(-1deg);
+	}
+}
+
+
+@keyframes shakeS {
+	0%{
+		transform: translate(1px, 1px) rotate(0deg);
+	}
+	10%{
+		transform: translate(-1px, -1px) rotate(1deg);
+	}
+	20%{
+		transform: translate(-2px, 1px) rotate(-1deg);
+	}
+	30%{
+		transform: translate(1px, 2px) rotate(0deg);
+	}
+	40%{
+		transform: translate(-1px, 1px) rotate(1deg);
+	}
+	50%{
+		transform: translate(1px, -1px) rotate(-2deg);
+	}
+	60%{
+		transform: translate(2px, 1px) rotate(1deg);
+	}
+	70%{
+		transform: translate(-1px, 2px) rotate(2deg);
+	}
+	80%{
+		transform: translate(2px, -1px) rotate(1deg);
+	}
+	90%{
+		transform: translate(-1px, 2px) rotate(0deg);
+	}
+	100%{
+		transform: translate(2px, 1px) rotate(-1deg);
+	}
+}
+.card:hover {
+	box-shadow: 0 0 2px 1px rgb(140, 83, 148);
+	animation: shake 0.5s infinite;
+}
+
+.cardSmall:hover {
+	box-shadow: 0 0 2px 1px rgba(84, 51, 88, 0.5);
+	animation: shakeS 0.5s infinite;
+}
+
+/*------------------------ shake end */
+
+.itemTitle{  
+  margin-left:5px;
+  float: left;
+  font-weight: 900;
+  font-size:14px; 
+  /* text-decoration: underline; */
+  color :white;
+  background-color:rgb(140, 83, 148);
+  border-radius: 3px;
+}
+
 
 
 </style>
@@ -129,42 +302,56 @@
       </div>
       <br><br>
 
-      <div id="buyListHeader">        
+      <div id="buyListHeader" style="margin-left:15px;text-align:left;">
         <span style="color:white;font-weight: 900;"">구매현황</span>/
         <span style="color:rgb(84, 51, 88);font-weight: 900;">판매현황</span>
       </div>
-      <div id="selListHeader">
-        <span style="color:rgb(84, 51, 88);font-weight: 900;">구매현황</span>/        
-        <span style="color:white;font-weight: 900;"">판매현황</span>
+      <div id="selListHeader" style="margin-left:15px;text-align:left;">
+        <span style="color:white;font-weight: 900;"">판매현황</span>/
+        <span style="color:rgb(84, 51, 88);font-weight: 900;">구매현황</span>        
       </div>
 
       <div style="width:95%;height:80%;display: inline-block; background-color: lavender; border-radius: 10px;">
 
-        <div id="buyList" class="fontBuyList">
+        <div id="buyList" class="fontBuyList hiddenBuy"  >
         <!-- <div id="buyList" class="fontBuyList" include-html="./itemlist/buyList.html"></div> -->
-          
+        <div style="margin-top:3px;"></div>  
 
 
         <table width=100% border=0 cellspacing="0">
           <tr>
-              <td><span style="background-color: #e0dd02a8;border-radius: 5px;">참여진행중</span></td>
-              <td><span  onclick="doGobyAjax('itemView.html')">소고기나눔 / 박혜미</span></td>
-              <td><span style="float: right;"><button class="btnStyle">참여취소</button></span></td>
+              <td width=75px><span style="margin-left:5px;float:left;background-color: #e0dd02a8;border-radius: 5px;">참여진행중</span></td>
+              <td><span style="float:left;" class="itemTitle" onclick="doGobyAjax('itemView.html')">소고기나눔</span>
+                <span style="float:left;">(박혜미)</span></td>
           </tr>
           <tr>
-              <td><span style="background-color: #025be0a8;border-radius: 5px;">구매자선정</span></td>
-              <td>오이나눔 / 정신우</td>
-              <td><span style="float: right;"><button class="btnStyle">QR</button></span></td>
+              <td colspan='2'><span style="float: right;"><button class="btnStyle">참여취소</button></span></td>
+          </tr>
+
+          <tr>
+              <td><span style="margin-left:5px;float:left;background-color: #025be0a8;border-radius: 5px;">구매자선정</span></td>
+              <td><span class="itemTitle" onclick="doGobyAjax('itemView.html')">오이나눔</span>
+                <span style="float:left;">(정신우)</span></td>
           </tr>
           <tr>
-              <td><span style="background-color: #fc1d00a8;border-radius: 5px;">다음기회에...</span></td>
-              <td><span>사과나눔 / 김승연</span></td>
-              <td><span style="float: right;"><button class="btnStyle">확인</button></span></td>
+                <td colspan='2'><span style="float: right;"><button class="btnStyle">QR</button></span></td>
+          </tr>
+          
+          <tr>
+              <td><span style="margin-left:5px;float:left;background-color: #fc1d00a8;border-radius: 5px;">다음기회에</span></td>
+              <td><span class="itemTitle" onclick="doGobyAjax('itemView.html')">사과나눔</span>
+                <span style="float:left;">(김승연)</span></td>
           </tr>
           <tr>
-              <td><span style="background-color: #00fc00a8;border-radius: 5px;">공구완료</span></td>
-              <td>바나나나눔 / 남영준</td>
-              <td><span style="float: right;"><button class="btnStyle">평점</button></span></td>
+              <td colspan='2'><span style="float: right;"><button class="btnStyle">확인</button></span></td>
+          </tr>
+          <tr>
+              <td><span style="margin-left:5px;float:left;background-color: #00fc00a8;border-radius: 5px;">공구완료</span></td>
+              <td><span class="itemTitle" onclick="doGobyAjax('itemView.html')">바나나나눔</span>
+                <span style="float:left;">(남영준)</span></td>
+          </tr>
+          <tr>
+              <td colspan='2'><span style="float: right;"><button class="btnStyle">평점</button></span></td>
           </tr>                    
       </table>  
 
@@ -178,69 +365,70 @@
 
         </div>
 
-        <div id="selList" class="fontBuyList">
+        <div id="selList" class="fontBuyList hiddenSell">
         <!-- <div id="selList" class="fontBuyList Box" include-html="./itemlist/sellList.html"></div> -->
             
           
           <div>
-            <div>
-                <span style="background-color: #e0dd02a8;border-radius: 5px;">모집중</span> 
-                선풍기팔아요                 
+            <div style="margin-top:3px;">
+                <span style="margin-left:5px;float:left;background-color: #e0dd02a8;border-radius: 5px;">모집중</span> 
+                <span class="itemTitle">선풍기팔아요</span>
                 <div>
-                    <span>참여인원/모집인원(2/1)</span>
-                    <span  style="float: right;">                            
+                    <span style="margin-left:5px;float:left;">참여인원/모집인원(2/1)</span>
+                    <span style="float: right;">
                         <button class="btnStyle3ch">글삭제</button>
                         <button class="btnStyle1ch" onclick="doShowHide('sellList01Detail');">▼</button>
                     </span>
                 </div>
             </div>
-            <div id="sellList01Detail">                
-                <div> 참여자1 ★★★★☆ <input type="checkbox"></div>
-                <div> 참여자2 ★☆☆☆☆ <input type="checkbox"></div>            
-                <div class="alignRight"><button class="btnStyle2ch">확정</button><button class="btnStyle2ch">거절</button></div>
+            <div id="sellList01Detail" style="clear: both;">                
+                <div style="margin-left:5px;float:left;"> 참여자1 ★★★★☆ <input type="checkbox"></div>
+                <div style="margin-left:5px;float:left;"> 참여자2 ★☆☆☆☆ <input type="checkbox"></div>            
+                <div style="float:right;" class="alignRight"><button class="btnStyle2ch">확정</button><button class="btnStyle2ch">거절</button></div>
             </div>
           </div>
         <hr width="95%">
         <div>
             <div>
-                <span style="background-color: #e0dd02a8;border-radius: 5px;">모집중</span>
-                딸기나눔
+                <span style="margin-left:5px;float: left;background-color: #e0dd02a8;border-radius: 5px;">모집중</span>
+                <span class="itemTitle">딸기나눔</span>
                 <div>
-                    <span>참여인원/모집인원(0/1)</span>
-                    <span  style="float: right;">
+                    <span style="margin-left:5px;float:left;">참여인원/모집인원(0/1)</span>
+                    <span style="float: right;">
                         <button class="btnStyle3ch">글삭제</button>
                         <button class="btnStyle1ch" onclick="doShowHide('sellList02Detail');">▼</button>                            
                     </span>
                 </div>
             </div>
-            <div id="sellList02Detail">
-                <div>신청자가 없습니다.</div>
+            <div id="sellList02Detail" style="clear: both;">
+                <br>
+                <div style="margin-left:5px;float:left;">신청자가 없습니다.</div>
             </div>
         </div>
         <hr width="95%">
         <div>
             <div>
-                <span style="background-color: #025be0a8;border-radius: 5px;">모집완료</span>
-                사과나눔
+                <span style="margin-left:5px;float: left;background-color: #025be0a8;border-radius: 5px;">모집완료</span>
+                <span class="itemTitle">사과나눔</span>
                 <div>
-                    <span>참여인원/모집인원(2/2)</span>
-                    <span  style="float: right;">
+                    <span style="margin-left:5px;float:left;">참여인원/모집인원(2/2)</span>
+                    <span style="float: right;">
                     <button class="btnStyle1ch" onclick="doShowHide('sellList03Detail');">▼</button>
                     </span>
                 </div>
             </div>
             <div id="sellList03Detail">
-                <div> 참여자4 ★★★★☆</div>
-                <div> 참여자7 ★★★★★</div>                
+                <div style="clear: both;margin-left:5px;float:left;display:block;"> 참여자4 ★★★★☆</div>
+                <div style="clear: both;margin-left:5px;float:left;display:block;"> 참여자7 ★★★★★</div>                
             </div>
         </div>
         <hr width="95%">
         <div>
             <div>
-                <span style="background-color: #00fc00a8;border-radius: 5px;">판매완료</span>
-                과자나눔 
+                <span style="margin-left:5px;float: left;background-color: #00fc00a8;border-radius: 5px;">판매완료</span>
+                <span class="itemTitle">과자나눔</span>
                 <div>
-                    <span>참여인원/모집인원(3/3)</span>
+                    <span style="margin-left:5px;float:left;">참여인원/모집인원(3/3)</span>
                     <span  style="float: right;">                            
                         <button class="btnStyle3ch">글삭제</button>
                         <button class="btnStyle1ch" onclick="doShowHide('sellList04Detail');">▼</button>
@@ -248,7 +436,8 @@
                 </div>                  
             </div>                
             <div id="sellList04Detail">
-                <div> 참여자11 4.5/<select class="start" name="search">                
+                <div style="margin-left:5px;margin-top:5px;float:left;"> 참여자11 4.5/
+                    <select class="stars" name="search11">                
                         <option value="5">★★★★★</option>
                         <option value="4">★★★★☆</option>
                         <option value="3">★★★☆☆</option>
@@ -256,25 +445,37 @@
                         <option value="1">★☆☆☆☆</option>
                     </select>  
                     <button class="btnStyle2ch">평점</button></div>
-                <div> 참여자13 ★★★☆☆<button class="btnStyle2ch">평점</button></div>
-                <div> 참여자17 ★★★★☆<button class="btnStyle2ch">평점</button></div>
+                  <div style="margin-left:5px;float:left;"> 참여자17 2.8/
+                      ★★★★☆
+                  </div>
+                      
+                  <div style="margin-left:5px;float:left;"> 참여자13 3.5/
+                    <select class="stars" name="search13">                
+                      <option value="5">★★★★★</option>
+                      <option value="4">★★★★☆</option>
+                      <option value="3">★★★☆☆</option>
+                      <option value="2">★★☆☆☆</option>
+                      <option value="1">★☆☆☆☆</option>
+                    </select>  
+                  <button class="btnStyle2ch">평점</button></div>
+                
             </div>                
         </div>
         <hr width="95%">
         <div>
             <div>
-                <span style="background-color: #fc1d00a8;border-radius: 5px;">판매실패</span>
-                옷장팔아요 
+                <span style="margin-left:5px;float: left;background-color: #fc1d00a8;border-radius: 5px;">판매실패</span>
+                <span class="itemTitle">옷장팔아요</span>
                 <div>
-                    <span>참여인원/마감인원(0/1)</span>
-                    <span  style="float: right;">                            
+                    <span style="margin-left:5px;float:left;">참여인원/마감인원(0/1)</span>
+                    <span style="float: right;">                            
                         <button class="btnStyle3ch">글삭제</button>
                         <button class="btnStyle1ch" onclick="doShowHide('sellList05Detail');">▼</button> 
                     </span>
                 </div>                    
             </div>
             <div id="sellList05Detail">
-                <div>신청자가 없습니다.</div>
+                <div style="margin-left:5px;float:left;">신청자가 없습니다.</div>
             </div> 
                 
         </div>        
@@ -302,11 +503,14 @@
 
     <span style="float: right;">
       <div style="color:rgb(84, 51, 88);font-weight: 900;">
-        <br><br><br><br><br><br>
+        <!-- <br><br><br><br><br><br> -->
+        <br>
         <div id="toggler2" onclick="doSlideBuy()">          
+          <!-- <span class="toggle2Span">B<br>U<br>Y</span>           -->
           <span class="toggle2Span">BUY</span>          
         </div>
         <div id="toggler1" onclick="doSlideSell()">          
+          <!-- <span class="toggle1Span">S<br>E<br>L</span>           -->
           <span class="toggle1Span">SEL</span>          
         </div>        
       </div>
@@ -316,74 +520,377 @@
 </div>
 
 
-<div id="main-text">
+<div id="title" >
+  같이;가치
+</div>
+<div id=contents>
        
+  
+  
+  <div class="fontBuyList Box">            
+      <table width=100%>         
+          <tr>
+              <td colspan="2" >
+                  <span style="float: right;"><button class="btnStyle">전체</button> 
+                    <button class="btnStyle">과채류</button> 
+                    <button class="btnStyle">정육/수산</button> 
+                    <button class="btnStyle">생필품</button></span>
+              </td>
+          </tr>
+          <tr>
+              <td></td>
+              <td style="float: right;">
+              <select name="search">
+                  <option value="제목">제목</option>
+                  <option value="작성자">작성자</option>                        
+              </select>                    
+              <input class="input" style="width:100px;" type="text">
+              <button class="btnStyle">찾기</button>
+              <button  class="btnStyleWrite" onclick="doGobyAjax('itemRegForm.html')">글쓰기</button>
+          </td></tr>
+      </table>
+      
+  </div>
+  <!-- <div id="recommendList" class="Box" include-html="./itemlist/recommendList.html"> -->
+  <div id="recommendList" class="">
 
-VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-<br>배경글입니다 배경글 배경 배경 야옹야옹
-<br>배경글입니다 배경글 배경 배경 야옹야옹
-aa<br>
-<br>배경글입니다 배경글 배경 배경 야옹야옹
-aa<br>
-<br>배경글입니다 배경글 배경 배경 야옹야옹
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-<br>배경글입니다 배경글 배경 배경 야옹야옹
-<br>배경글입니다 배경글 배경 배경 야옹야옹
-<br>배경글입니다 배경글 배경 배경 야옹야옹
-<br>배경글입니다 배경글 배경 배경 야옹야옹
-<br>배경글입니다 배경글 배경 배경 야옹야옹
-<br>배경글입니다 배경글 배경 배경 야옹야옹<br>배경글입니다 배경글 배경 배경 야옹야옹
-<br>배경글입니다 배경글 배경 배경 야옹야옹
-<br>배경글입니다 배경글 배경 배경 야옹야옹
-<br>배경글입니다 배경글 배경 배경 야옹야옹
-ㅍ
-<br>배경글입니다 배경글 배경 배경 야옹야옹
-<br>배경글입니다 배경글 배경 배경 야옹야옹<br>배경글입니다 배경글 배경 배경 야옹야옹
-<br>배경글입니다 배경글 배경 배경 야옹야옹
-<br>배경글입니다 배경글 배경 배경 야옹야옹
-<br>배경글입니다 배경글 배경 배경 야옹야옹
-<br>배경글입니다 배경글 배경 배경 야옹야옹
-<br>배경글입니다 배경글 배경 배경 야옹야옹
-<br>배경글입니다 배경글 배경 배경 야옹야옹
 
-<br>배경글입니다 배경글 배경 배경 야옹야옹ㅍ
 
-ㅍ
-<br>배경글입니다 배경글 배경 배경 야옹야옹<br>배경글입니다 배경글 배경 배경 야옹야옹
 
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa<br>
-aa
+
+    [추천리스트] 
+    <!-- <button>평점▼</button> <button>작성일▼</button> -->
+    
+    <div class="" >
+    
+        <div class="card" onclick="doGobyAjax('itemView.html')">        
+            1. <span style="background-color: #e0dd02a8;border-radius: 5px;">모집중</span><br>
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img width=150px height=100px src="./images/bae.jpg">
+            
+        </div>
+        <div class="card">
+            
+            2. <span style="background-color: #025be0a8;border-radius: 5px;">모집완료</span><br>
+            정육/수산/
+            고등!!어!!!<br>
+            김승연(4.5)/08.12~08.29<br>
+            조회수 14<br>
+            <img width=150px height=100px src="./images/go.jpg">
+            
+        </div>
+        <div class="card">
+            
+            3. <span style="background-color: #e0dd02a8;border-radius: 5px;">모집중</span><br>            
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img width=150px height=100px src="./images/ba.jpg">
+            
+        </div>
+        <div class="card">
+            
+            4. <span style="background-color: #e0dd02a8;border-radius: 5px;">모집중</span><br>
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img width=150px height=100px src="./images/boo.jpg">
+            
+        </div>
+        <div class="card">
+            
+            5. <span style="background-color: #e0dd02a8;border-radius: 5px;">모집중</span><br>
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img width=150px height=100px src="./images/bok.jpg">
+            
+        </div>
+        <div class="card">
+            
+            6. <span style="background-color: #e0dd02a8;border-radius: 5px;">모집중</span><br>
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img width=150px height=100px src="./images/dae.jpg">
+            
+        </div>
+        <div class="card">
+            
+            7. <span style="background-color: #e0dd02a8;border-radius: 5px;">모집중</span><br>
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img width=150px height=100px src="./images/dang.jpg">
+            
+        </div>
+        <div class="card">
+            
+            8. <span style="background-color: #e0dd02a8;border-radius: 5px;">모집중</span><br>
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img width=150px height=100px src="./images/gul.jpg">
+            
+        </div>
+        <div class="card">
+            
+            9. <span style="background-color: #e0dd02a8;border-radius: 5px;">모집중</span><br>
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img width=150px height=100px src="./images/ja.jpg">
+            
+        </div>
+        <div class="card" >
+            
+            10. <span style="background-color: #025be0a8;border-radius: 5px;">모집완료</span><br>
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img width=150px height=100px src="./images/mel.jpg">
+            
+        </div>
+        
+    </div>
+
+
+
+
+
+
+
+
+  </div>
+  
+  <br>
+ <hr style="clear: both;">
+ <br>
+  <!-- <div id="itemList"class="Box" include-html="./itemlist/itemList.html"> -->
+  <div id="itemList"class="">
+    
+
+
+
+
+
+
+
+
+    [공구리스트] 
+    <!-- <button>평점▼</button> <button>작성일▼</button> -->
+    
+    <div class="" >
+    
+        <div class="cardSmall" onclick="doGobyAjax('itemView.html')">        
+            1. <span style="background-color: #e0dd02a8;border-radius: 5px;">모집중</span><br>
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img  src="./images/bae.jpg">
+            
+        </div>
+        <div class="cardSmall">
+            
+            2. <span style="background-color: #025be0a8;border-radius: 5px;">모집완료</span><br>
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img  src="./images/go.jpg">
+            
+        </div>
+        <div class="cardSmall">
+            
+            3. <span style="background-color: #e0dd02a8;border-radius: 5px;">모집중</span><br>
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img width=100px height=70px src="./images/ba.jpg">
+            
+        </div>
+        <div class="cardSmall">
+            
+            4. <span style="background-color: #e0dd02a8;border-radius: 5px;">모집중</span><br>
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img width=100px height=70px src="./images/boo.jpg">
+            
+        </div>
+        <div class="cardSmall">
+            
+            5. <span style="background-color: #025be0a8;border-radius: 5px;">모집완료</span><br>
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img width=100px height=70px src="./images/bok.jpg">
+            
+        </div>
+        <div class="cardSmall">
+            
+            6. <span style="background-color: #e0dd02a8;border-radius: 5px;">모집중</span><br>
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img width=100px height=70px src="./images/dae.jpg">
+            
+        </div>
+        <div class="cardSmall">
+            
+            7. <span style="background-color: #e0dd02a8;border-radius: 5px;">모집중</span><br>
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img width=100px height=70px src="./images/dang.jpg">
+            
+        </div>
+        <div class="cardSmall">
+            
+            8. <span style="background-color: #025be0a8;border-radius: 5px;">모집완료</span><br>
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img width=100px height=70px src="./images/gul.jpg">
+            
+        </div>
+        <div class="cardSmall">
+            
+            9. <span style="background-color: #e0dd02a8;border-radius: 5px;">모집중</span><br>
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img width=100px height=70px src="./images/ja.jpg">
+            
+        </div>
+        <div class="cardSmall">
+            
+            10. <span style="background-color: #e0dd02a8;border-radius: 5px;">모집중</span><br>
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img width=100px height=70px src="./images/mel.jpg">
+            
+        </div>
+        <div class="cardSmall">
+            
+            11. <span style="background-color: #e0dd02a8;border-radius: 5px;">모집중</span><br>
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img width=100px height=70px src="./images/sa.jpg">
+          
+        </div>
+        <div class="cardSmall">
+              
+            12. <span style="background-color: #e0dd02a8;border-radius: 5px;">모집중</span><br>
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img width=100px height=70px src="./images/sam.png">
+          
+        </div>
+        <div class="cardSmall">
+            
+            13. <span style="background-color: #e0dd02a8;border-radius: 5px;">모집중</span><br>
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img width=100px height=70px src="./images/soo.jpg">
+          
+      </div>
+      <div class="cardSmall">
+          
+            14. <span style="background-color: #e0dd02a8;border-radius: 5px;">모집중</span><br>
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img width=100px height=70px src="./images/sam.png">
+          
+      </div>
+      <div class="cardSmall">
+          
+            15. <span style="background-color: #025be0a8;border-radius: 5px;">모집완료</span><br>
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img width=100px height=70px src="./images/mel.jpg">
+          
+      </div>
+      <div class="cardSmall">
+          
+            16. <span style="background-color: #e0dd02a8;border-radius: 5px;">모집중</span><br>
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img width=100px height=70px src="./images/bok.jpg">
+        
+      </div>
+      <div class="cardSmall">
+            
+            17. <span style="background-color: #e0dd02a8;border-radius: 5px;">모집중</span><br>
+            과채류/
+            배추나눕니당당당<br>
+            정신우(4.0)/08.11~08.19<br>
+            조회수 4<br>
+            <img width=100px height=70px src="./images/go.jpg">
+        
+      </div>
+
+        
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
 
 </div>
 <script src="./js/main.js"></script>
@@ -391,6 +898,8 @@ aa
 
 
 includeHTML();
+document.querySelector('.hiddenBuy').classList.remove('disappear');
+document.querySelector('.hiddenBuy').classList.add('appear');
 
     function includeHTML(callback) {
         var z, i, elmnt, file, xhr;
@@ -463,13 +972,16 @@ includeHTML();
 
         }
 
-        document.querySelector('.toggle2Span').style.cssText = 'background-color:yellow;';
-        document.querySelector('.toggle1Span').style.cssText = 'background-color:rgb(140, 83, 148);';
+        document.querySelector('.toggle2Span').style.cssText = 'background-color:rgba(255, 255, 0, 0.5);color:rgb(84, 51, 88);';
+        document.querySelector('.toggle1Span').style.cssText = 'background-color:rgba(140, 83, 148, 0.5);color:yellow;';
 
         document.getElementById('buyList').style.display = 'none';
         document.getElementById('buyListHeader').style.display = 'none';
         document.getElementById('selList').style.display = 'block';        
         document.getElementById('selListHeader').style.display = 'block';
+
+        document.querySelector('.hiddenSell').classList.remove('disappear');
+        document.querySelector('.hiddenSell').classList.add('appear');
     
         // document.querySelector('.testslide').style.cssText  = 'background-color:red; width:20px; height:300px;display:flex;transition:1s;';
     
@@ -492,14 +1004,18 @@ includeHTML();
 
       // document.getElementsByName(toggler1).style.cssText = ""
 
-      document.querySelector('.toggle2Span').style.cssText = 'background-color:rgb(140, 83, 148);';
-      document.querySelector('.toggle1Span').style.cssText = 'background-color:yellow;';
+      document.querySelector('.toggle2Span').style.cssText = 'background-color:rgba(140, 83, 148, 0.5);color:yellow;';
+      document.querySelector('.toggle1Span').style.cssText = 'background-color:rgba(255, 255, 0, 0.5);color:rgb(84, 51, 88);';
 
 
       document.getElementById('buyList').style.cssText = 'display:block;transition:2s ease-in-out;';
       document.getElementById('buyListHeader').style.cssText = 'display:block;transition:2s ease-in-out;';
       document.getElementById('selList').style.cssText = 'display:none;transition:2s ease-in-out;';
       document.getElementById('selListHeader').style.cssText = 'display:none;transition:2s ease-in-out;';
+
+
+      document.querySelector('.hiddenBuy').classList.remove('disappear');
+      document.querySelector('.hiddenBuy').classList.add('appear');
 
       //20200820-
 
@@ -520,7 +1036,18 @@ includeHTML();
     }
 
 
-
+    document.querySelector('.trigger').addEventListener('click', function(){
+          document.querySelector('.hidden').classList.remove('disappear');
+            document.querySelector('.hidden').classList.add('appear');
+        });
+        
+        document.querySelector('.hidden').addEventListener('click', function() {
+          const target = this;
+          if (target.classList.contains('appear')) {
+            target.classList.add('disappear');
+            setTimeout(function(){ target.classList.remove('appear')},1001);
+          }
+        });
 
 
 
