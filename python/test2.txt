@@ -1,0 +1,1 @@
+.ipynb_checkpoints20200910.ipynbex20200826-28.ipynbfirstPython.ipynbpython-강사님코드test.pytest.txttest2.txt
