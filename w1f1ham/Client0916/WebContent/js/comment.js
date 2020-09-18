@@ -1,6 +1,6 @@
 //var domain = "http://ec2-54-180-98-41.ap-northeast-2.compute.amazonaws.com:8080/Comment0914(2)";
-var domain = 'http://localhost:8080/comments';
-
+//var domain = 'http://localhost:8080/comments';
+var domain = "http://ec2-54-180-98-41.ap-northeast-2.compute.amazonaws.com:8080/Order0916";
 
 /***** comment : 댓글 리스트 / 등록 / 수정 / 삭제  *****************************/
 
