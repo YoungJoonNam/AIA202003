@@ -212,7 +212,7 @@ public class ItemController {
 		//System.out.println("oidxArr[1] : "+oidxArr[1]);
 
 		System.out.println("oidxArr.size() : "+oidxArr.size()); //1dl 나온다..
-		System.out.println("oidxArr.get(0) : "+oidxArr.get(0));  //null이 나온다..
+//		System.out.println("oidxArr.get(0) : "+oidxArr.get(0));  //null이 나온다..
 		
 		//hashmap 값받아오는 방법공부필요..
 		
@@ -239,7 +239,8 @@ public class ItemController {
 
 		//return selectBuyerService.selectBuyer(iidx, buyer); 
 		//return selectBuyerService.selectBuyer(buyerArr); 
-		return 0;
+		//return 0;
+		return selectBuyerService.selectBuyer(oidxArr);
 	};
 	
 	

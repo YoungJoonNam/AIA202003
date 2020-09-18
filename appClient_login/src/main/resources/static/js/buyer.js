@@ -1,8 +1,16 @@
-var domain = "http://ec2-54-180-98-41.ap-northeast-2.compute.amazonaws.com:8080/Order0916";
+//var domain = "http://ec2-54-180-98-41.ap-northeast-2.compute.amazonaws.com:8080/Order0916";
+
 //var domain = "http://localhost:8080/order";
 
 //var loginMidx = 1;
 //var loginName = 'Park Hye Mi';
+
+//20200918
+var domain = "http://localhost:8080/Order0916";
+
+var loginMidx = 1;
+var loginName = 'Park Hye Mi';
+
 
 /***** buyer : aside 구매자 ************************************************************************/
 /***** - 내구매글 리스트 / 현황별 기능(참여신청, 참여취소, QR보기, 평점등록, 글숨김) **********/

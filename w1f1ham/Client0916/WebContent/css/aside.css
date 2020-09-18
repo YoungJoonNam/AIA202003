@@ -434,9 +434,46 @@
 
 
 
+ #qrCodeArea{
+               
+   top:140px;
+   left:50%;
+   margin-left :-125px;
+   
+   background-color:white;
+   width:250px;
+   height:320px;
+   position:absolute;
+   z-index: 3;            
+   
+   border: 2px solid lightpink;
+   display:none;
+   text-align:center;
+   
+ }
 
+.btnStyleQR {            
+    border-radius: 5px;    
+    background-color :red;
+    color : white;
+    font-weight : 900;
+    /* color:black; */    
+    /* margin-left: 5px; */
+    /* margin-right: -2px; */
+    width: 75px;
+    height: 20px;
+    text-align: center;    
+    font-size :12px;
+    line-height: 10px;
 
+    
+}
 
+.btnStyleQR:hover {
+    color: black;
+    background-color: white;
+    border-color:  gray; 
+}
 
 
 

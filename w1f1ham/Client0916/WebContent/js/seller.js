@@ -5,7 +5,7 @@ var loginMidx = 1;
 
 
 
-/***** seller : aside 판매자 ************************************************************************/
+/***** seller : aside 판매자 MySale  ************************************************************************/
 /***** - 내판매글 리스트 / 참여자 리스트 / 현황별 기능(구매자선정,거절,자동거절,평점,글숨김) **********/
 
 // var loginInfo = sessionStorage.getItem("loginInfo");
@@ -16,6 +16,9 @@ var loginMidx = 1;
 
 $(document).ready(function(){
 
+	openNav();
+	selectedMyOrder();
+	
     /* ing 나의 공구구매현황[구매자] - 평점등록  */
     /* 별 표시  */
     /* 1. Visualizing things on Hover - See next part for action on click */
@@ -80,15 +83,26 @@ $(document).ready(function(){
 
 // 리스트 관련 --------------------------------------------------------------------------------------
 
+function checkQR(oidx){
+  
+  url = "https://www.dreambal.com/w1f1/qrcheck.php";
+  window.open(url,"checkQR","width=300,height=300");
+
+}
+
+
 	/* 내 구매현황 탭 클릭 */
 	$('.btn_myItemlist').click(function(){
+		selectedMySale();
+	});
+
+	function selectedMySale() {
 		$('.aside_myOrderlist').css('display','none');
 		$('.aside_myItemlist').css('display','block');
 		$('.btn_myItemlist').css('background-color','rgb(87, 2, 87)');
 		$('.btn_myOderlist').css('background-color','purple');
 		myitem(loginMidx);
-	});
-
+	}
 
 
 	/* 내 판매글 리스트보기  */
@@ -129,7 +143,7 @@ $(document).ready(function(){
 					}	
 					
 
-					html += '<div class="aside_mycard iidx'+data[i].iidx+'">';
+					html += '<div class="aside_mycard iidx'+data[i].iidx+'">';					
 					html += '	<div class="aside_mystatewrap aside_state '+stateColor+'"></div>';
 					html += '   <span>'+data[i].label+'</span><span class="alarm sa'+data[i].iidx+'" onclick="cancleAlarm('+data[i].iidx+','+data[i].buyer+')">a</span>';
 					
@@ -142,8 +156,8 @@ $(document).ready(function(){
 					html += '	<div class="aside_mybuyer_list_'+data[i].iidx+'" style="display: block;"></div>';
 					html += '</div>';
 
-					// 해당 판매글의 참여자 리스트 
-					mybuyer(data[i].iidx, state, data[i].count_m);
+					// 해당 판매글의 참여자 리스트
+					mybuyer(data[i].iidx, state, data[i].count_m, stateColor);
 
 				}
 				
@@ -162,7 +176,7 @@ $(document).ready(function(){
 
 	/* 내 판매글 참여자 리스트보기  */
 	/* iidx 받아서 ㅡ> 구매자 목록(구매자 이름, 평균평점, 총평점개수 + ostate, pstate선택) 화면출력 */
-	function mybuyer(iidx, state, count_m) {
+	function mybuyer(iidx, state, count_m, stateColor) {
 
 		$.ajax({
 			url: domain+'/items/mybuyer/'+iidx,
@@ -172,12 +186,11 @@ $(document).ready(function(){
 				var buyerState = '';
 				var btn_sellerActionName = '';
 				var btn_sellerAction = '';
-				var stateColor= '';
+				//var stateColor= '';
 				var html = '';
+				//alert(stateColor);
 				
-							
-				//html += '<div><button id="qrCheckBtn" class="btn_QRCheck" onclick="doCheckQr()">QR체크</button></div>';
-				
+				html += '<hr style="clear: both;width:75%">';								
 				for(var i=0; i<data.length; i++){
 					
 					switch(state){
@@ -198,8 +211,8 @@ $(document).ready(function(){
 								btn_sellerActionName = 'QR발급';
 								btn_sellerAction = 'insertQR';
 							} else {
-								btn_sellerActionName = 'QR보기';
-								btn_sellerAction = 'viewQR';
+								btn_sellerActionName = 'QRcode체크';
+								btn_sellerAction = 'checkQR';
 							}
 							break;
 						
@@ -227,8 +240,9 @@ $(document).ready(function(){
 					}
 					
 					// 참여자(또는 구매자) 이름. 평균평점. 총평점수 - 기본출력
-						//html += '<hr>';
-						html += '<div class="aside_mybuyer iidx'+data[i].iidx+'">';
+						
+						html += '<hr style="clear: both;width:50%">';						 
+						html += '<div class="aside_mybuyer iidx'+data[i].iidx+' '+stateColor+'">';						
 						html += '   <span class="buyerState '+stateColor+'">'+buyerState+' | </span>';
 						html += '	<span class="buyer_name midx'+data[i].buyer+'">'+data[i].name+'</span>';
 						html += '  	<span class="rvb_avg">별'+data[i].rvb_avg+'</span><span class="rvb_total">/'+data[i].rvb_totalRow+'</span><br>';
@@ -241,7 +255,7 @@ $(document).ready(function(){
 
 					// 모집완료 일때, QR 생성 또는 보기 버튼 출력   
 					} else if(state==1){
-						html += '    <button type="button" class="btn_sellerAction '+btn_sellerAction+'" onclick="'+btn_sellerAction+'('+data[i].oidx+')">'+btn_sellerActionName+'</button>';
+						html += '    <button type="button" class="btnStyleQR '+btn_sellerAction+'" onclick="'+btn_sellerAction+'('+data[i].oidx+')">'+btn_sellerActionName+'</button>';
 						
 
 					// 판매완료 일때, 평점등록 버튼 출력 	
@@ -265,7 +279,7 @@ $(document).ready(function(){
 
 				// 모집중 일때, 거절 또는 구매자선정 최종확인 버튼 출력
 				if(state==0){
-					html += '    	<span class="select_buyer_msg">*구매자 확정은 구매자를 모두 선정 한 후, 한번에 하실 수 있습니다. </span>';
+					html += '    	<br><br><br><span class="select_buyer_msg">*구매자 확정은 구매자를 모두 선정 한 후, 한번에 하실 수 있습니다. </span>';
 					html += '    	<input type="button" class="btn_sellerAction select_buyer_ok" onclick="selectBuyer('+iidx+','+count_m+')" value="구매자 선정 확인">';
 					html += '    	<input type="button" class="btn_sellerAction delitem" onclick="delItem('+iidx+')" value="글삭제">';
 					//html += '    </form>';
@@ -296,7 +310,7 @@ $(document).ready(function(){
 					// }
 				}
 				
-
+				
 				html += '</div>';
 
 
@@ -374,7 +388,9 @@ $(document).ready(function(){
 	/* 나의 공구판매현황[모집중] - 참여자 구매자 선정 ㅡ> 확정 처리 */
 	function selectBuyer_ok(iidx, oidxArr){
 		
-		var selectData = { "oidxArr" : oidxArr };
+		var selectData = { "list" : oidxArr };
+		//var selectData = { "oidxArr" : oidxArr };
+		//var selectData = oidxArr;
 		//alert('selectData.buyerArr : '+ selectData.oidxArr);
 
 		// var selectData = {
@@ -494,10 +510,26 @@ $(document).ready(function(){
 			url : domain+'/items/qr/'+oidx,
 			type : 'GET',
 			success : function(data){
-				alert('발급된 qr코드 : '+data);
+			
+				document.getElementById('qrCodeArea').style.display = 'block';
+				document.getElementById('qrCodeIn').innerHTML = '';
+				jQuery('#qrCodeIn').qrcode({
+				      render	: "canvas",
+				      width : 200,
+				      height : 200,
+				      text	: data
+				});
+			
+				
 			}
 
 		})
+	}
+	
+	
+	function closeQrCode() {
+		document.getElementById('qrCodeArea').style.display = 'none';
+		document.getElementById('qrCodeIn').innerHTML = '';
 	}
 
 

@@ -17,7 +17,7 @@ public class Item {
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
 	private Timestamp receive;		// 물품수령일시
 	private String addr;			// 판매처
-	private String location;		// 좌표
+	private String location_y;		// 좌표
 	private String content;			// 게시글 본문
 	private String photo;			// 첨부사진
 	private int state;				// 게시글 현황
@@ -42,7 +42,7 @@ public class Item {
 		this.regdate = regdate;
 		this.receive = receive;
 		this.addr = addr;
-		this.location = location;
+		this.location_y = location;
 		this.content = content;
 		this.photo = photo;
 		this.state = state;
@@ -55,10 +55,10 @@ public class Item {
 	// ItemRequest ㅡ> Item
 	// ItemRegRequest에서 객체로 변환하기 위한 생성자(iidx, regdate없음)
 	// iidx=0, regdate=null, photo=null 
-	public Item(String title, int price, int count_m, int count_w, Timestamp receive, String addr, String location,
+	public Item(String title, int price, int count_m, int count_w, Timestamp receive, String addr, String location_y,
 			String content, int state, int view_count, int category, int midx) {
 		this(0, title, price, count_m, count_w, null, receive, addr, 
-				location, content, null, state, view_count, category, midx);
+				location_y, content, null, state, view_count, category, midx);
 	}
 
 
@@ -133,11 +133,11 @@ public class Item {
 	}
 	
 	public String getLocation() {
-		return location;
+		return location_y;
 	}
 	
-	public void setLocation(String location) {
-		this.location = location;
+	public void setLocation(String location_y) {
+		this.location_y = location_y;
 	}
 	
 	public String getContent() {
@@ -209,7 +209,7 @@ public class Item {
 				"  , regdate=" + regdate + 
 				"  , receive=" + receive + 
 				"  , addr=" + addr + 
-				"  , location="+ location + 
+				"  , location_y="+ location_y + 
 				"  , content=" + content + 
 				"  , photo=" + photo + 
 				"  , state=" + state + 

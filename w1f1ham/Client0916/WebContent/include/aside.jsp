@@ -15,7 +15,7 @@
       </a> -->
       <!-- 로그아웃 버튼 -->
       <button type="button" class="btn_logout" onclick="location.href='/logout'">Logout</button>
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
          
 
       <div class="asideContext">
@@ -47,8 +47,22 @@
                </div>  
          
          </div> <!-- aside_mylist end -->
+         
+         
       
       </div>
+      
+      
+	<div id="qrCodeArea">        
+		  <br><br>
+		  
+		  <div id="qrCodeIn"></div>
+		  <br>
+		  <button type="button" class="btnStyleQR" onClick="closeQrCode()">닫기</button>
+		  <br>
+		  
+		        
+	</div>
 
 
 

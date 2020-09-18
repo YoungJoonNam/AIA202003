@@ -4,7 +4,7 @@ var domain = "http://localhost:8080/Order0916";
 var loginMidx = 1;
 var loginName = 'Park Hye Mi';
 
-/***** buyer : aside 구매자 ************************************************************************/
+/***** buyer : aside 구매자 MyOrder ************************************************************************/
 /***** - 내구매글 리스트 / 현황별 기능(참여신청, 참여취소, QR보기, 평점등록, 글숨김) **********/
 
 // var loginInfo = sessionStorage.getItem("loginInfo");
@@ -15,15 +15,31 @@ var loginName = 'Park Hye Mi';
 
 // aside 영역 관련 -----------------------------------------------------------------------------------
 
+var stateToggleNav = 1;
+
+function toggleNav() {
+
+	if(stateToggleNav == 1){
+		openNav();
+		stateToggleNav = 0;
+	}
+	else {
+		closeNav();
+		stateToggleNav = 1;
+	}
+}
+
 function openNav() {
     $("#mySidenav").css("width","400px");
-    $("#main").css("margin-left","450px");
+    $("#mySidenav").css("left","0px");
+    $("#main").css("margin-left","400px");
     $("#main").css("margin-right","100px");
     $('.asideContext').css('display','inline-block');
 }
   
 function closeNav() {
-    $("#mySidenav").css("width","0px");
+    $("#mySidenav").css("width","-0px");
+    $("#mySidenav").css("left","-100px");
     $("#main").css("margin-left","200px");
     $("#main").css("margin-right","200px");
     $('.asideContext').css('display','none');
@@ -64,13 +80,21 @@ function profile() {
 /* 내 구매현황 탭 클릭 */
 $('.btn_myOderlist').click(function(){
 
+	selectedMyOrder();
+
+});
+
+
+function selectedMyOrder() {
+
     $('.aside_myItemlist').css('display','none');
     $('.aside_myOrderlist').css('display','block');
     $('.btn_myItemlist').css('background-color','purple');
     $('.btn_myOderlist').css('background-color','rgb(87, 2, 87)');
     myOrder(loginMidx);
 
-});
+}
+
 
 
 /* 내 구매현황 출력*/
@@ -130,7 +154,7 @@ function myOrder(loginMidx){
                 
                     // 구매자 ㅡ> QR보기 버튼 활성화
                 } else if(state==2){
-                    html += '  	  <button type="button" class="btn_buyerAction viewQR" onclick="viewQR('+data[i].iidx+','+data[i].buyer+')">QRcode</button>';
+                    html += '  	  <button type="button" class="btnStyleQR" onclick="viewQR('+data[i].oidx+')">QRcode</button>';
                     
                     // 구매완료 ㅡ> 평점등록 버튼 활성화
                 } else if(state==3){

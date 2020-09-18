@@ -36,19 +36,14 @@
   <!-- !PAGE CONTENT! -->
   <div id="main" class="w3-main" style="margin-left:450px;margin-right:40px">
 
-
     <!-- header영역 : 타이틀. 검색 -->
     <%@include file="include/header.jsp"%>
     <hr>
 
-
-
     <!-- content영역 : 공구등록폼 / 공구상세보기/ 공구리스트(추천글.일반글) -->
-    
 
       <!-- content영역-1 : 공구등록 폼 -->
       <%@include file="include/regItemForm.jsp"%>
-
 
       <!-- content영역-2 : 공구상세영역  -->
       <div id="itemView_area" class="itemView_area">
@@ -63,8 +58,6 @@
         </div> <!-- comments_area end -->
 
       </div> <!-- itemView_area end -->
-
-
 
       <!-- content영역-3 : 공구리스트(추천글.일반글) -->
       <div id="itemlist_area">
@@ -134,7 +127,7 @@
 
   <!-- footer -->
   <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
-    <p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p>
+    <p class="w3-right">W1F1</p>
   </div>
 
   
@@ -148,6 +141,9 @@
   <script text="text/javascript" src="js/seller.js"></script> <!-- aside 판매자 -->
   <script text="text/javascript" src="js/buyer.js"></script>  <!-- aside 구매자 -->
   <script text="text/javascript" src="js/item.js"></script>   <!-- 공구 검색 / 리스트 출력 / 정렬 / 등록 / 삭제 -->
+  <script src="./js/jquery.qrcode.js"></script>
+  <script src="./js/qrcode.js"></script>
+    
     
     
 

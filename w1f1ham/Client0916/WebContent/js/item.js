@@ -557,7 +557,7 @@ $(document).ready(function(){
 				html += '		<tr><td>작성자 평균평점</td><td>'+data.rvs_avg+'</td></tr>';
 				html += '		<tr><td>작성자 총평점수</td><td>'+data.rvs_totalRow+'</td></tr>';
 				html += '		<tr><td>조회수</td><td>'+data.view_count+'</td></tr>';
-				html += '		<tr><td>첨부사진</td><td><img class="item_img" src="/order/upload/'+data.photo+'"></td></tr>';
+				html += '		<tr><td>첨부사진</td><td><img class="item_img" src="/Order0916/upload/'+data.photo+'"></td></tr>';
 				html += '		<tr><td>카테고리</td><td>'+data.category+'</td></tr>';
 				html += '		<tr><td>가격</td><td>'+data.price+'</td></tr>';
 				html += '		<tr><td>모집정원</td><td>'+data.count_m+'</td></tr>';
