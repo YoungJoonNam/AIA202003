@@ -155,6 +155,9 @@ $(document).ready(function(){
 	/* 모든 공구글 리스트 */
 	function allItemlist(){
 		//alert('allItemlist'); //20200920
+		$('.commentlistWrap').css('display','none');
+		
+		allItemlist
 		recomItemlist();
 		itemlist();
 	};
@@ -751,7 +754,7 @@ $(document).ready(function(){
 				html += '	<h2 class="w3-xlarge text-purple"><b>Item View</b></h2>';
 				html += '	<hr style="width:50px;border:5px solid purple;"  class="w3-round">';
 				//html += '	<img class="detail_img" src="/order/upload/'+data.photo+'" style="">';
-				html += '	<img class="detail_img" style="" src="'+imgPath+'" alt="'+imgPath+'">';
+				html += '	<img class="detail_img" width=80% style="" src="'+imgPath+'" alt="'+imgPath+'">';
 				
 				html += '<div class="itemView_detail">';
 				
@@ -806,6 +809,9 @@ $(document).ready(function(){
 
 				// 댓글등록 폼 출력
 				regCommentForm(iidx);
+				
+				$('.commentlistWrap').css('display','block');
+				
 
 				
 			}

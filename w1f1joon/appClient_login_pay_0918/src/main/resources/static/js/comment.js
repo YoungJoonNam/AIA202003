@@ -1,6 +1,6 @@
 
-//var domainC = "http://http://ec2-13-209-70-0.ap-northeast-2.compute.amazonaws.com:8080";
-var domainC = "http://localhost:8082/comments";
+var domainC = "http://ec2-13-209-70-0.ap-northeast-2.compute.amazonaws.com:8080/comments";
+//var domainC = "http://localhost:8082/comments";
 
 //var domain = 'http://localhost:8080/comments';
 
@@ -69,8 +69,8 @@ function getComment(iidx) {
 					html +='							<div class="comment_actions comment_actions_'+data[i].cidx+'">';
 					
 					if(data[i].midx == loginMidx){
-						html +='								<button type="button" class="btn_editComment" onclick="editCommentForm('+data[i].cidx+')">수정</button>';
-						html +='								<button type="button" class="btn_delComment" onclick="delCommant('+data[i].cidx+')">삭제</button>';
+						html +='								<button type="button" class="btnComments" onclick="editCommentForm('+data[i].cidx+')">수정</button>';
+						html +='								<button type="button" class="btnComments" onclick="delCommant('+data[i].cidx+','+iidx+')">삭제</button>';
 					}
 
 //					html +='								<button type="button" onclick="">Reply</button>';
@@ -185,10 +185,10 @@ function editCommentForm(cidx) {
 	// alert('댓글수정 시작 content : '+content);
 
 
-	html +='						<textarea class="comment_content_'+cidx+'" required>'+content+'</textarea>';
+	html +='<textarea cols="50" rows="3" class="comment_content_'+cidx+'" required>'+content+'</textarea>';
 	$(".comment_text_"+cidx).html(html);
 
-	html2 +='						<button type="button" onclick="editComment('+cidx+')">수정</button>';
+	html2 +='						<button type="button" class="btnComments" onclick="editComment('+cidx+')">수정</button>';
 	$(".comment_actions_"+cidx).html(html2);
 
 };
@@ -224,7 +224,7 @@ function editComment(cidx) {
 } // editComment() end
 
 /* 댓글 삭제 */
-function delCommant(cidx) {
+function delCommant(cidx,iidx) {
 
 	if (confirm('댓글을 삭제하시겠습니까?')) {
 
@@ -235,7 +235,9 @@ function delCommant(cidx) {
 
 				if (data == 1) {
 					alert('댓글을 삭제했습니다.');
-					getComment(cidx);
+					console.log('댓글삭제 : '+data);					
+					//getComment(data);
+					getComment(iidx);
 
 				} else {
 					alert('댓글을 삭제하지 못했습니다. 다시 시도해주세요.');

@@ -1,6 +1,11 @@
-var domain = "http://localhost:8080/order";
-var loginMidx = 1;
-var loginName = 'Park Hye Mi';
+//var domain = "http://localhost:8080/order";
+var domain = "http://ec2-54-180-98-41.ap-northeast-2.compute.amazonaws.com:8080/order"
+var loginInfo = document.getElementById("loginInfo").value;
+var loginMidx = document.getElementById("loginMidx").value;
+var loginName = document.getElementById("loginName").value;
+
+//var loginMidx = 1;
+//var loginName = 'Park Hye Mi';
 
 
 
@@ -33,14 +38,21 @@ var loginName = 'Park Hye Mi';
 
 // 프로필 관련 --------------------------------------------------------------------------------------
 function profile() {
+
+	var loginInfo = document.getElementById("loginInfo").value;
+	var loginMidx = document.getElementById("loginMidx").value;
+	var loginName = document.getElementById("loginName").value;
+	var loginImg = document.getElementById("loginImg").value;
+	var html='';
+	
     $.ajax({
         url : domain+'/orders',
         type : 'GET',
         success : function(data){
-
-            var html='';
+            
             html +='<div class="aside_myimg">';
-            html +='    <img src="img/사과.jpg">';
+            //html +='    <img src="img/사과.jpg">';
+            html +='    <img src="'+loginImg+'">';
             html +='</div>';
             html +='<div class="aside_myprofile">';
             html +='    <h3><b>'+loginName+'</b></h3>';

@@ -5,9 +5,9 @@
    <div class="w3-container" id="showcase" style="margin-top: 40px;">
    
       <!-- 타이틀 로고 -->
-      <div class="mainTitle">         
+      <div id="mainTitle" class="mainTitle">         
          <span class="btn_hamburger" style="font-size:30px;cursor:pointer" onclick="toggleNav()">&#9776; </span>
-         <h1 class="w3-xxlarge" style="display: inline;"><b> W 1 F 1</b> 같이 사는 가치</h1>
+         <h1 class="w3-xlarge" style="display: inline;"><b> W 1 F 1</b> 같이 사는 가치</h1>
       </div>
 
       <!-- 검색영역 -->

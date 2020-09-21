@@ -52,10 +52,12 @@
       <%@include file="include/regItemForm.jsp"%>
 
 
-      <!-- content영역-2 : 공구상세영역  -->
-      <div id="itemView_area" class="itemView_area">
-        <!-- 공구상세 내용 -->
-        <div id="itemView_context"></div>
+      	<!-- content영역-2 : 공구상세영역  -->
+      	<div class="itemViewWrap">
+	      	<div id="itemView_area" class="itemView_area">
+	        <!-- 공구상세 내용 -->
+	        <div id="itemView_context"></div>
+        </div>
         
         <!-- 댓글 리스트 -->
         <div class="commentlistWrap">
@@ -139,8 +141,8 @@
         </div>  <!-- Item area end -->
         
         	<br><br>
-               <button type="button" class="btn btn-outline-secondary" id="showmore_btn" style="margin: auto; padding: 10px 30px; display: block; text-align: center; cursor:pointer; display: block;"  onclick="itemlist()">더보기 +</button>
-               <button type="button" class="btn btn-outline-secondary" id="showmore_btn" style="margin: auto; padding: 10px 30px; display: block; text-align: center; cursor:pointer; display: none;" onclick="ratingSort()">더보기 +</button>
+               <button type="button" class="btnMore" id="showmore_btn" style="margin: auto; padding: 10px 30px; display: block; text-align: center; cursor:pointer; display: block;"  onclick="itemlist()">더보기 +</button>
+               <button type="button" class="btnMore" id="showmore_btn" style="margin: auto; padding: 10px 30px; display: block; text-align: center; cursor:pointer; display: none;" onclick="ratingSort()">더보기 +</button>
            	<br><br>
 
 

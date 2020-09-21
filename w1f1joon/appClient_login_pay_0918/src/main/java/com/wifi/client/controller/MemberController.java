@@ -66,6 +66,8 @@ public class MemberController {
 	    	String checkId = (String) userInfo.get("id");
 	    	// checkMemberService.checkMember(req, checkId);
 	        session.setAttribute("userInfo", userInfo);
+	     // 0921 김승연 추가 : profile
+	        session.setAttribute("profile_img", (String)userInfo.get("profile_image"));
 	        
 	        //view = memberCheck(req, checkId);
 	        check = memberCheck(req, checkId);
@@ -75,6 +77,8 @@ public class MemberController {
 	    	model.addAttribute("name", (String) userInfo.get("name"));
 			model.addAttribute("email", (String) userInfo.get("id"));
 			model.addAttribute("new_member", true);
+			// 0921 김승연 추가 : profile
+	        session.setAttribute("profile_img", (String)userInfo.get("profile_image"));
 			session.setAttribute("access_Token", access_Token);
 			
 			view = "login";
@@ -98,6 +102,8 @@ public class MemberController {
 	    session.removeAttribute("loginName");
 	    session.removeAttribute("loginMidx");
 	    session.removeAttribute("loginInfo");
+	 // 0921 김승연 추가
+	    session.removeAttribute("profile_img");
 	    session.removeAttribute("access_Token");
 	    
 	    // 가람 수정 0917

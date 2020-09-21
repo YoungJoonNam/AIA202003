@@ -13,7 +13,7 @@ document.write("<script src='js/_define.js'></script>");
 
 // aside 영역 관련 -----------------------------------------------------------------------------------
 
-var stateToggleNav = 1;
+var stateToggleNav = 0;
 
 function toggleNav() {
 
@@ -33,14 +33,36 @@ function openNav() {
     $("#main").css("margin-left","400px");
     $("#main").css("margin-right","100px");
     $('.asideContext').css('display','inline-block');
+    
+    $(".mainTitle").css("padding-left","0px");
+    $('.mainTitle').css('left','400px');
+    $('.mainTitle').css('text-align','left');
+    $('.mainTitle').css('border-bottom-left-radius','0px');
+    $(".mainTitle").css("margin-left","0px");
+     
+    $("#mySidenav").css("opacity","1");
+    $("#mySidenav").css("transition","1.5s linear");
+    $('.mainTitle').css("transition","1.5s linear");
 }
   
 function closeNav() {
     $("#mySidenav").css("width","0px");
     $("#mySidenav").css("left","-100px");
+    
     $("#main").css("margin-left","200px");
     $("#main").css("margin-right","200px");
     $('.asideContext').css('display','none');
+    
+    $(".mainTitle").css("width","120%");
+    $(".mainTitle").css("padding-left","150px");
+    $('.mainTitle').css('left','-100px');
+    $('.mainTitle').css('text-align','left');
+    $('.mainTitle').css('border-bottom-left-radius','20px');
+    
+    
+    $("#mySidenav").css("opacity","0");
+    $("#mySidenav").css("transition","1.9s linear");
+    $('.mainTitle').css("transition","1.5s linear");
 }
 
 

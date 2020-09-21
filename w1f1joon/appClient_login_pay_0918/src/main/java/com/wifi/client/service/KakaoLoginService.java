@@ -130,9 +130,31 @@ public class KakaoLoginService {
 			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
 			String email = kakao_account.getAsJsonObject().get("email").getAsString();
 
+			// 0921 김승연 추가 : profile
+	        String profile_img = "";
+	        // properties.getAsJsonObject().get("profile_image").getAsString();
+	        System.out.println("프사 null 확인 : " + properties.has("profile_image"));
+			
+	        if(properties.has("profile_image")) { 
+			  
+				profile_img = properties.getAsJsonObject().get("profile_image").getAsString();
+			  	System.out.println(profile_img); 
+			  	
+			} else { 
+				// 프로필 사진이 없을 시 출력할 기본사진 경로
+			  	profile_img = "http://localhost:8080/order/upload/default.jpg";	
+		  		System.out.println("프사없음"); 
+			  	
+		  	}
+			
+			
+			
 			userInfo.put("id", email);
 			userInfo.put("name", nickname);
 			userInfo.put("access_Token", access_Token);
+			
+			// 0921 김승연 추가 : profile
+	        userInfo.put("profile_image", profile_img);
 
 		} catch (IOException e) {
 			e.printStackTrace();

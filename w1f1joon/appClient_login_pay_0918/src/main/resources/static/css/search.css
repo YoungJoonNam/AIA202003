@@ -67,11 +67,52 @@
 	color : white;	
 }
 
+.btnMore {
+	width: 150px;
+	height: 40px;
+	border-radius: 10px;
+	background-color: purple;
+	color : lightgoldenrodyellow;
+	border: none;
+	cursor: pointer;
+	display: inline-block;
+	/*float: right;*/
+	margin-right: 10px;
+}
+
+.btnMore:hover {	
+	background-color: lightgoldenrodyellow;
+	color : purple;	
+}
+
+.btnComments {
+	width: 40px;
+	height: 20px;
+	border-radius: 10px;
+	background-color: purple;
+	color : lightgoldenrodyellow;
+	border: none;
+	cursor: pointer;
+	/*display: inline-block;*/
+	/*float: right;*/
+	margin-right: 10px;
+}
+
+.btnComments:hover {	
+	background-color: lightgoldenrodyellow;
+	color : purple;	
+}
+
+
+
+
 #search_area h4 {
 	display: inline;
 	font-size: 0.8em;
 	float: right;
 }
+
+
 
 /* 카테고리 검색 : card 출력상태로 변경할 때 */
 .show {
