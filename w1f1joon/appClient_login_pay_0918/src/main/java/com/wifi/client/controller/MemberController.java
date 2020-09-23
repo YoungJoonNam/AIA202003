@@ -35,7 +35,7 @@ public class MemberController {
 // 카카오 로그인. 로그아웃 관련 ------------------------------------------------------------------------------------
 	
 	@GetMapping
-	//@RequestMapping("index")
+	//@RequestMapping("client")
 	public String index(HttpSession session) {
 		
 		String loginUrl = kakao.getLoginUrl(session);

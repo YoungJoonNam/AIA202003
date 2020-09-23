@@ -33,13 +33,19 @@
 
          </div>
          
-            
-
-
-         <!-- 탭버튼 내용 영역 : My Sale . My Order-->
+         <!-- 탭버튼 내용 영역 : My Sale . My Order       -->
          <div class="aside_tabs">
-            <div class="aside_tab"><button type="button" class="btn_myItemlist btn_tab">My Sale <h4 id="alarm_s"></h4></button></div>
-            <div class="aside_tab"><button type="button" class="btn_myOderlist btn_tab">My Order<h4 id="alarm_b"></h4></button></div>
+         	<table width=100% border=0 >
+         	<tr>
+         	<td>
+         		<span class="aside_tab"><button type="button" class="btn_myItemlist btn_tabA">My Sale <h4 id="alarm_s"></h4></button></span>
+         	</td>
+         	<td>
+         		<span class="aside_tab"><button type="button" class="btn_myOderlist btn_tabA">My Order<h4 id="alarm_b"></h4></button></span>
+         	</td>
+         	</tr>
+         	</table>            
+            
          </div> 
             
 
@@ -50,7 +56,7 @@
                <div id="aside_myOrderlist" class="aside_myOrderlist"></div>  
 
                <!-- 내 판매현황 -->
-               <div id="aside_myItemlist" class="aside_myItemlist"> </div>  
+               <div id="aside_myItemlist" class="aside_myItemlist"></div>  
          
          </div> <!-- aside_mylist end -->
       

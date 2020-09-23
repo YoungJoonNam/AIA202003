@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
 #search_area {
-	width: 50%;
-	height: 100px;
+	width: 70%;
+	height: 120px;
 	float: right;
 	/* background-color: teal; */
 	display: inline-block;

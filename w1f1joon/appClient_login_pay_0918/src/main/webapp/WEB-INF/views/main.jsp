@@ -2,13 +2,13 @@
    pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Main Page</title>
 
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="css/regForm.css" type="text/css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300;500;700&display=swap" > <!-- 영문폰트 -->
   <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet"> <!-- 한글폰트 -->
   
@@ -25,8 +25,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>  <!-- 평점등록 시 별 마우스오버 계속 반응  -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script> <!-- 날짜포멧 -->
   <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>   <!-- 데이터를 정렬/필터/색인할 수 있게 도와주는 오픈소스 Javascript Utility Library -->
-  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c35fdaa3a50bc0c680e435eb402d8491"></script><!-- 판매처 지도표시를 위한 카카오 지도 api  -->
-  
+  <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script><!-- 판매처 지도표시를 위한 카카오 지도 api  -->
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c35fdaa3a50bc0c680e435eb402d8491&libraries=services"></script><!-- 공구 지도를 위한 카카오 지도 api  -->
+  <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>       <!-- webSocket -->
+  <script src="js/socket.js"></script>  <!-- Socket 객체 생성 -->
   
 </head>
 <body>
@@ -37,6 +39,9 @@
 
   <!-- !PAGE CONTENT! -->
   <div id="main" class="w3-main" style="margin-left:450px;margin-right:40px">
+  	<input type="hidden" id="loginMidx" value="${loginMidx}">
+    <input type="hidden" id="loginInfo" value="${loginInfo}">
+    <input type="hidden" id="loginName" value="${loginName}">
 
 
     <!-- header영역 : 타이틀. 검색 -->
@@ -92,7 +97,7 @@
 					<option value="both">제목 + 게시자</option>
 				</select>
 				<input type="text" name="search" class="search" placeholder="Search.." id="keywordBox"><br>
-				<input type="submit" value="검색" onclick="searchList();">
+				<input type="submit" value="검색" style="width:120px;background-color: purple;color:white;border-radius:5px;" onclick="searchList();">
               </div>
               <div class="CategorySearch">
                 <button type="button" class="btn_search_category" onclick="filterSelection('category3')">생필품/기타</button>
@@ -141,8 +146,11 @@
         </div>  <!-- Item area end -->
         
         	<br><br>
-               <button type="button" class="btnMore" id="showmore_btn" style="margin: auto; padding: 10px 30px; display: block; text-align: center; cursor:pointer; display: block;"  onclick="itemlist()">더보기 +</button>
+               <!--<button type="button" class="btnMore" id="showmore_btn" style="margin: auto; padding: 10px 30px; display: block; text-align: center; cursor:pointer; display: block;"  onclick="itemlist()">더보기 +</button>
                <button type="button" class="btnMore" id="showmore_btn" style="margin: auto; padding: 10px 30px; display: block; text-align: center; cursor:pointer; display: none;" onclick="ratingSort()">더보기 +</button>
+               -->
+               <button type="button" class="btnMore" id="showmore_btn" style="margin: auto; padding: 10px 30px; text-align: center; cursor:pointer; display: block;"  onclick="itemlist()">더보기 +</button>
+               <button type="button" class="btnMore" id="showrating_btn" style="margin: auto; padding: 10px 30px;  text-align: center; cursor:pointer; display: none;" onclick="sortingRvs()">더보기 +</button>
            	<br><br>
 
 
@@ -168,12 +176,12 @@
   <script src="js/swiper.min.js"></script>
   <script src="js/swiper.js"></script>
   <script src="js/_define.js"></script>
-  <script src="js/map.js"></script>  <!-- aside 구매자 -->
-  
-  <script text="text/javascript" src="js/comment.js"></script>  <!-- 댓글 -->
-  <script text="text/javascript" src="js/seller.js"></script> <!-- aside 판매자 -->
-  <script text="text/javascript" src="js/buyer.js"></script>  <!-- aside 구매자 -->
-  <script text="text/javascript" src="js/item.js"></script>   <!-- 공구 검색 / 리스트 출력 / 정렬 / 등록 / 삭제 -->
+  <!-- <script src="js/map.js"></script> -->  <!-- map -->
+  <script src="js/alarm.js"></script>   <!-- webSocket -->
+  <script src="js/comment.js"></script>  <!-- 댓글 -->
+  <script src="js/seller.js"></script> <!-- aside 판매자 -->
+  <script src="js/buyer.js"></script>  <!-- aside 구매자 -->
+  <script src="js/item.js"></script>   <!-- 공구 검색 / 리스트 출력 / 정렬 / 등록 / 삭제 -->
   <script src="./js/jquery.qrcode.js"></script>
   <script src="./js/qrcode.js"></script>
     

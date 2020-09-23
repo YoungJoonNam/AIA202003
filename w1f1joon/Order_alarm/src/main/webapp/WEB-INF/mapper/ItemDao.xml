@@ -108,9 +108,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 나의 공구판매현황[모집중] - 참여자 구매자로 선정하기 -->
    <insert id="selectBuyer" parameterType="java.util.Map">
    <!-- insert into wifi.purchase (oidx) values #{oidx} -->
-      insert into wifi.purchase (oidx) values
+      insert into wifi.purchase (oidx,qr) values
       <foreach collection="list" item="oidxArr" separator=",">
-          (#{oidxArr})
+          (#{oidxArr},#{oidxArr})
       </foreach>       
    </insert>
 	

@@ -83,7 +83,7 @@ $(document).ready(function(){
 
 function checkQR(oidx){
   
-  url = "https://www.dreambal.com/w1f1/qrcheck.php";
+  url = "https://www.dreambal.com/w1f1/";
   window.open(url,"checkQR","width=300,height=300");
 
 }
@@ -115,6 +115,8 @@ function checkQR(oidx){
 				var html = '';
 				var state= '';
 				var stateColor= '';
+				var label= '';
+				var alarm= '';
 				
 				for(var i=0; i<data.length; i++){
 					state= '';
@@ -123,28 +125,43 @@ function checkQR(oidx){
 					if(data[i].label=="모집중"){
 						state = 0;
 						stateColor = 'aside_mystate joinIng';
+						label = '모집중';
 
+					} else if(data[i].label == "모집중1"){
+						state = 0;
+						stateColor = 'aside_mystate joinIng';
+						label = '모집중';
+						alarm = 'alarm';
 
 					} else if(data[i].label=="모집완료"){
 						state = 1;
 						stateColor = 'aside_mystate joinCom';
-					
+						label = '모집완료';
 						
 					} else if(data[i].label=="판매완료"){
 						state = 2;
 						stateColor = 'aside_mystate saleCom';
-						
+						label = '판매완료';
 
-					} else if(data[i].label=="판매실패"){
+					} else if(data[i].label=="판매완료1"){
+						state = 2;
+						stateColor = 'aside_mystate saleCom';
+						label = '판매완료';
+						alarm = 'alarm';
+
+					}
+					else if(data[i].label=="판매실패"){
 						state = 3;
 						stateColor = 'aside_mystate saleFail';
+						label = '판매실패';
 					}	
 					
 
 					html += '<div class="aside_mycard iidx'+data[i].iidx+'">';
 					html += '	<div class="aside_mystatewrap aside_state '+stateColor+'"></div>';
-					html += '   <span>'+data[i].label+'</span><span class="alarm sa'+data[i].iidx+'" onclick="cancleAlarm('+data[i].iidx+','+data[i].buyer+')">a</span>';
-					
+					// 가람 수정 <span class="alarm sa"> a </span> -> <span id="'+data[i].iidx+'" class=""></span> 으로 변경
+					html += '   <span class="label_'+data[i].iidx+'">'+label+'</span><span id="'+data[i].iidx+'" class="'+alarm+'" onclick="cancleAlarm('+data[i].iidx+','+data[i].buyer+', \'seller\')"></span>';
+										
 					if(state==0){
 					html += '  	  	  <span class="aside_'+data[i].iidx+'">현재참여자 : '+data[i].cntBuyer+'명 / 구매정원 :'+data[i].count_m+'명</span>';
 					}
@@ -186,7 +203,7 @@ function checkQR(oidx){
 				//var stateColor= '';
 				var html = '';
 				
-				html += '<hr style="clear: both;width:75%">';
+				html += '<hr style="clear: both;">';
 				for(var i=0; i<data.length; i++){
 					
 					switch(state){
@@ -237,17 +254,17 @@ function checkQR(oidx){
 					
 					// 참여자(또는 구매자) 이름. 평균평점. 총평점수 - 기본출력
 					
-						html += '<hr style="clear: both;width:50%">';						 
+												 
 						html += '<div class="aside_mybuyer iidx'+data[i].iidx+' '+stateColor+'">';						
 						html += '   <span class="buyerState '+stateColor+'">'+buyerState+' | </span>';
 						html += '	<span class="buyer_name midx'+data[i].buyer+'">'+data[i].name+'</span>';
 						html += '  	<span class="rvb_avg">별'+data[i].rvb_avg+'</span><span class="rvb_total">/'+data[i].rvb_totalRow+'</span><br>';
 					
-					
+					// 가람 수정 0921 : 알림 설정
 					// 모집중 일때, 참여자 거절 또는 구매자 선정 버튼 출력
 					if(state==0){
-						html += '    	<input type="checkbox" name="select_buyer" class="btn_sellerAction select_buyer" value="'+data[i].oidx+'">선정</button>';
-						html += '    	<button type="button" name="select_reject" class="btn_sellerAction select_reject" onclick="rejectBuyer('+data[i].iidx+','+data[i].oidx+')">참여거절</button>';
+						html += '    	<input type="checkbox" name="select_buyer" class="btn_sellerAction select_buyer" data-midx="'+data[i].buyer+'" value="'+data[i].oidx+'">선정</button>';
+						html += '    	<button type="button" name="select_reject" class="btn_sellerAction select_reject" onclick="rejectBuyer('+data[i].iidx+','+data[i].oidx+','+data[i].buyer+')">참여거절</button>';
 						
 
 					// 모집완료 일때, QR 생성 또는 보기 버튼 출력   
@@ -258,7 +275,14 @@ function checkQR(oidx){
 					// 판매완료 일때, 평점등록 버튼 출력 	
 					} else if(state==2){
 						html += '<form class="reviewForm" onsubmit="return false;">';
-						html += '      <input class="btn_sellerAction score_b_'+data[i].buyer+'" type="number">';
+						html += '	<select class="score_b_'+data[i].buyer+'">';
+						html += '		<option value="1">★☆☆☆☆</option>';
+						html += '		<option value="2">★★☆☆☆</option>';
+						html += '		<option value="3">★★★☆☆</option>';
+						html += '		<option value="4">★★★★☆</option>';
+						html += '		<option value="5">★★★★★</option>';
+						html += '	</select>';
+						//html += '      <input class="btn_sellerAction score_b_'+data[i].buyer+'" type="number">';
 						html += '      <input class="btn_sellerAction insert_rvb_'+data[i].buyer+'" type="submit" value="평점 등록" onclick="reviewBuyer('+data[i].iidx+','+data[i].buyer+')" >';
 						html += '</form>';
 					
@@ -336,7 +360,10 @@ function checkQR(oidx){
 
 	var buyerArr = [];    // 선택한 구매자 담는 배열
 	var rejectArr = [];   // 선택한 구매자 외 자동거절처리 참여자 담는 배열
-
+	
+	// 가람수정 0921 : 알림 설정
+	var midxArr = [];		// 선택한 구매자 idx를 담는 배열
+	var rejectMidxArr = [];	// 자동거절처리 참여자 idx를 담는 배열
 
 	/* ing 나의 공구판매현황[모집중] - 참여자 ㅡ> (분기) 구매자 선정체크 또는 거절  */
 	/* 서버에서의 처리문제 수정중 */
@@ -359,11 +386,14 @@ function checkQR(oidx){
 				
 				$('input[name="select_buyer"]:not(:checked)').each(function(i) { 
 					rejectArr.push($(this).val()); 
+					// 가람수정 0921: 참여자 거절 알림
+					rejectMidxArr.push($(this).data('midx'));
 				
 				});
 
 				alert('배열에 담긴 <거절>한 참여자 확인 : '+ rejectArr);
-				autoRejectBuyer(iidx, rejectArr);
+				// 가람수정 0921: 참여자 거절 알림
+				autoRejectBuyer(iidx, rejectArr, rejectMidxArr);
 			};
 
 
@@ -371,10 +401,13 @@ function checkQR(oidx){
 			$('input[name="select_buyer"]:checked').each(function(i) { 
 		
 				buyerArr.push($(this).val()); 
+				// 가람수정 0921: 구매자 선정 알림
+				midxArr.push($(this).data('midx'));
 			});
 
 				alert('배열에 담긴 <선정>된 구매자 확인 : '+ buyerArr);
-				selectBuyer_ok(iidx, buyerArr);
+				// 가람수정 0921: 구매자 선정 알림
+				selectBuyer_ok(iidx, buyerArr, midxArr);
 			
 		};
 	};
@@ -383,7 +416,8 @@ function checkQR(oidx){
 
 
 	/* 나의 공구판매현황[모집중] - 참여자 구매자 선정 ㅡ> 확정 처리 */
-	function selectBuyer_ok(iidx, oidxArr){
+	// 가람수정 0921: 구매자 선정 알림 midxArr parameter에 추가
+	function selectBuyer_ok(iidx, oidxArr, midxArr){
 		
 		var selectData = { "list" : oidxArr };
 		//var selectData = { "oidxArr" : oidxArr };		
@@ -421,6 +455,12 @@ function checkQR(oidx){
 				buyerArr = [];   // 배열 초기화
 				myitem(loginMidx);
 				$(".aside_mybuyer_list_"+iidx).show();
+				
+				var msg = "구매자";
+				// 가람수정 0921: 선정된 구매자들에게 실시간 알림
+				var rmidx = -2;
+				sendMessage(loginMidx, midxArr[i], rmidx, iidx, msg);				
+				midxArr = [];
 
 			},
 			error:function(jqXHR, textStatus, errorThrown){
@@ -434,7 +474,8 @@ function checkQR(oidx){
 
 
 	/* 나의 공구판매현황[모집중] - 참여자 거절하기 */ 
-	function rejectBuyer(iidx,oidx){
+	// 가람수정 0921: 거절된 참여자 알림 midxArr parameter에 추가
+	function rejectBuyer(iidx,oidx, midx){
 
 		if(confirm('선택하신 참여자의 참여를 거절하시겠습니까?')){
 			$.ajax({
@@ -449,6 +490,10 @@ function checkQR(oidx){
 						alert('data : '+data+', 선택하신 참여자가 참여거절 처리 되었습니다.');
 						myitem(loginMidx);
 						$(".aside_mybuyer_list_"+iidx).show();
+						
+					// 가람수정 0921: 거절된 참여자에게 실시간 알림
+					var msg = "다음기회에..."
+					sendMessage(loginMidx, midx, iidx, msg);
 
 				},
 				error:function(jqXHR, textStatus, errorThrown){
@@ -463,7 +508,8 @@ function checkQR(oidx){
 	/* 나의 공구판매현황[모집중] - 참여자 자동거절처리 */
 	/* 구매자 선정하면 나머지 선택하지 않은 참여자 */ 
 	/* 판매실패하면 참여자 자동 거절처리(이때의 처리는 서버에서) */ 
-	function autoRejectBuyer(iidx,oidxArr){
+	// 가람수정 0921: 참여자 거절 알림 rejectMidxArr parameter에 추가
+	function autoRejectBuyer(iidx,oidxArr,rejectMidxArr){
 
 		alert('참여자 자동 <거절>처리: '+iidx+'번 글. 매개변수 oidxArr배열확인 : '+oidxArr);
 		
@@ -484,6 +530,13 @@ function checkQR(oidx){
 				alert('data : '+data+', 선택하신 참여자'+oidxArr+'가 <자동 참여거절> 처리 되었습니다.');
 				rejectArr=[];	// 배열초기화
 				myitem(loginMidx);
+				
+				var msg = "다음기회에";
+				// 가람수정 0921: 거절된 참여자들에게 실시간 알림
+				for(var i=0; i<rejectMidxArr.length; i++){
+					sendMessage(loginMidx, rejectMidxArr[i], iidx, msg);
+				}
+				rejectMidxArr = [];
 
 			},
 			error:function(jqXHR, textStatus, errorThrown){
@@ -528,6 +581,8 @@ function checkQR(oidx){
 	}
 
 	/* 나의 공구판매현황[판매완료] - 구매자 평점등록하기 */
+	// 0922 김승연 평점 등록부분 수정
+	// 알려진 버그 : 평점 등록 후 평점등록기능 비활성화가 다른 페이지를 들어갔다 오면 다시 활성화되어있음
 	function reviewBuyer(iidx, buyer){
 
 		if(confirm('평점등록 후 수정이 불가합니다. 등록하시겠습니까?')){

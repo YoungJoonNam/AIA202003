@@ -21,7 +21,8 @@ import com.google.gson.JsonParser;
 public class KakaoLoginService {
 
 	// 카카오 REST API 키
-	private final static String CLIENT_ID = "f5e0701c39876968f090e686afa45c4a";
+	//20200923 private final static String CLIENT_ID = "f5e0701c39876968f090e686afa45c4a";
+	private final static String CLIENT_ID = "9c67456b95fffe65ed319d1deae094af";
 
 	/* 도메인 경로 변경시 수정이 용이하게 변수로 선언한다 */
 	// 로그인 리다이렉트 uri

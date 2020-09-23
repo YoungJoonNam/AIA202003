@@ -104,7 +104,8 @@ function myOrder(loginMidx){
 			for(var i=0; i<data.length; i++){
 				var state= '';
 				var stateColor= '';
-				
+				var label= '';
+                var alarm= '';
 
 				// order가 숨김처리 되있을 때, 출력안함
 				if(data[i].ostate == -2){
@@ -114,37 +115,52 @@ function myOrder(loginMidx){
 					state = 0;
                     stateColor = 'aside_mystate join';
                     btn_buyerActionName = 'cancel';
+                    label = '참여중';
 				
 				} else if(data[i].label=="다음기회에..."){
 					state = 1;
                     stateColor = 'aside_mystate next';
                     btn_buyerActionName = 'X';
-                
-                    
+                    label = '다음기회에...';
+                                    
+                } else if(data[i].label=="다음기회에...1"){
+					state = 1;
+                    stateColor = 'aside_mystate next';
+                    btn_buyerActionName = 'X';
+                    label = '다음기회에...';
+                    alarm = 'alarm';
+                        
 				} else if(data[i].label=="구매자"){
 					state = 2;
                     stateColor = 'aside_mystate buyer';
-                    
+                    label = '구매자';
 					
+				} else if(data[i].label=="구매자1"){
+					state = 2;
+                    stateColor = 'aside_mystate buyer';
+                    label = '구매자';
+                    alarm = 'alarm';
+                    
 				} else if(data[i].label=="구매완료"){
 					state = 3;
                     stateColor = 'aside_mystate review';
                     btn_buyerAction = '$(".reviewForm").toggle()';
+                    label = '구매완료';
 				}	
 				
 
 				html += '<div class="aside_mycard iidx'+data[i].iidx+'">';
 				html += '	<div class="aside_mystatewrap aside_state '+stateColor+'"></div>';
-                html += '   <span>'+data[i].label+'</span><span class="alarm ba'+data[i].iidx+'" onclick="cancleAlarm('+data[i].iidx+','+data[i].buyer+')">a</span>';
+                html += '   <span class="label_'+data[i].iidx+'">'+label+'</span><span id="'+data[i].iidx+'" class="'+alarm+'" onclick="cancleAlarm('+data[i].iidx+','+data[i].buyer+', buyer)"></span>';
                 
-                if(state==1 || state==3){
-                html += '     <button type="button" class="delOrder" onclick="delOrder('+data[i].oidx+','+data[i].pidx+')">X</button>';
+                if(state==3){
+                	html += '     <button type="button" class="delOrder" onclick="delOrder('+data[i].oidx+','+data[i].pidx+')">X</button>';
                 }
                 
                 html += '  	<button type="button" class="aside_item_title" onclick="showDetails('+data[i].iidx+','+loginMidx+')">'+data[i].iidx+'. '+data[i].title+'</button>';
                 
-                // 참여중 ㅡ> 참여취소 버튼 활성화
-                if(state ==0 ){
+                // 참여중, 다음기회에 ㅡ> 참여취소 버튼 활성화
+                if(state ==0 || state == 1){
                     html += '  	  <button type="button" class="btn_buyerAction cancleOrder" onclick="cancleOrder('+data[i].oidx+','+state+')">cancel</button>';
                 
                     // 구매자 ㅡ> QR보기 버튼 활성화
@@ -152,11 +168,24 @@ function myOrder(loginMidx){
                     html += '  	  <button type="button" class="btnStyleQR" onclick="viewQR('+data[i].oidx+')">QRcode</button>';
                     
                     // 구매완료 ㅡ> 평점등록 버튼 활성화
+                    // 0922 김승연 평점 등록부분 수정
+                    // 알려진 버그 : 평점 등록 후 평점등록기능 비활성화가 다른 페이지를 들어갔다 오면 다시 활성화되어있음.
                 } else if(state==3){
                     html += '  	  <button type="button" class="btn_buyerAction reviewSeller" onclick="reviewForm_toggle('+data[i].iidx+')">review</button>';
                     html += '         <form class="reviewForm_'+data[i].iidx+'" onsubmit="return false;" style="display:none">';
-                    html += '           <input class="score_s_'+data[i].seller+'" type="number">';
-                    html += '           <div class="rating-stars text-center">';
+                    html += '			<select class="score_s_'+data[i].seller+'">';
+					html += '				<option value="1">★☆☆☆☆</option>';
+					html += '				<option value="2">★★☆☆☆</option>';
+					html += '				<option value="3">★★★☆☆</option>';
+					html += '				<option value="4">★★★★☆</option>';
+					html += '				<option value="5">★★★★★</option>';
+					html += '			</select>';
+					html += '           <input class="insert_rvs_'+data[i].seller+'" type="submit" value="ok" onclick="reviewSeller('+data[i].iidx+','+data[i].seller+')" >';
+					html += '         </form>';
+					
+					// html += '     <button type="button" class="btn_buyerAction hideOrder" onclick="hideOrder('+data[i].oidx+')">hide</button>';
+					//html += '           <input class="score_s_'+data[i].seller+'" type="number">';
+                    /* html += '           <div class="rating-stars text-center">';
                     html += '               <ul class="stars" class="score_s_'+data[i].seller+'">';
                     html += '                   <li class="star" data-value="1"><i class="fa fa-star fa-fw"></i></li>';
                     html += '                   <li class="star" data-value="2"><i class="fa fa-star fa-fw"></i></li>';
@@ -164,11 +193,7 @@ function myOrder(loginMidx){
                     html += '                   <li class="star" data-value="4"><i class="fa fa-star fa-fw"></i></li>';
                     html += '                   <li class="star" data-value="5"><i class="fa fa-star fa-fw"></i></li>';
                     html += '               </ul>';
-                    html += '           </div>';
-					html += '           <input class="insert_rvs_'+data[i].seller+'" type="submit" value="ok" onclick="reviewSeller('+data[i].iidx+','+data[i].seller+','+$(".rating-stars").val()+')" >';
-					html += '         </form>';
-					// html += '     <button type="button" class="btn_buyerAction hideOrder" onclick="hideOrder('+data[i].oidx+')">hide</button>';
-					
+                    html += '           </div>';*/
                     
                 }
                 
@@ -281,12 +306,14 @@ function myOrder(loginMidx){
 
 
     /* 나의 공구구매현황[구매완료] - 평점등록 */
+    // 0922 김승연 평점 등록 수정
+    // 받아오는 데이터 경로명 변경
     function reviewSeller(iidx, seller, score_s){
         
         if(confirm('평점등록 후 수정이 불가합니다. 등록하시겠습니까?')){
 
-            //var score_s = $(".score_s_"+seller).val();
-            //alert("score_s : "+score_s);
+            var score_s = $(".score_s_"+seller).val();
+            alert("score_s : "+score_s);
 
             var regRvFormData = new FormData();
             regRvFormData.append('score_s',score_s);

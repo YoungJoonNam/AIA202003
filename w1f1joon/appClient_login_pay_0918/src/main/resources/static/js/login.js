@@ -1,5 +1,7 @@
 /*global $, document, window, setTimeout, navigator, console, location*/
-var localUrl = "http://localhost:8080/"
+var localUrl = "http://localhost:8081/"
+
+
 var awsUrl = "http://ec2-54-180-89-108.ap-northeast-2.compute.amazonaws.com:5181"
 
 function daumPostcode() {
@@ -143,7 +145,7 @@ $(document).ready(function () {
                             icon: "success",
                             button: "확인"
                         }).then(function() {
-                            location.href="/";
+                            location.href="/client";
                             //location.href=awsUrl;
                         });
                         
